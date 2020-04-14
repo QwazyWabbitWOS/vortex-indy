@@ -784,7 +784,7 @@ void SpawnEntities (char *mapname, char *entities, char *spawnpoint)
 
 //===================================================================
 
-#if 0
+/*
 	// cursor positioning
 	xl <value>
 	xr <value>
@@ -805,7 +805,8 @@ void SpawnEntities (char *mapname, char *entities, char *spawnpoint)
 	ifbit <stat> <value>
 	endif
 
-#endif
+*/
+
 /*
 GHz's NOTES:
 All characters have a width and height of 8. Numbers have a width of 15
