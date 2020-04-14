@@ -1930,7 +1930,7 @@ edict_t *G_FindEntityByMtype (int mtype, edict_t *from)
 
 float Get2dDistance (vec3_t v1, vec3_t v2)
 {
-	return (sqrt((v2[0]-v1[0])*(v2[0]-v1[0])+(v2[1]-v1[1])*(v2[1]-v1[1])));
+	return (sqrtf((v2[0]-v1[0])*(v2[0]-v1[0])+(v2[1]-v1[1])*(v2[1]-v1[1])));
 }
 
 #include <time.h>

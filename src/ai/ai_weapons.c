@@ -46,7 +46,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 void AI_InitAIWeapons (void)
 {
 	//clear all
-	memset( &AIWeapons, 0, sizeof(ai_weapon_t)*WEAP_TOTAL);
+	memset( &AIWeapons, 0, sizeof(ai_weapon_t) * WEAP_TOTAL);
 
 	//BLASTER
 	AIWeapons[WEAP_BLASTER].aimType = AI_AIMSTYLE_PREDICTION;
@@ -157,12 +157,3 @@ void AI_InitAIWeapons (void)
 	AIWeapons[WEAP_GRAPPLE].ammoItem = NULL;		//doesn't use ammo
 
 }
-
-
-
-
-
-
-
-
-

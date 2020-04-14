@@ -1,6 +1,6 @@
 #include "g_local.h"
 #include <sys/stat.h>
-#include "sqlite3.h"
+#include "sql/sqlite3.h"
 
 #ifndef NO_GDS
 #include <my_global.h>

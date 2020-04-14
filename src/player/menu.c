@@ -9,6 +9,8 @@ void check_for_levelup(edict_t *ent);
 //Function prototypes required for this .c file:
 void GDS_LoadPlayer(edict_t *ent);
 void OpenDOMJoinMenu (edict_t *ent);
+int GetAbilityUpgradeCost(int index); // from upgrades.c
+qboolean SavePlayer(edict_t* ent);	// from v_file_IO.c
 
 void disableAbilities (edict_t *ent)
 {

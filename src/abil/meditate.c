@@ -12,7 +12,7 @@ void Cmd_Meditate_f (edict_t *ent)
 {
 	//Talent: Meditation
 	int talentLevel = getTalentLevel(ent, TALENT_MEDITATION);
-	gitem_t *power_cube;
+	//gitem_t *power_cube;
 
 	if (talentLevel < 1)
 		return;

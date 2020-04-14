@@ -1,6 +1,5 @@
 #include "g_local.h"
 
-qboolean SavePlayer(edict_t *ent);
 
 int OpenConfigFile(edict_t *ent)
 {

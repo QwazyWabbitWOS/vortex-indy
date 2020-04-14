@@ -7,6 +7,17 @@
 //Using this , especially on higher levels, is very lag prone and may cause server overflow.
 //#define PRINT_DEBUGINFO 1
 
+#ifdef _WIN32
+  #define WIN32_LEAN_AND_MEAN	//non-MFC
+  #include <windows.h>
+  #define _CRTDBG_MAP_ALLOC
+  #include <stdlib.h>
+  #include <crtdbg.h>
+  #ifndef __func__
+    #define __func__ __FUNCTION__
+  #endif
+#endif
+
 #include "q_shared.h"
 // define GAME_INCLUDE so that game.h does not define the
 // short, server-visible gclient_t and edict_t structures,
@@ -112,7 +123,7 @@ extern long FLAG_FRAMES;
 #define FL_RESPAWN				0x80000000	// used for item respawning
 
 
-#define	FRAMETIME		0.1
+#define	FRAMETIME		0.1f
 
 // memory tags to allow dynamic memory to be cleaned up
 #define	TAG_GAME	765		// clear when unloading the dll
@@ -309,7 +320,7 @@ typedef struct
 #define WEAP_BFG				11
 #define WEAP_PHALANX			12
 
-#define WEAP_TOTAL				12
+#define WEAP_TOTAL				25	// size of the AIWeapons array
 
 #define WEAP_BOOMER				13
 
@@ -1129,6 +1140,12 @@ void Weapon_Trap (edict_t *ent);
 
 //K03 Begin
 void Weapon_Sword (edict_t *ent);
+
+// teleport.c
+qboolean ValidTeleportSpot(edict_t* ent, vec3_t spot);
+
+qboolean SavePlayer(edict_t* ent);
+
 
 //
 // g_combat.c

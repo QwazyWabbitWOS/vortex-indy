@@ -426,4 +426,3 @@ void CurseEffects (edict_t *self, int num, int color)
 	gi.WriteByte(color); // 242 = red, 210 = green, 2 = black
 	gi.multicast(start, MULTICAST_PVS);
 }
-

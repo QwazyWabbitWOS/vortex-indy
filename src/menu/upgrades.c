@@ -414,4 +414,3 @@ void OpenMultiUpgradeMenu (edict_t *ent, int lastline, int page, int generaltype
 
 	ent->client->menustorage.menu_index = MENU_MULTI_UPGRADE;
 }
-

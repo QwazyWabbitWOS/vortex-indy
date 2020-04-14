@@ -1488,5 +1488,3 @@ void SP_worldspawn (edict_t *ent)
 		gi.soundindex ("tank/tnkatck3.wav");
 	}	
 }
-
-

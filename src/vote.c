@@ -1026,4 +1026,3 @@ void ShowVoteModeMenu(edict_t *ent)
 	showmenu(ent);
 #endif
 }
-

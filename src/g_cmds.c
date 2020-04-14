@@ -1,11 +1,14 @@
 #include "g_local.h"
 #include "monster/m_player.h"
+#include "ai/ai_local.h"
 
 //Function prototypes required for this .c file:
 void Grenade_Explode (edict_t *ent);
 void Cmd_CorpseExplode(edict_t *ent);
 void Cmd_HellSpawn_f (edict_t *ent);
 void Cmd_Caltrops_f (edict_t *ent);
+void SP_target_speaker(edict_t* ent);
+qboolean ToggleSecondary(edict_t* ent, gitem_t* item, qboolean printmsg);
 //End prototypes
 
 void Cmd_DetPipes_f (edict_t *ent)
@@ -1227,7 +1230,6 @@ Cmd_Inven_f
 */
 void Cmd_Inven_f (edict_t *ent)
 {
-	int			i;
 	gclient_t	*cl;
 	if(ent->svflags & SVF_MONSTER) return;
 
@@ -2546,7 +2548,7 @@ void Cmd_AdminCmd (edict_t *ent)
 	else if (Q_stricmp(cmd1, "srune") == 0)
 	{
 		int index = atoi(cmd3);
-		int type;
+		int type = ITEM_NONE;
 
 		if (ent->myskills.administrator < 10)
 			return;

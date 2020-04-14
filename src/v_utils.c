@@ -969,7 +969,7 @@ float V_EntDistance(edict_t *ent1, edict_t *ent2)
 	dist[1] = ent1->s.origin[1] - ent2->s.origin[1];
 	dist[2] = ent1->s.origin[2] - ent2->s.origin[2];
 
-    return sqrt((dist[0] * dist[0]) + (dist[1] * dist[1]) + (dist[2] * dist[2]));
+    return sqrtf((dist[0] * dist[0]) + (dist[1] * dist[1]) + (dist[2] * dist[2]));
 }
 
 //************************************************************************************************

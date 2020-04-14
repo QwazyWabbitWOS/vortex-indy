@@ -1,4 +1,4 @@
-#include "g_local.h"
+#include "../g_local.h"
 #include "organ.h"
 
 #define GASSER_FRAMES_ATTACK_START		1	

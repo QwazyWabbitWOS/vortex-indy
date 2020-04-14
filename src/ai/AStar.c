@@ -122,7 +122,7 @@ static int	Astar_HDist_ManhatanGuess( int node )
 
 	for (i=0 ; i<3 ; i++)
 	{
-		DistVec[i] = fabs(nodes[goalNode].origin[i] - nodes[node].origin[i]);
+		DistVec[i] = fabsf(nodes[goalNode].origin[i] - nodes[node].origin[i]);
 	}
 
 	HDist = (int)(DistVec[0] + DistVec[1] + DistVec[2]);

@@ -1024,5 +1024,3 @@ qboolean HasFlag (edict_t *ent)
 
 	return false;
 }
-
-

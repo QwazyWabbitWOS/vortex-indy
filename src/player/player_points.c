@@ -508,9 +508,9 @@ int PVP_AwardKill (edict_t *attacker, edict_t *targ, edict_t *target)
 	int			credits			= 0;
 	int			exp_points		= 0;
 	int			break_points	= 0;
-	float		level_diff		= 0;
-	float		bonus			= 1;
-	float		dmgmod			= 1;
+	float		level_diff		= 0f;
+	float		bonus			= 1f;
+	float		dmgmod			= 1f;
 	float		damage;
 	char		name[50];
 	int			minimum_points	= 1;

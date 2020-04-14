@@ -860,4 +860,3 @@ else if (Q_stricmp (cmd, "saveplayers") == 0)
 	else
 		safe_cprintf (NULL, PRINT_HIGH, "Unknown server command \"%s\"\n", cmd);
 }
-

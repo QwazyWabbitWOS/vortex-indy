@@ -867,7 +867,7 @@ void CTF_InitSpawnPoints (int teamnum)
 void CTF_AwardFrag (edict_t *attacker, edict_t *target)
 {
 	int		points=0, credits=0;
-	int		enemy_teamnum;
+	int		enemy_teamnum = 0;
 	float	mult=1.0;
 	edict_t	*team_fc, *enemy_fc, *team_base, *enemy_base, *team_spawn, *enemy_spawn;
 
@@ -1066,7 +1066,7 @@ void CTF_AwardFlagCapture (edict_t *carrier, int teamnum)
 
 void flagbase_touch (edict_t *self, edict_t *other, cplane_t *plane, csurface_t *surf)
 {
-	int	enemy_flag_index, enemy_teamnum;
+	int	enemy_flag_index = 0, enemy_teamnum = 0;
 
 	//if (!G_EntExists(other))
 	//	return;

@@ -486,7 +486,3 @@ void Use_Lasers (edict_t *ent, gitem_t *item)
 
 	PlaceLaser (ent);*/
 }
-
-
-
-

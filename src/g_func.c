@@ -2276,5 +2276,3 @@ void SP_object_repair (edict_t *ent)
 		ent->delay = 1.0;
 	
 }
-
-

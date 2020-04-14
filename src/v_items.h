@@ -57,4 +57,7 @@ typedef struct item_s
 #define CHANCE_CLASS			100		//2.8%	(1 in 40)
 #define CHANCE_UNIQUE			35		//0.2%	(1 in 500)
 
+int V_GetRuneWeaponPts(edict_t* ent, item_t* rune);
+int V_GetRuneAbilityPts(edict_t* ent, item_t* rune);
+
 #endif
