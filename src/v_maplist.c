@@ -95,8 +95,8 @@ int v_LoadMapList(int mode)
 
 		while (fgets(buf, 128, fptr) != NULL)
 		{
-			// tokenize string using comma as separator
-			if ((s = strtok(buf, ",")) != NULL)
+			// tokenize string using space, comma or tabs as separator
+			if ((s = strtok(buf, " ,\t")) != NULL)
 			{
 				// copy map name to list
 				strcpy(maplist->maps[iterator].name, s);
@@ -114,26 +114,23 @@ int v_LoadMapList(int mode)
 			if ((s = strtok(NULL, ",")) != NULL)
 			{
 				// terminate the line
-				// az: do we need this? test it.
 				maplist->maps[iterator].name[strlen(maplist->maps[iterator].name)] = '\0';
 
 				// copy monster value to list
 				maplist->maps[iterator].monsters = atoi(s);
 			}
-			
+			else
 			// make sure line is terminated
-			maplist->maps[iterator].name[strlen(maplist->maps[iterator].name)-1] = '\0';
+			maplist->maps[iterator].name[strlen(maplist->maps[iterator].name)] = '\0';
 
 			++iterator;
 		}
-		fclose(fptr);
 		maplist->nummaps = iterator;
+		if (iterator != 0)
+			gi.dprintf("INFO: Success loading %s\n", filename);
+		else
+			gi.dprintf("Error loading map file: %s maps: %i\n", filename, maplist->nummaps);
+		fclose(fptr);
 	}
-	else
-	{
-		gi.dprintf("Error loading map file: %s\n", filename);
-		maplist->nummaps = 0;
-	}
-	
 	return maplist->nummaps;
 }
