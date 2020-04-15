@@ -1549,7 +1549,7 @@ void HandleStatus () {}
 
 // az end
 
-#endif NO_GDS
+#endif /* NO_GDS */
 
 void *V_Malloc(size_t Size, int Tag)
 {
