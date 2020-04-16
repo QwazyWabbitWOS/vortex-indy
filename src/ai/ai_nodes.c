@@ -155,8 +155,8 @@ qboolean AI_PredictJumpadDestity( edict_t *ent, vec3_t out )
 
 	//make a guess on how player movement will affect the trajectory
 	tmpfloat = AI_Distance( pad_origin, floor_target_origin );
-	htime = sqrt ((tmpfloat));
-	vtime = sqrt ((target->s.origin[2] - pad_origin[2]));
+	htime = sqrtf ((tmpfloat));
+	vtime = sqrtf ((target->s.origin[2] - pad_origin[2]));
 	if(!vtime) return false;
 	htime *= 4;vtime *= 4;
 	if( htime > vtime )
@@ -687,7 +687,7 @@ int AI_IsPlatformLink( int n1, int n2 )
 	if( nodes[n1].flags & NODEFLAGS_PLATFORM && !(nodes[n2].flags & NODEFLAGS_PLATFORM) )
 	{
 		edict_t *n1ent = NULL;
-		int		othernode;
+		int		othernode = -1;
 
 		// find ent
 		for(i=0;i<nav.num_ents;i++) {
@@ -733,7 +733,7 @@ int AI_IsPlatformLink( int n1, int n2 )
 	if( !(nodes[n1].flags & NODEFLAGS_PLATFORM) && nodes[n2].flags & NODEFLAGS_PLATFORM )
 	{
 		edict_t *n2ent = NULL;
-		int		othernode;
+		int		othernode = -1;
 
 		// find ent
 		for(i=0;i<nav.num_ents;i++) {

@@ -100,7 +100,11 @@ void Cmd_FrostNova_f (edict_t *ent, float skill_mult, float cost_mult)
 			Cmd_Nova_f(ent, talent->upgradeLevel, skill_mult, cost_mult);
 			talent->delay = level.time + 2.2;	// 2 second recharge.
 		}
-		else safe_cprintf(ent, PRINT_HIGH, va("You can't cast another frost nova for %0.1f seconds.\n", talent->delay - level.time));
+		else
+		{
+			float dur = talent->delay - level.time;
+			safe_cprintf(ent, PRINT_HIGH, va("You can't cast another frost nova for %0.1f seconds.\n", dur));
+		}
 	}
 	else 
 	{

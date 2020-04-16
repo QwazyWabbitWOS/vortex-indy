@@ -234,7 +234,7 @@ void GetScorePosition ()
 { 
      int i, j, k; 
      int sorted[MAX_CLIENTS]; 
-     int sortedscores[MAX_CLIENTS]; 
+	 int sortedscores[MAX_CLIENTS] = { 0 };
      int score, total, last_score, last_pos=1; 
      gclient_t *cl; 
      edict_t *cl_ent; 

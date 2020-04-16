@@ -17,10 +17,10 @@ vec3_t pathnode[MAX_GRID_SIZE];
 
 #define MaxOf(x,y) ((x) > (y)?(x):(y))
 #define MinOf(x,y) ((x) < (y)?(x):(y))
-#define gridz(z) (int)MinOf(MaxOf(((z)+4096)*0.06250,0),511)
-#define g2v0(x)  (float)MinOf(MaxOf((x)*xevery-4096+(xevery*0.5),-4096),4096)
-#define g2v1(y)  (float)MinOf(MaxOf((y)*yevery-4096+(yevery*0.5),-4096),4096)
-#define g2v2(z)  (float)MinOf(MaxOf((z)*zevery-4096+(zevery*0.5),-4096),4096)
+#define gridz(z) (int)MinOf(MaxOf(((z)+4096)*0.06250f,0),511)
+#define g2v0(x)  (float)MinOf(MaxOf((x)*xevery-4096+(xevery*0.5f),-4096),4096)
+#define g2v1(y)  (float)MinOf(MaxOf((y)*yevery-4096+(yevery*0.5f),-4096),4096)
+#define g2v2(z)  (float)MinOf(MaxOf((z)*zevery-4096+(zevery*0.5f),-4096),4096)
 
 //=====================================================
 //================== pathfinding stuff ================
@@ -546,7 +546,7 @@ qboolean CheckPath (vec3_t start, vec3_t end)
 qboolean isValidChildNode (vec3_t start, vec3_t v, int max_distance, int max_z_delta)
 {
 	// node should be within +/- 32 units of start on the Z axis
-	if (fabs(v[2]-start[2]) > max_z_delta)
+	if (fabsf(v[2]-start[2]) > max_z_delta)
 		return false;
 	// distance check, next node could be anywhere between 128 - 255 units away
 	if (Get2dDistance(start, v) >= max_distance)
@@ -1134,7 +1134,7 @@ vec3_t v,forward;
   for (i=0;i<numnodes;i++) {
     VectorSubtract(pathnode[i],ent->s.origin,v);
     if (VectorLength(v)>=256) continue; // limit view distance to eliminate overflows
-    if (DotProduct(v,forward)>0.3) { // infront?
+    if (DotProduct(v,forward)>0.3f) { // infront?
       VectorCopy(pathnode[i],v);
       v[2]-=4; // node height
 	 // NearestNodeLocation(ent->s.origin, start);

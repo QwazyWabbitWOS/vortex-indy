@@ -53,7 +53,8 @@ char *bot_names[] =
 //==========================================
 qboolean BOT_ServerCommand (void)
 {
-	char	*cmd, *name;
+	char* cmd;
+	char* name = { 0 };
 
 	cmd = gi.argv (1);
 
@@ -204,7 +205,7 @@ void AI_BotObituary (edict_t *self, edict_t *inflictor, edict_t *attacker)
 void debug_printf(char *fmt, ...)
 {
 	int     i;
-	char	bigbuffer[0x10000];
+	char	bigbuffer[0x1000];
 	int		len;
 	va_list	argptr;
 	edict_t	*cl_ent;
@@ -232,7 +233,7 @@ void debug_printf(char *fmt, ...)
 ///////////////////////////////////////////////////////////////////////
 void safe_cprintf (edict_t *ent, int printlevel, char *fmt, ...)
 {
-	char	bigbuffer[0x10000];
+	char	bigbuffer[0x1000];
 	va_list		argptr;
 	int len;
 
@@ -252,7 +253,7 @@ void safe_cprintf (edict_t *ent, int printlevel, char *fmt, ...)
 ///////////////////////////////////////////////////////////////////////
 void safe_centerprintf (edict_t *ent, char *fmt, ...)
 {
-	char	bigbuffer[0x10000];
+	char	bigbuffer[0x1000];
 	va_list		argptr;
 	int len;
 
@@ -273,7 +274,7 @@ void safe_centerprintf (edict_t *ent, char *fmt, ...)
 void safe_bprintf (int printlevel, char *fmt, ...)
 {
 	int i;
-	char	bigbuffer[0x10000];
+	char	bigbuffer[0x1000];
 	int		len;
 	va_list		argptr;
 	edict_t	*cl_ent;

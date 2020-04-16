@@ -16,8 +16,8 @@ void Cmd_Purge_f (edict_t *ent)
 	
 	if (ent->client->ability_delay > level.time)
 	{
-		safe_cprintf(ent, PRINT_HIGH, "You must wait %.1f seconds before you can use this talent.\n", 
-			ent->client->ability_delay-level.time);
+		float dur = ent->client->ability_delay - level.time;
+		safe_cprintf(ent, PRINT_HIGH, "You must wait %.1f seconds before you can use this talent.\n", dur);
 		return;
 	}
 	if (ent->client->pers.inventory[power_cube_index] < PURGE_COST)

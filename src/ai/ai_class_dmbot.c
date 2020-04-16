@@ -587,8 +587,8 @@ void BOT_DMclass_FireWeapon (edict_t *self, usercmd_t *ucmd)
 	}
 
 	// modify attack angles based on accuracy (mess this up to make the bot's aim not so deadly)
-	target[0] += (random()-0.5) * ((MAX_BOT_SKILL - self->ai.pers.skillLevel) *2);
-	target[1] += (random()-0.5) * ((MAX_BOT_SKILL - self->ai.pers.skillLevel) *2);
+	target[0] += (random()-0.5f) * ((MAX_BOT_SKILL - self->ai.pers.skillLevel) *2);
+	target[1] += (random()-0.5f) * ((MAX_BOT_SKILL - self->ai.pers.skillLevel) *2);
 
 	// Set direction
 	VectorSubtract (target, self->s.origin, self->ai.move_vector);

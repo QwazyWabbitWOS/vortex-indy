@@ -1511,7 +1511,7 @@ qboolean M_CanCircleStrafe (edict_t *self, edict_t *target)
 	if (entdist(self, target) > 256)
 		return false;
 	// target must be within +/- 18 units (1 step) on the Z axis
-	if (fabs(self->absmin[2] - target->absmin[2]) > 18)
+	if (fabsf(self->absmin[2] - target->absmin[2]) > 18)
 		return false;
 	// check if anything is blocking our attack
 	G_EntMidPoint(self, start);
@@ -1619,7 +1619,7 @@ void drone_ai_run1 (edict_t *self, float dist)
 
 		// goal position is within +/- 1 step of our elevation and we have a clear line of sight
 		//FIXME: if goal entity is taller than us (e.g. jorg), this wont work very well!
-		if (fabs(self->s.origin[2]-self->monsterinfo.last_sighting[2]) <= 18 
+		if (fabsf(self->s.origin[2]-self->monsterinfo.last_sighting[2]) <= 18 
 			&& G_IsClearPath(NULL, MASK_SOLID, self->s.origin, self->monsterinfo.last_sighting))
 		{
 			float dst = distance(self->s.origin, self->monsterinfo.last_sighting);
