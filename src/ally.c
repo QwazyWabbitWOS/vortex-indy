@@ -215,7 +215,14 @@ void ResetAlliances (edict_t *ent)
 edict_t *getPlayerByName (const char *name)
 {
 	int		i;
-	edict_t *player, *found = NULL;
+	edict_t* player;
+	edict_t* found = NULL;
+
+	if (!name)
+	{
+		gi.dprintf("Vortex error: null player name pointer passed to %s\n", __func__);
+		return NULL;
+	}
 
 	for (i = 1; i <= maxclients->value; i++)
 	{
