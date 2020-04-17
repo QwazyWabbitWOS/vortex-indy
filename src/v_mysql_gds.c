@@ -1551,6 +1551,7 @@ void HandleStatus () {}
 
 #endif /* NO_GDS */
 
+/* Thread-safe wrapper for gi.TagMalloc */
 void *V_Malloc(size_t Size, int Tag)
 {
 	void *Memory;
@@ -1567,6 +1568,7 @@ void *V_Malloc(size_t Size, int Tag)
 	return Memory;
 }
 
+/* Thread-safe wrapper for gi.TagFree */
 void V_Free(void *mem)
 {
 #ifndef GDS_NOMULTITHREADING

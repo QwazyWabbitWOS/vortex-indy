@@ -140,7 +140,8 @@ void Cmd_Lockon_f (edict_t *ent, int toggle)
 	}
 }
 
-void cmd_Sentry (edict_t *ent);
+//QW//void cmd_Sentry (edict_t *ent);
+
 void Cmd_Thrust_f (edict_t *ent)
 {
     char    *string;
@@ -184,7 +185,7 @@ void FL_think (edict_t *self)
 
 		// special circumstance for flipped sentry
 		if (self->owner->owner && self->owner->owner->style == SENTRY_FLIPPED)
-			start[2] -= abs(self->owner->mins[2]);
+			start[2] -= fabsf(self->owner->mins[2]);
 		else
 			start[2] += self->owner->maxs[2];
 		VectorMA(start, (self->owner->maxs[0] + 16), forward, start);
@@ -267,14 +268,14 @@ char *ClientTeam (edict_t *ent)
 
 int NotHostile (edict_t *ent1, edict_t *ent2)
 {
+	// sanity check
+	if (!ent1 || !ent2)
+		return 0;
+
 	edict_t *e1 = G_GetClient(ent1);
 	edict_t *e2 = G_GetClient(ent2);
 
 	if (ctf->value || ptr->value || domination->value || invasion->value)
-		return 0;
-
-	// sanity check
-	if (!ent1 || !ent2)
 		return 0;
 
 	// both entities are players or owned by players
@@ -694,7 +695,7 @@ void Cmd_Togglesecondary_f (edict_t *ent)
 	if (PM_PlayerHasMonster(ent))
 	{
 		// player-tank has a 3rd attack if morph mastery is trained
-		if ((ent->owner->mtype == P_TANK) 
+		if ((ent->owner) && (ent->owner->mtype == P_TANK)
 			&& (ent->myskills.abilities[MORPH_MASTERY].current_level > 0))
 		{
 			if (ent->client->weapon_mode==3)

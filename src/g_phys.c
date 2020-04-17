@@ -965,7 +965,7 @@ void SV_Physics_Step (edict_t *ent)
 		//K03 Begin
 		float water_friction;
 		//K03 End
-		speed = fabs(ent->velocity[2]);
+		speed = fabsf(ent->velocity[2]);
 		control = speed < sv_stopspeed ? sv_stopspeed : speed;
 		//K03 Begin
 		water_friction=(FRAMETIME * control * sv_waterfriction * ent->waterlevel);
@@ -992,7 +992,7 @@ void SV_Physics_Step (edict_t *ent)
 				float water_friction;
 				//K03 End
 				vel = ent->velocity;
-				speed = sqrt(vel[0]*vel[0] +vel[1]*vel[1]);
+				speed = sqrtf(vel[0] * vel[0] + vel[1] * vel[1]);
 				if (speed)
 				{
 					friction = sv_friction;

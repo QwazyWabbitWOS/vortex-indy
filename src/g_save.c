@@ -11,7 +11,8 @@ cvar_t				*bot_showsrgoal;
 cvar_t				*bot_showlrgoal;
 cvar_t				*bot_debugmonster;
 
-field_t fields[] = {
+field_t fields[] = 
+{
 	{"classname", FOFS(classname), F_LSTRING},
 	{"origin", FOFS(s.origin), F_VECTOR},
 	{"model", FOFS(model), F_LSTRING},
@@ -64,6 +65,7 @@ field_t fields[] = {
 	{"maxpitch", STOFS(maxpitch), F_FLOAT, FFL_SPAWNTEMP},
 	{"nextmap", STOFS(nextmap), F_LSTRING, FFL_SPAWNTEMP},
 	//{"weight", STOFS(weight), F_INT, FFL_SPAWNTEMP}//JABot
+	{NULL, 0, F_INT}
 };
 
 // -------- just for savegames ----------

@@ -1,8 +1,8 @@
 #ifndef SETTINGS
 #define SETTINGS
 
-const char *s1;
-const char *s2;
+const char* s1;
+const char* s2;
 
 const char* Date();
 const char* Time();
@@ -12,14 +12,14 @@ const char* Time();
 
 #define VRX_VERSION "3.6"
 
-#define RUNE_PICKUP_DELAY			2.0	// time before another rune can be picked up
+#define RUNE_PICKUP_DELAY			2.0f	// time before another rune can be picked up
 
 #define SENTRY_MAXIMUM				1		//Maximum number of sentry guns allowed
 
 // chill effects for movement and attack refire speed
 // note that player weapon refire is handled independently (50% effectiveness on players vs monsters)
-#define CHILL_DEFAULT_BASE			0
-#define CHILL_DEFAULT_ADDON			0.1
+#define CHILL_DEFAULT_BASE			0.0f
+#define CHILL_DEFAULT_ADDON			0.1f
 
 // berserker sprint
 #define SPRINT_COST					4	// per frame ability charge cost
@@ -29,15 +29,15 @@ const char* Time();
 #define SHIELD_COST					2	// per frame ability charge cost
 #define SHIELD_MAX_CHARGE			100	// maximum charge
 #define SHIELD_CHARGE_RATE			10	// rate of charge per second while ability is unused
-#define SHIELD_FRONT_PROTECTION		1.0	// damage absorbed for front (power screen) protection
-#define SHIELD_BODY_PROTECTION		0.8 // damage absorbed for full-body protection
-#define SHIELD_ABILITY_DELAY		0.3	// seconds before shield can be re-activated
+#define SHIELD_FRONT_PROTECTION		1.0f	// damage absorbed for front (power screen) protection
+#define SHIELD_BODY_PROTECTION		0.8f	// damage absorbed for full-body protection
+#define SHIELD_ABILITY_DELAY		0.3f	// seconds before shield can be re-activated
 
 #define SMARTROCKET_LOCKFRAMES		3 // frames required for smart rocket to lock-on to a target
-#define DAMAGE_ESCAPE_DELAY			0.2 // seconds before player can use tball/jetpack/boost/teleport/superspeed after being damaged
+#define DAMAGE_ESCAPE_DELAY			0.2f // seconds before player can use tball/jetpack/boost/teleport/superspeed after being damaged
 #define EXP_PLAYER_MONSTER			75
 #define EXP_WORLD_MONSTER			35
-#define AMMO_REGEN_DELAY			5.0 // seconds until next ammo regen tick
+#define AMMO_REGEN_DELAY			5.0f // seconds until next ammo regen tick
 #define MAX_KNOCKBACK				300 // maximum knockback allowed for some attacks (e.g. rocket explosion)
 #define CHAT_PROTECT_FRAMES			200
 #define MAX_HOURS					24					//Maximum playing time per day (hours)
@@ -47,7 +47,7 @@ const char* Time();
 #define MAX_CREDITS					10000000 // max credits someone can have; update this on next reset to unsigned long!
 // General settings
 #define CLOAK_DRAIN_TIME			1 //10 frames = 1 second
-#define CLOAK_DRAIN_AMMO			1.0
+#define CLOAK_DRAIN_AMMO			1.0f
 #define CLOAK_COST					50
 #define CLOAK_ACTIVATE_TIME			2 // cloak after 3 seconds
 

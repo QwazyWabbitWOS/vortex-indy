@@ -494,9 +494,7 @@ void M_MoveFrame (edict_t *self)
 {
 	mmove_t	*move;
 	int		index;
-//	int		frames;
 	float	temp;
-//	edict_t *curse;
 	que_t	*slot=NULL;
 
 	if (!self->inuse)
@@ -546,6 +544,7 @@ void M_MoveFrame (edict_t *self)
 
 	index = self->s.frame - move->firstframe;
 	if (move->frame[index].aifunc)
+	{
 		if (!(self->monsterinfo.aiflags & AI_HOLD_FRAME))
 		{
 			self->monsterinfo.scale = 1.0;
@@ -566,13 +565,13 @@ void M_MoveFrame (edict_t *self)
 			}
 
 			// chill effect slows monster movement rate
-			if(self->chill_time > level.time)
+			if (self->chill_time > level.time)
 				self->monsterinfo.scale *= 1 / (1 + CHILL_DEFAULT_BASE + CHILL_DEFAULT_ADDON * self->chill_level);
 
 			// 3.5 weaken slows down target
 			if ((slot = que_findtype(self->curses, NULL, WEAKEN)) != NULL)
 			{
-				temp = 1 / (1 + WEAKEN_SLOW_BASE + WEAKEN_SLOW_BONUS 
+				temp = 1 / (1 + WEAKEN_SLOW_BASE + WEAKEN_SLOW_BONUS
 					* slot->ent->owner->myskills.abilities[WEAKEN].current_level);
 				self->monsterinfo.scale *= temp;
 			}
@@ -581,13 +580,14 @@ void M_MoveFrame (edict_t *self)
 			if (self->slowed_time > level.time)
 				self->monsterinfo.scale *= self->slowed_factor;
 
-			move->frame[index].aifunc (self, move->frame[index].dist * self->monsterinfo.scale);
+			move->frame[index].aifunc(self, move->frame[index].dist * self->monsterinfo.scale);
 		}
 		else
 		{
 			// we're not going anywhere!
-			move->frame[index].aifunc (self, 0);
+			move->frame[index].aifunc(self, 0);
 		}
+	}
 
 	if (move->frame[index].thinkfunc)
 		move->frame[index].thinkfunc (self);
