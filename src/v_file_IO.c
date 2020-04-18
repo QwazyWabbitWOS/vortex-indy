@@ -103,18 +103,11 @@ void VRXGetPath (char* path, edict_t *ent)
 {
 	if (savemethod->value == 1)
 	{
-#if defined(_WIN32) || defined(WIN32)
-		sprintf(path, "%s\\%s.vrx", save_path->string, V_FormatFileName(ent->client->pers.netname));
-#else
 		sprintf(path, "%s/%s.vrx", save_path->string, V_FormatFileName(ent->client->pers.netname));
-#endif
-	}else
+	}
+	else
 	{
-#if defined(_WIN32) || defined(WIN32)
-		sprintf(path, "%s\\%s.vsf", save_path->string, V_FormatFileName(ent->client->pers.netname));
-#else
 		sprintf(path, "%s/%s.vsf", save_path->string, V_FormatFileName(ent->client->pers.netname));
-#endif
 	}
 }
 

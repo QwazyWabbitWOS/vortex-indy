@@ -298,7 +298,7 @@ edict_t *V_SpawnRune (edict_t *self, edict_t *attacker, float base_drop_chance, 
 void SpawnRune (edict_t *self, edict_t *attacker, qboolean debug)
 {
 	int		iRandom;
-	int		targ_level;
+	int		targ_level = 0;
 	float	temp = 0;
 	gitem_t *item;
 	edict_t *rune;
@@ -347,7 +347,7 @@ void SpawnRune (edict_t *self, edict_t *attacker, qboolean debug)
 		if (attacker->myskills.boss > 0)
             temp = (float)attacker->myskills.boss * 5;
 		else
-			temp = (float) (self->myskills.level + 1) * 5.0 / (attacker->myskills.level + 1);
+			temp = (float) (self->myskills.level + 1) * 5.0f / (attacker->myskills.level + 1);
 		
 		// miniboss has greater chance of dropping a rune
 		if (IsNewbieBasher(self))
@@ -615,11 +615,7 @@ qboolean spawnUnique(edict_t *rune, int index)
 	j = i = 0;
 
 	//determine path
-	#if defined(_WIN32) || defined(WIN32)
-		sprintf(filename, "%s\\%s", game_path->string, "settings\\Uniques\\uniques.csv");
-	#else
-		sprintf(filename, "%s/%s", game_path->string, "settings/Uniques/uniques.csv");
-	#endif
+	Com_sprintf(filename, sizeof filename, "%s/%s", game_path->string, "Settings/Uniques/uniques.csv");
 
 	if ((fptr = fopen(filename, "r")) != NULL)
 	{
@@ -645,7 +641,8 @@ qboolean spawnUnique(edict_t *rune, int index)
 		else linenumber = index;
 
 		V_tFileGotoLine(fptr, linenumber, size);
-		fgets(buf, 256, fptr);
+		if (fgets(buf, 256, fptr) == NULL)
+			gi.dprintf("Unexpected error reading %s in %s\n", filename, __func__);
 
 		//Load the rune stats
 		iterator = buf;
@@ -884,14 +881,16 @@ qboolean Pickup_Rune (edict_t *ent, edict_t *other)
 
 void V_ItemCopy(item_t *source, item_t *dest)
 {
-	memcpy(dest, source, sizeof(item_t));
+	if (source && dest) /* guard against NULL ptr */
+		memcpy(dest, source, sizeof(item_t));
 }
 
 //************************************************************************************************
 
 void V_ItemClear(item_t *item)
 {
-	memset(item, 0, sizeof(item_t));
+	if (item) /* guard against NULL ptr */
+		memset(item, 0, sizeof(item_t));
 }
 
 //************************************************************************************************
@@ -1119,7 +1118,6 @@ void V_EquipItem(edict_t *ent, int index)
 
 void cmd_Drink(edict_t *ent, int itemtype, int index)
 {
-	int i;
 	item_t *slot = NULL;
 	qboolean found = false;
 
@@ -1138,7 +1136,7 @@ void cmd_Drink(edict_t *ent, int itemtype, int index)
 	else
 	{
 		//Find item in inventory
-		for (i = 3; i < MAX_VRXITEMS; ++i)
+		for (int i = 3; i < MAX_VRXITEMS; ++i)
 		{
 			if (ent->myskills.items[i].itemtype == itemtype)
 			{

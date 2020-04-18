@@ -560,9 +560,9 @@ void InitSunEntity(void)
 int HighestLevelPlayer(void)
 {
 	edict_t *player;
-	int highest = 0, i;
+	int highest = 0;
 
-	for (i = 1; i <= maxclients->value; i++){
+	for (int i = 1; i <= maxclients->value; i++){
 		player = &g_edicts[i];
 
 		if (!player->inuse)
@@ -585,9 +585,9 @@ int HighestLevelPlayer(void)
 int PvMHighestLevelPlayer(void)
 {
 	edict_t *player;
-	int highest = 0, i;
+	int highest = 0;
 
-	for (i = 1; i <= maxclients->value; i++){
+	for (int i = 1; i <= maxclients->value; i++){
 		player = &g_edicts[i];
 
 		if (!player->inuse)
@@ -612,9 +612,9 @@ int PvMHighestLevelPlayer(void)
 int PvMLowestLevelPlayer(void)
 {
 	edict_t *player;
-	int lowest = 999, i;
+	int lowest = 999;
 
-	for (i = 1; i <= maxclients->value; i++){
+	for (int i = 1; i <= maxclients->value; i++){
 		player = &g_edicts[i];
 
 		if (!player->inuse)
@@ -639,18 +639,16 @@ int PvMLowestLevelPlayer(void)
 int LowestLevelPlayer(void)
 {
 	edict_t *player;
-	int lowest = 999, i;
+	int lowest = 999;
 
-	for (i = 1; i <= maxclients->value; i++){
+	for (int i = 1; i <= maxclients->value; i++){
 		player = &g_edicts[i];
 
 		if (!player->inuse)
 			continue;
-	
 		//decino: don't check for bot levels because this also calculates theirs!
 		if (player->ai.is_bot)
 			continue;
-
 		if (G_IsSpectator(player))
 			continue;
 		if (player->myskills.boss)
@@ -669,9 +667,9 @@ int LowestLevelPlayer(void)
 int ActivePlayers (void)
 {
 	edict_t *player;
-	int i, clients = 0;
+	int clients = 0;
 
-	for (i = 1; i <= maxclients->value; i++){
+	for (int i = 1; i <= maxclients->value; i++){
 		player = &g_edicts[i];
 
 		if (!player->inuse)

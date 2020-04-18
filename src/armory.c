@@ -1043,11 +1043,7 @@ void SaveArmory()
 	FILE *fptr;
 
 	//get path
-	#if defined(_WIN32) || defined(WIN32)
-		sprintf(filename, "%s\\%s", game_path->string, "settings\\ArmoryItems.dat");
-	#else
-		sprintf(filename, "%s/%s", game_path->string, "settings/ArmoryItems.dat");
-	#endif	
+	sprintf(filename, "%s/%s", game_path->string, "settings/ArmoryItems.dat");
 
 	if ((fptr = fopen(filename, "wb")) != NULL)
 	{

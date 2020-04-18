@@ -1268,13 +1268,9 @@ qboolean CTF_GetFlagPosition (int teamnum, vec3_t pos)
 	if (!pos)
 		return false;
 
-	#if defined(_WIN32) || defined(WIN32)
-		sprintf(path, "%s\\settings\\loc\\%s_%d.loc", game_path->string, level.mapname, teamnum);
-	#else
-		sprintf(path, "%s/settings/%s_%d.loc", game_path->string, level.mapname, teamnum);
-	#endif
+	sprintf(path, "%s/settings/%s_%d.loc", game_path->string, level.mapname, teamnum);
 	
-		gi.dprintf("Reading file %s.\n", path);
+	gi.dprintf("Reading file %s.\n", path);
 
 	// read flag position from file
 	if ((fptr = fopen(path, "r")) != NULL)

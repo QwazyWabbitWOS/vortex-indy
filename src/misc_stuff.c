@@ -277,21 +277,23 @@ void GetScorePosition ()
      } 
 } 
 
+// QwazyWabbit
+// This function needs investigation.
+// If max == min it returns 0. 
+// Is this expected proper behavior? 
+// The old function produced
+// division by 0 errors.
+
 // Return random number between min and max.
 // If range is zero or less, return 0.
 int GetRandom(int min, int max)
 {
-	int i;
-
-	if ((i = (max + 1 - min) + min) != 0 && (max - min > 0))
+	if ((max + 1 - min) + min && (max - min > 0))
 	{
 		return rand() % (max + 1 - min) + min;
 	}
 	else
-	{
-		gi.dprintf("GAME ERROR: bad arguments passed to %s(%i,%i)\n", __func__, min, max);
 		return 0;
-	}
 }
 
 qboolean findspawnpoint (edict_t *ent)
@@ -870,11 +872,7 @@ void WriteToLogFile (char *char_name, char *s)
      sprintf(buf, "%s %s [%s]: %s", CURRENT_DATE, CURRENT_TIME, "Offline", s);  
   
      //determine path  
-     #if defined(_WIN32) || defined(WIN32)  
-          sprintf(path, "%s\\%s.log", save_path->string, V_FormatFileName(char_name));  
-     #else  
-          sprintf(path, "%s/%s.log", save_path->string, V_FormatFileName(char_name));  
-     #endif  
+     sprintf(path, "%s/%s.log", save_path->string, V_FormatFileName(char_name));  
   
      if ((fptr = fopen(path, "a")) != NULL) // append text to log  
      {  
@@ -903,11 +901,7 @@ void WriteToLogfile (edict_t *ent, char *s)
      sprintf(buf, "%s %s [%s]: %s", CURRENT_DATE, CURRENT_TIME, ip, s);  
   
      //determine path  
-     #if defined(_WIN32) || defined(WIN32)  
-          sprintf(path, "%s\\%s.log", save_path->string, V_FormatFileName(ent->client->pers.netname));  
-     #else  
-          sprintf(path, "%s/%s.log", save_path->string, V_FormatFileName(ent->client->pers.netname));  
-     #endif  
+     sprintf(path, "%s/%s.log", save_path->string, V_FormatFileName(ent->client->pers.netname));  
   
      if ((fptr = fopen(path, "a")) != NULL) // append text to log  
      {  
@@ -940,12 +934,8 @@ void WriteServerMsg (char *s, char *error_string, qboolean print_msg, qboolean s
 	 port = gi.cvar("port" , "0", CVAR_SERVERINFO);
 
      //determine path  
-     #if defined(_WIN32) || defined(WIN32)  
-          sprintf(path, "%s\\%d.log", game_path->string, (int)port->value);  
-     #else  
-          sprintf(path, "%s/%d.log", game_path->string, (int)port->value);  
-     #endif  
-
+     sprintf(path, "%s/%d.log", game_path->string, (int)port->value);  
+ 
      if ((fptr = fopen(path, "a")) != NULL) // append text to log  
      {  
           //3.0 make sure there is a line feed  

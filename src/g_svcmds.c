@@ -1,10 +1,6 @@
 #include "g_local.h"
 #include <sys/stat.h>
 
-//#if defined(_WIN32) || defined(WIN32)
-//#include <windows.h>
-//#endif
-
 //Function prototypes required for this .c file:
 void dom_spawnflag (void);
 void boss_spawn_tank (edict_t *ent);
