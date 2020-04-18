@@ -521,7 +521,8 @@ void PlayerID_SetStats (edict_t *player, edict_t *target, qboolean chasecam)
 {
 	int		health, armor=0, ammo=0, lvl=0;
 	float	dist;
-	char	name[24], buf[100];
+	char	name[24] = { 0 };
+	char	buf[100] = { 0 };
 	int		team_status=0;
 
 	if (player->ai.is_bot)
@@ -541,15 +542,13 @@ void PlayerID_SetStats (edict_t *player, edict_t *target, qboolean chasecam)
 	}
 	else 
 	{
-		name[0] = 0;
-
-		// name
+		// name is blanked, let's fill it now
 		if (PM_MonsterHasPilot(target))
-			strncat(name, target->owner->client->pers.netname, 24);
+			strncat(name, target->owner->client->pers.netname, sizeof name - 1);
 		else if (target->mtype)
-			strncat(name, V_GetMonsterName(target), 24);
+			strncat(name, V_GetMonsterName(target), sizeof name - 1);
 		else
-			strncat(name, target->classname, 24);
+			strncat(name, target->classname, sizeof name - 1);
 
 		// armor
 		if (target->monsterinfo.power_armor_type)
@@ -564,9 +563,7 @@ void PlayerID_SetStats (edict_t *player, edict_t *target, qboolean chasecam)
 			lvl = target->monsterinfo.level;
 	}
 
-	// initialize the string by terminating it, required by strcat()
-	buf[0] = 0;
-
+	// buf is initially zero-filled.
 	if (chasecam)
 		strcat(buf, va("Chasing "));
 
