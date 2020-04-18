@@ -277,23 +277,9 @@ void GetScorePosition ()
      } 
 } 
 
-// QwazyWabbit
-// This function needs investigation.
-// If max == min it returns 0. 
-// Is this expected proper behavior? 
-// The old function produced
-// division by 0 errors.
-
-// Return random number between min and max.
-// If range is zero or less, return 0.
 int GetRandom(int min, int max)
 {
-	if ((max + 1 - min) + min && (max - min > 0))
-	{
-		return rand() % (max + 1 - min) + min;
-	}
-	else
-		return 0;
+	return (rand() % (max + 1 - min) + min);
 }
 
 qboolean findspawnpoint (edict_t *ent)
