@@ -1337,7 +1337,7 @@ edict_t *SelectRandomDeathmatchSpawnPoint (edict_t *ent)
 	else
 		count -= 2;
 
-	selection = rand() % count;
+	selection = count ? rand() % count : 0;
 
 	spot = NULL;
 	do

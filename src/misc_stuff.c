@@ -408,7 +408,7 @@ qboolean TeleportNearArea (edict_t *ent, vec3_t point, int area_size, qboolean a
 	for (i=0; i<50000; i++) {
 		for (j=0; j<3; j++) {
 			VectorCopy(point, start);
-			start[j] += rand() % (area_size + 1) - 0.5*area_size;
+			start[j] += rand() % (area_size + 1) - area_size / 2;
 			if (gi.pointcontents(start) != 0)
 				continue;
 			if (!air)
