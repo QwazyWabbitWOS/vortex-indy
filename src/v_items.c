@@ -615,7 +615,7 @@ qboolean spawnUnique(edict_t *rune, int index)
 	j = i = 0;
 
 	//determine path
-	Com_sprintf(filename, sizeof filename, "%s/%s", game_path->string, "Settings/Uniques/uniques.csv");
+	Com_sprintf(filename, sizeof filename, "%s/%s", game_path->string, "settings/Uniques/Uniques.csv");
 
 	if ((fptr = fopen(filename, "r")) != NULL)
 	{

@@ -99,7 +99,7 @@ void Cmd_LightningStorm_f (edict_t *ent, float skill_mult, float cost_mult)
 	radius = LIGHTNING_INITIAL_RADIUS + LIGHTNING_ADDON_DURATION * slvl;
 
 	// randomize damage
-	damage = GetRandom((int)(0.5*damage), damage);
+	damage = GetRandom(damage/2, damage);
 
 	// get starting position and forward vector
 	AngleVectors (ent->client->v_angle, forward, right, NULL);
