@@ -2287,7 +2287,7 @@ qboolean G_Spawn_Monster2(edict_t *ent, vec3_t torigin, int mtype, float secs);
 #define VectorEmpty(a)        ((a[0]==0)&&(a[1]==0)&&(a[2]==0))
 #define SENTRY_UPRIGHT		1
 #define SENTRY_FLIPPED		2
-void	ReadBotChat(void);
+void ReadBotChat(void);
 void BotGreeting(edict_t *chat);
 void BotComeback(edict_t *self);
 void BotInsultStart(edict_t *self);
@@ -2309,6 +2309,9 @@ qboolean BossExists (void);
 int numNearbyEntities (edict_t *ent, float dist, qboolean vis);
 void RemoveLasers (edict_t *ent);
 int V_AddFinalExp (edict_t *player, int exp);
+
+/* fireball.c */
+void fire_fireball(edict_t* self, vec3_t start, vec3_t aimdir, int damage, float damage_radius, int speed, int flames, int flame_damage);
 
 #define WEAPON_RUNE			1
 #define ABILITY_RUNE		2

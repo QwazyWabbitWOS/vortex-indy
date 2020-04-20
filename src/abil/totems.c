@@ -95,7 +95,8 @@ edict_t *NextNearestTotem(edict_t *ent, int totemType, edict_t *lastTotem, qbool
 int GetTotemLevel(edict_t *ent, int totemType, qboolean allied)
 {
 	edict_t *totem = NextNearestTotem(ent, totemType, NULL, allied);
-	if(totem != NULL)		return totem->monsterinfo.level;
+	if(totem != NULL)
+		return totem->monsterinfo.level;
 	
 	return 0;
 }
@@ -103,7 +104,6 @@ int GetTotemLevel(edict_t *ent, int totemType, qboolean allied)
 //************************************************************************************************
 //			Totem Think Functions
 //************************************************************************************************
-void fire_fireball (edict_t *self, vec3_t start, vec3_t aimdir, int damage, float damage_radius, int speed, int flames, int flame_damage);
 void FireTotem_think(edict_t *self, edict_t *caster)
 {
 	int talentLevel;

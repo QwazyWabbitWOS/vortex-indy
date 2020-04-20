@@ -740,7 +740,8 @@ void SV_AddMapToMaplist()
 
 	DoMaplistFilename(mode, &filename[0]);
 
-	if (!(fp = fopen(filename, "a")))
+	fp = fopen(filename, "a");
+	if (!fp)
 	{
 		safe_cprintf(NULL, PRINT_HIGH, "%s: file couldn't be opened... opening in write mode.\n", filename);
 		fp = fopen(filename, "w");
