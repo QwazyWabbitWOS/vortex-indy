@@ -1238,7 +1238,7 @@ edict_t *V_getClientByNumber(int index)
 char ReadChar(FILE *fptr)
 {
 	char Value;
-	fread(&Value, sizeof(char), 1, fptr);
+	size_t count = fread(&Value, sizeof(char), 1, fptr);
 	return Value;
 }
 
@@ -1265,7 +1265,7 @@ void ReadString(char *buf, FILE *fptr)
 		//return buf;
 	}
 
-	fread(buf, Length, 1, fptr);
+	size_t count = fread(buf, Length, 1, fptr);
 
 	//Null terminate the string just read
 	buf[Length] = 0;
@@ -1285,7 +1285,7 @@ void WriteString(FILE *fptr, char *String)
 int ReadInteger(FILE *fptr)
 {
 	int Value;
-	fread(&Value, sizeof(int), 1, fptr);
+	size_t count = fread(&Value, sizeof(int), 1, fptr);
 	return Value;
 }
 
@@ -1301,7 +1301,7 @@ void WriteInteger(FILE *fptr, int Value)
 long ReadLong(FILE *fptr)
 {
 	long Value;
-	fread(&Value, sizeof(long), 1, fptr);
+	size_t count = fread(&Value, sizeof(long), 1, fptr);
 	return Value;
 }
 
