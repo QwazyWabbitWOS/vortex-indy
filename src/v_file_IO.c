@@ -919,7 +919,7 @@ qboolean VSF_SavePlayer(edict_t *player, char *path, qboolean fileexists, char* 
 				r = sqlite3_prepare_v2(db, format, strlen(format), &statement, NULL); // insert ability
 				if (r == SQLITE_ERROR)
 				{
-					format = sqlite3_errmsg(db);
+					format = (char*)sqlite3_errmsg(db);
 					gi.dprintf(format);
 				}
 				r = sqlite3_step(statement);
