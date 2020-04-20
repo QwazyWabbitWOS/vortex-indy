@@ -675,12 +675,14 @@ void SVCmd_DeleteCharacter_f()
 		gi.bprintf(PRINT_HIGH, "%s's character was deleted by an administrator (reason: %s)\n", pname, reason);
 		sprintf(buf, "del %s\\\"%s.vrx\"", save_path->string, V_FormatFileName(pname));
 		int status = system(buf);
+		if (status == 0)
+			gi.dprintf("Character file deleted successfully.\n");
 	}
 }
 
 void SVCmd_ListCombatPrefs ()
 {
-	int i, num=0;
+	int i;
 	edict_t *player;
 
 	for (i = 1; i <= game.maxclients; i++)

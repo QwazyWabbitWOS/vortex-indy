@@ -640,6 +640,7 @@ qboolean AI_LoadPLKFile( char *mapname )
 	int			i;
 	char		filename[MAX_OSPATH];
 	int			version;
+	size_t		count = 0;
 
 	Com_sprintf (filename, sizeof(filename), "%s/%s/%s.%s", game_path->string, AI_NODES_FOLDER, mapname, NAV_FILE_EXTENSION);
 
@@ -648,21 +649,21 @@ qboolean AI_LoadPLKFile( char *mapname )
 		return false; 
 
 	// check version
-	fread( &version, sizeof(int), 1, pIn);
+	count = fread( &version, sizeof(int), 1, pIn);
 
-	if( version != NAV_FILE_VERSION )
+	if( count && version != NAV_FILE_VERSION )
 	{
 		fclose(pIn);
 		return false;
 	}
 	
-	fread( &nav.num_nodes, sizeof(int), 1, pIn);
+	count = fread( &nav.num_nodes, sizeof(int), 1, pIn);
 
 	for (i=0; i<nav.num_nodes; i++)
-		fread( &nodes[i], sizeof(nav_node_t), 1, pIn );
+		count = fread( &nodes[i], sizeof(nav_node_t), 1, pIn );
 	
 	for(i=0; i<nav.num_nodes;i++)
-		fread( &pLinks[i], sizeof(nav_plink_t), 1, pIn );
+		count = fread( &pLinks[i], sizeof(nav_plink_t), 1, pIn );
 
 	fclose(pIn);
 
