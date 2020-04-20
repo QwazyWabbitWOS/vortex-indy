@@ -1259,29 +1259,32 @@ void CTF_SpawnFlagBase (int teamnum, vec3_t point)
 	}
 }
 
-qboolean CTF_GetFlagPosition (int teamnum, vec3_t pos)
+qboolean CTF_GetFlagPosition(int teamnum, vec3_t pos)
 {
 	char	path[512];
-	FILE	*fptr;
+	FILE* fptr;
 	vec3_t	v;
 
 	if (!pos)
 		return false;
 
 	sprintf(path, "%s/settings/%s_%d.loc", game_path->string, level.mapname, teamnum);
-	
+
 	gi.dprintf("Reading file %s.\n", path);
 
 	// read flag position from file
 	if ((fptr = fopen(path, "r")) != NULL)
-     {
-		 fscanf(fptr, "%f,%f,%f", &v[0], &v[1], &v[2]);
-		 VectorCopy(v, pos);
-		 //gi.dprintf("%f %f %f\n", v[0], v[1], v[2]);
-		 fclose(fptr);
-		 gi.dprintf("Data for team %d at {%f, %f, %f}\n", teamnum, v[0], v[1], v[2]);
-         return true; 
-     }  
+	{
+		int count = fscanf(fptr, "%f,%f,%f", &v[0], &v[1], &v[2]);
+		if (count != 3)
+			gi.dprintf("%s: Error reading location coordinates in file %s\n", __func__, path);
+
+		VectorCopy(v, pos);
+		//gi.dprintf("%f %f %f\n", v[0], v[1], v[2]);
+		fclose(fptr);
+		gi.dprintf("Data for team %d at {%f, %f, %f}\n", teamnum, v[0], v[1], v[2]);
+		return true;
+	}
 
 	return false;
 }
