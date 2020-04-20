@@ -1064,16 +1064,17 @@ void SaveArmory()
 void LoadArmory()	//Call this during InitGame()
 {
 	char filename[256];
-	FILE *fptr;
+	FILE* fptr;
+	size_t count;
 
 	//get path
 	sprintf(filename, "%s/%s", game_path->string, "settings/ArmoryItems.dat");
 
 	if ((fptr = fopen(filename, "rb")) != NULL)
 	{
-        fread(WeaponRunes, sizeof(armoryRune_t), ARMORY_MAX_RUNES, fptr);
-		fread(AbilityRunes, sizeof(armoryRune_t), ARMORY_MAX_RUNES, fptr);
-		fread(ComboRunes, sizeof(armoryRune_t), ARMORY_MAX_RUNES, fptr);
+		count = fread(WeaponRunes, sizeof(armoryRune_t), ARMORY_MAX_RUNES, fptr);
+		count = fread(AbilityRunes, sizeof(armoryRune_t), ARMORY_MAX_RUNES, fptr);
+		count = fread(ComboRunes, sizeof(armoryRune_t), ARMORY_MAX_RUNES, fptr);
 		fclose(fptr);
 		gi.dprintf("INFO: Vortex Rune Shop loaded successfully\n");
 	}
