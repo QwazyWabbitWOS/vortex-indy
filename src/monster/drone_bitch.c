@@ -17,9 +17,6 @@ void mychick_reslash(edict_t *self);
 void mychick_rerocket(edict_t *self);
 void mychick_attack1(edict_t *self);
 void mychick_continue (edict_t *self);
-void drone_ai_stand (edict_t *self, float dist);
-void drone_ai_run (edict_t *self, float dist);
-void drone_ai_walk (edict_t *self, float dist);
 
 static int	sound_missile_prelaunch;
 static int	sound_missile_launch;

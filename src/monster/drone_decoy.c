@@ -1,10 +1,6 @@
 #include "g_local.h"
 #include "m_player.h"
 
-void drone_ai_stand (edict_t *self, float dist);
-void drone_ai_run (edict_t *self, float dist);
-
-
 mframe_t decoy_frames_stand1 [] =
 {
     drone_ai_stand, 0, NULL,
