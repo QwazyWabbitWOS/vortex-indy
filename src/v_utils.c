@@ -1316,8 +1316,8 @@ void WriteLong(FILE *fptr, long Value)
 
 char *V_FormatFileName(char *name)
 {
-	char filename[64];
-	char buffer[64];
+	char filename[MAX_QPATH];
+	char buffer[MAX_QPATH];
 	int i, j = 0;
 
 	//This bit of code formats invalid filename chars, like the '?' and 

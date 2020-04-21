@@ -865,7 +865,7 @@ qboolean Pickup_Rune (edict_t *ent, edict_t *other)
 	else if (savemethod->value == 0)
 	{
 		char path[MAX_QPATH];
-		memset(path, 0, strlen(path));
+		memset(path, 0, sizeof path);
 		VRXGetPath(path, other);
 		VSF_SaveRunes(other, path);
 	}
