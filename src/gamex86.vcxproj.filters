@@ -1,0 +1,695 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="ally.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="armory.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="backpack.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="damage.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_chase.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_cmds.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_combat.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_flame.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_func.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_items.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_lasers.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_main.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_misc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_monster.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_phys.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_save.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_spawn.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_svcmds.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_sword.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_target.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_trigger.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_utils.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="g_weapon.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="grid.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lasersight.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="maplist.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="misc_stuff.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="q_shared.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="teamplay.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="v_cmd.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="v_file_IO.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="v_items.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="v_maplist.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="v_mysql_gds.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="v_utils.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vote.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="weapons.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\Spirit.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\ammosteal.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\antigrav.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\auras.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\autocannon.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\blessedhammer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\bombspell.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\boost.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\caltrops.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\chainlightning.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\cloak.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\conversion.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\corpseeater.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\corpseexplode.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\cripple.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\detector.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\explodingarmor.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\fireball.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\flying_skull.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\forcewall.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\holyground.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\hook.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\jetpack.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\lightningstorm.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\magicbolt.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\magmine.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\meditate.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\meteor.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\mindabsorb.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\minisentry.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\mirror.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\mjump.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\napalm.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\nova.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\plague.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\plasmabolt.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\proxy.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\purge.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\scanner.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\selfdestruct.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\sentrygun.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\spike.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\spikegrenade.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\supplystation.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\teleport.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\totems.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\wormhole.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ai\AStar.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ai\ai_class_dmbot.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ai\ai_class_monster_default.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ai\ai_dropnodes.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ai\ai_items.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ai\ai_links.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ai\ai_main.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ai\ai_movement.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ai\ai_navigation.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ai\ai_nodes.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ai\ai_tools.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ai\ai_weapons.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ai\bot_common.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ai\bot_spawn.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gamemode\ctf.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gamemode\domination.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gamemode\holywars.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gamemode\invasion.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gamemode\pvb.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gamemode\tbi.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="menu\Talents.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="menu\help.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="menu\item.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="menu\menu.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="menu\trade.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="menu\upgrades.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="menu\weapon.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="misc\ents.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="misc\file_output.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="misc\hash_32a.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="monster\boss_general.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="monster\boss_makron.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="monster\boss_tank.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="monster\drone_ai.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="monster\drone_berserk.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="monster\drone_bitch.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="monster\drone_brain.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="monster\drone_decoy.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="monster\drone_gladiator.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="monster\drone_gunner.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="monster\drone_infantry.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="monster\drone_jorg.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="monster\drone_makron.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="monster\drone_medic.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="monster\drone_misc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="monster\drone_move.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="monster\drone_mutant.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="monster\drone_parasite.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="monster\drone_soldier.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="monster\drone_supertank.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="monster\drone_tank.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="monster\m_flash.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="player\Player.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="player\client.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="player\hud.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="player\menu.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="player\parasite.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="player\player_points.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="player\trail.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="player\view.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="player\weapon.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sql\sqlite3.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\curses\amnesia.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\curses\ampdamage.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\curses\blessing.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\curses\common.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\curses\curse.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\curses\deflect.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\curses\healing.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\curses\lifedrain.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\curses\lowerresist.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\curses\weaken.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\laser\common.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\laser\laser.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\laser\platform.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\morph\autoaim.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\morph\brain.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\morph\cacodemon.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\morph\playertoberserk.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\morph\playertoflyer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\morph\playertomedic.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\morph\playertomutant.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\morph\playertoparasite.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\morph\playertotank.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\organic\cocoon.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\organic\common.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\organic\gasser.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\organic\healer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\organic\obstacle.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abil\organic\spiker.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{5759E3B3-AC92-30B4-8211-ADFA84F5D0EB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{92159dde-1422-4460-bcea-e520ede96f55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{9a2e970c-787b-45dd-b0d8-044f96c070ae}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="game.def">
+      <Filter>Resources</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ally.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="damage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="g_abilities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="g_ctf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="g_local.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="q_shared.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="settings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="spike.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="teamplay.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="v_cmd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="v_items.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="v_maplist.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="v_shared.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="v_utils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="weapon_def.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sql\gds.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sql\sqlite3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\fnv.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="monster\boss.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="monster\m_actor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="monster\m_berserk.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="monster\m_boss2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="monster\m_boss31.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="monster\m_boss32.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="monster\m_brain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="monster\m_chick.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="monster\m_flipper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="monster\m_float.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="monster\m_flyer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="monster\m_gladiator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="monster\m_gunner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="monster\m_hover.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="monster\m_infantry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="monster\m_insane.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="monster\m_medic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="monster\m_mutant.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="monster\m_parasite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="monster\m_player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="monster\m_rider.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="monster\m_soldier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="monster\m_supertank.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="monster\m_tank.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="abil\ability_def.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="abil\auras.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="abil\hook.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="abil\scanner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="abil\spike.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="abil\Spirit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

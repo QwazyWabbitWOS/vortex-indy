@@ -1,0 +1,556 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{1F75FC83-EC8A-30F7-8C31-A1C141DA0C71}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>gamex86</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v100</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v100</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v100</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Quake2\vortex-indy\src\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">gamex86.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">gamex86</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Quake2\vortex-indy\src\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">gamex86.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">gamex86</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Quake2\vortex-indy\src\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">gamex86.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">gamex86</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Quake2\vortex-indy\src\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">gamex86.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">gamex86</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\src;..\src\*;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsC</CompileAs>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;REMOVE_RESPAWNS;GDS_NOMULTITHREADING;CMD_USEHASH;ALLOW_ADMIN;Q2PRO_COMPATIBILITY;CMAKE_INTDIR="Debug";gamex86_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;REMOVE_RESPAWNS;GDS_NOMULTITHREADING;CMD_USEHASH;ALLOW_ADMIN;Q2PRO_COMPATIBILITY;CMAKE_INTDIR=\"Debug\";gamex86_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Quake2\vortex-indy\src;C:\Quake2\vortex-indy\src\*;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Quake2\vortex-indy\src;C:\Quake2\vortex-indy\src\*;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>Copying game to Vortex.</Message>
+      <Command>copy Debug\gamex86.dll c:\quake2\vortex\gamex86.real.dll</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>libmysql.lib;Wininet.lib;Winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Quake2/vortex-indy/src/Debug/gamex86.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Quake2/vortex-indy/src/Debug/gamex86.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version>
+      </Version>
+      <ModuleDefinitionFile>game.def</ModuleDefinitionFile>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Quake2\vortex-indy\src;C:\Quake2\vortex-indy\src\*;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsC</CompileAs>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;REMOVE_RESPAWNS;GDS_NOMULTITHREADING;CMD_USEHASH;ALLOW_ADMIN;Q2PRO_COMPATIBILITY;CMAKE_INTDIR="Release";gamex86_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;REMOVE_RESPAWNS;GDS_NOMULTITHREADING;CMD_USEHASH;ALLOW_ADMIN;Q2PRO_COMPATIBILITY;CMAKE_INTDIR=\"Release\";gamex86_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Quake2\vortex-indy\src;C:\Quake2\vortex-indy\src\*;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Quake2\vortex-indy\src;C:\Quake2\vortex-indy\src\*;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+      <Command>setlocal
+mv gamex86.dll ../gamex86.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>libmysql.lib;Wininet.lib;Winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Quake2/vortex-indy/src/Release/gamex86.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Quake2/vortex-indy/src/Release/gamex86.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version>
+      </Version>
+      <ModuleDefinitionFile>game.def</ModuleDefinitionFile>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Quake2\vortex-indy\src;C:\Quake2\vortex-indy\src\*;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
+      <CompileAs>CompileAsC</CompileAs>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;REMOVE_RESPAWNS;GDS_NOMULTITHREADING;CMD_USEHASH;ALLOW_ADMIN;Q2PRO_COMPATIBILITY;CMAKE_INTDIR="MinSizeRel";gamex86_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;REMOVE_RESPAWNS;GDS_NOMULTITHREADING;CMD_USEHASH;ALLOW_ADMIN;Q2PRO_COMPATIBILITY;CMAKE_INTDIR=\"MinSizeRel\";gamex86_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Quake2\vortex-indy\src;C:\Quake2\vortex-indy\src\*;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Quake2\vortex-indy\src;C:\Quake2\vortex-indy\src\*;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+      <Command>setlocal
+mv gamex86.dll ../gamex86.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>libmysql.lib;Wininet.lib;Winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Quake2/vortex-indy/src/MinSizeRel/gamex86.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Quake2/vortex-indy/src/MinSizeRel/gamex86.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version>
+      </Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Quake2\vortex-indy\src;C:\Quake2\vortex-indy\src\*;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
+      <CompileAs>CompileAsC</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;REMOVE_RESPAWNS;GDS_NOMULTITHREADING;CMD_USEHASH;ALLOW_ADMIN;Q2PRO_COMPATIBILITY;CMAKE_INTDIR="RelWithDebInfo";gamex86_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;REMOVE_RESPAWNS;GDS_NOMULTITHREADING;CMD_USEHASH;ALLOW_ADMIN;Q2PRO_COMPATIBILITY;CMAKE_INTDIR=\"RelWithDebInfo\";gamex86_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Quake2\vortex-indy\src;C:\Quake2\vortex-indy\src\*;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Quake2\vortex-indy\src;C:\Quake2\vortex-indy\src\*;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+      <Command>setlocal
+mv gamex86.dll ../gamex86.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>libmysql.lib;Wininet.lib;Winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Quake2/vortex-indy/src/RelWithDebInfo/gamex86.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Quake2/vortex-indy/src/RelWithDebInfo/gamex86.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version>
+      </Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="ally.c" />
+    <ClCompile Include="armory.c" />
+    <ClCompile Include="backpack.c" />
+    <ClCompile Include="damage.c" />
+    <ClCompile Include="g_chase.c" />
+    <ClCompile Include="g_cmds.c" />
+    <ClCompile Include="g_combat.c" />
+    <ClCompile Include="g_flame.c" />
+    <ClCompile Include="g_func.c" />
+    <ClCompile Include="g_items.c" />
+    <ClCompile Include="g_lasers.c" />
+    <ClCompile Include="g_main.c" />
+    <ClCompile Include="g_misc.c" />
+    <ClCompile Include="g_monster.c" />
+    <ClCompile Include="g_phys.c" />
+    <ClCompile Include="g_save.c" />
+    <ClCompile Include="g_spawn.c" />
+    <ClCompile Include="g_svcmds.c">
+      <WarningLevel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Level4</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="g_sword.c" />
+    <ClCompile Include="g_target.c" />
+    <ClCompile Include="g_trigger.c" />
+    <ClCompile Include="g_utils.c" />
+    <ClCompile Include="g_weapon.c" />
+    <ClCompile Include="grid.c" />
+    <ClCompile Include="lasersight.c" />
+    <ClCompile Include="maplist.c" />
+    <ClCompile Include="misc_stuff.c" />
+    <ClCompile Include="q_shared.c" />
+    <ClCompile Include="teamplay.c" />
+    <ClCompile Include="v_cmd.c" />
+    <ClCompile Include="v_file_IO.c" />
+    <ClCompile Include="v_items.c" />
+    <ClCompile Include="v_maplist.c" />
+    <ClCompile Include="v_mysql_gds.c" />
+    <ClCompile Include="v_utils.c" />
+    <ClCompile Include="vote.c" />
+    <ClCompile Include="weapons.c" />
+    <ClCompile Include="abil\Spirit.c" />
+    <ClCompile Include="abil\ammosteal.c" />
+    <ClCompile Include="abil\antigrav.c" />
+    <ClCompile Include="abil\auras.c" />
+    <ClCompile Include="abil\autocannon.c" />
+    <ClCompile Include="abil\blessedhammer.c" />
+    <ClCompile Include="abil\bombspell.c" />
+    <ClCompile Include="abil\boost.c" />
+    <ClCompile Include="abil\caltrops.c" />
+    <ClCompile Include="abil\chainlightning.c" />
+    <ClCompile Include="abil\cloak.c" />
+    <ClCompile Include="abil\conversion.c" />
+    <ClCompile Include="abil\corpseeater.c" />
+    <ClCompile Include="abil\corpseexplode.c" />
+    <ClCompile Include="abil\cripple.c" />
+    <ClCompile Include="abil\detector.c" />
+    <ClCompile Include="abil\explodingarmor.c" />
+    <ClCompile Include="abil\fireball.c" />
+    <ClCompile Include="abil\flying_skull.c" />
+    <ClCompile Include="abil\forcewall.c" />
+    <ClCompile Include="abil\holyground.c" />
+    <ClCompile Include="abil\hook.c" />
+    <ClCompile Include="abil\jetpack.c" />
+    <ClCompile Include="abil\lightningstorm.c" />
+    <ClCompile Include="abil\magicbolt.c" />
+    <ClCompile Include="abil\magmine.c" />
+    <ClCompile Include="abil\meditate.c" />
+    <ClCompile Include="abil\meteor.c" />
+    <ClCompile Include="abil\mindabsorb.c" />
+    <ClCompile Include="abil\minisentry.c" />
+    <ClCompile Include="abil\mirror.c" />
+    <ClCompile Include="abil\mjump.c" />
+    <ClCompile Include="abil\napalm.c" />
+    <ClCompile Include="abil\nova.c" />
+    <ClCompile Include="abil\plague.c" />
+    <ClCompile Include="abil\plasmabolt.c" />
+    <ClCompile Include="abil\proxy.c" />
+    <ClCompile Include="abil\purge.c" />
+    <ClCompile Include="abil\scanner.c" />
+    <ClCompile Include="abil\selfdestruct.c" />
+    <ClCompile Include="abil\sentrygun.c" />
+    <ClCompile Include="abil\spike.c" />
+    <ClCompile Include="abil\spikegrenade.c" />
+    <ClCompile Include="abil\supplystation.c" />
+    <ClCompile Include="abil\teleport.c" />
+    <ClCompile Include="abil\totems.c" />
+    <ClCompile Include="abil\wormhole.c" />
+    <ClCompile Include="ai\AStar.c" />
+    <ClCompile Include="ai\ai_class_dmbot.c" />
+    <ClCompile Include="ai\ai_class_monster_default.c" />
+    <ClCompile Include="ai\ai_dropnodes.c" />
+    <ClCompile Include="ai\ai_items.c" />
+    <ClCompile Include="ai\ai_links.c" />
+    <ClCompile Include="ai\ai_main.c" />
+    <ClCompile Include="ai\ai_movement.c" />
+    <ClCompile Include="ai\ai_navigation.c" />
+    <ClCompile Include="ai\ai_nodes.c" />
+    <ClCompile Include="ai\ai_tools.c" />
+    <ClCompile Include="ai\ai_weapons.c" />
+    <ClCompile Include="ai\bot_common.c" />
+    <ClCompile Include="ai\bot_spawn.c" />
+    <ClCompile Include="gamemode\ctf.c" />
+    <ClCompile Include="gamemode\domination.c" />
+    <ClCompile Include="gamemode\holywars.c" />
+    <ClCompile Include="gamemode\invasion.c" />
+    <ClCompile Include="gamemode\pvb.c" />
+    <ClCompile Include="gamemode\tbi.c" />
+    <ClCompile Include="menu\Talents.c" />
+    <ClCompile Include="menu\help.c" />
+    <ClCompile Include="menu\item.c" />
+    <ClCompile Include="menu\menu.c">
+      <ObjectFileName>$(IntDir)/menu/menu.c.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="menu\trade.c" />
+    <ClCompile Include="menu\upgrades.c" />
+    <ClCompile Include="menu\weapon.c">
+      <ObjectFileName>$(IntDir)/menu/weapon.c.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="misc\ents.c" />
+    <ClCompile Include="misc\file_output.c" />
+    <ClCompile Include="misc\hash_32a.c" />
+    <ClCompile Include="monster\boss_general.c" />
+    <ClCompile Include="monster\boss_makron.c" />
+    <ClCompile Include="monster\boss_tank.c" />
+    <ClCompile Include="monster\drone_ai.c" />
+    <ClCompile Include="monster\drone_berserk.c" />
+    <ClCompile Include="monster\drone_bitch.c" />
+    <ClCompile Include="monster\drone_brain.c" />
+    <ClCompile Include="monster\drone_decoy.c" />
+    <ClCompile Include="monster\drone_gladiator.c" />
+    <ClCompile Include="monster\drone_gunner.c" />
+    <ClCompile Include="monster\drone_infantry.c" />
+    <ClCompile Include="monster\drone_jorg.c" />
+    <ClCompile Include="monster\drone_makron.c" />
+    <ClCompile Include="monster\drone_medic.c" />
+    <ClCompile Include="monster\drone_misc.c" />
+    <ClCompile Include="monster\drone_move.c" />
+    <ClCompile Include="monster\drone_mutant.c" />
+    <ClCompile Include="monster\drone_parasite.c" />
+    <ClCompile Include="monster\drone_soldier.c" />
+    <ClCompile Include="monster\drone_supertank.c" />
+    <ClCompile Include="monster\drone_tank.c" />
+    <ClCompile Include="monster\m_flash.c" />
+    <ClCompile Include="player\Player.c" />
+    <ClCompile Include="player\client.c" />
+    <ClCompile Include="player\hud.c" />
+    <ClCompile Include="player\menu.c">
+      <ObjectFileName>$(IntDir)/player/menu.c.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="player\parasite.c" />
+    <ClCompile Include="player\player_points.c" />
+    <ClCompile Include="player\trail.c" />
+    <ClCompile Include="player\view.c" />
+    <ClCompile Include="player\weapon.c">
+      <ObjectFileName>$(IntDir)/player/weapon.c.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="sql\sqlite3.c" />
+    <ClCompile Include="abil\curses\amnesia.c" />
+    <ClCompile Include="abil\curses\ampdamage.c" />
+    <ClCompile Include="abil\curses\blessing.c" />
+    <ClCompile Include="abil\curses\common.c">
+      <ObjectFileName>$(IntDir)/abil/curses/common.c.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="abil\curses\curse.c" />
+    <ClCompile Include="abil\curses\deflect.c" />
+    <ClCompile Include="abil\curses\healing.c" />
+    <ClCompile Include="abil\curses\lifedrain.c" />
+    <ClCompile Include="abil\curses\lowerresist.c" />
+    <ClCompile Include="abil\curses\weaken.c" />
+    <ClCompile Include="abil\laser\common.c">
+      <ObjectFileName>$(IntDir)/abil/laser/common.c.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="abil\laser\laser.c" />
+    <ClCompile Include="abil\laser\platform.c" />
+    <ClCompile Include="abil\morph\autoaim.c" />
+    <ClCompile Include="abil\morph\brain.c" />
+    <ClCompile Include="abil\morph\cacodemon.c" />
+    <ClCompile Include="abil\morph\playertoberserk.c" />
+    <ClCompile Include="abil\morph\playertoflyer.c" />
+    <ClCompile Include="abil\morph\playertomedic.c" />
+    <ClCompile Include="abil\morph\playertomutant.c" />
+    <ClCompile Include="abil\morph\playertoparasite.c" />
+    <ClCompile Include="abil\morph\playertotank.c" />
+    <ClCompile Include="abil\organic\cocoon.c" />
+    <ClCompile Include="abil\organic\common.c">
+      <ObjectFileName>$(IntDir)/abil/organic/common.c.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="abil\organic\gasser.c" />
+    <ClCompile Include="abil\organic\healer.c" />
+    <ClCompile Include="abil\organic\obstacle.c" />
+    <ClCompile Include="abil\organic\spiker.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="game.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="abil\ability_def.h" />
+    <ClInclude Include="abil\auras.h" />
+    <ClInclude Include="abil\hook.h" />
+    <ClInclude Include="abil\scanner.h" />
+    <ClInclude Include="abil\spike.h" />
+    <ClInclude Include="abil\Spirit.h" />
+    <ClInclude Include="ally.h" />
+    <ClInclude Include="damage.h" />
+    <ClInclude Include="game.h" />
+    <ClInclude Include="g_abilities.h" />
+    <ClInclude Include="g_ctf.h" />
+    <ClInclude Include="g_local.h" />
+    <ClInclude Include="misc\fnv.h" />
+    <ClInclude Include="monster\boss.h" />
+    <ClInclude Include="monster\m_actor.h" />
+    <ClInclude Include="monster\m_berserk.h" />
+    <ClInclude Include="monster\m_boss2.h" />
+    <ClInclude Include="monster\m_boss31.h" />
+    <ClInclude Include="monster\m_boss32.h" />
+    <ClInclude Include="monster\m_brain.h" />
+    <ClInclude Include="monster\m_chick.h" />
+    <ClInclude Include="monster\m_flipper.h" />
+    <ClInclude Include="monster\m_float.h" />
+    <ClInclude Include="monster\m_flyer.h" />
+    <ClInclude Include="monster\m_gladiator.h" />
+    <ClInclude Include="monster\m_gunner.h" />
+    <ClInclude Include="monster\m_hover.h" />
+    <ClInclude Include="monster\m_infantry.h" />
+    <ClInclude Include="monster\m_insane.h" />
+    <ClInclude Include="monster\m_medic.h" />
+    <ClInclude Include="monster\m_mutant.h" />
+    <ClInclude Include="monster\m_parasite.h" />
+    <ClInclude Include="monster\m_player.h" />
+    <ClInclude Include="monster\m_rider.h" />
+    <ClInclude Include="monster\m_soldier.h" />
+    <ClInclude Include="monster\m_supertank.h" />
+    <ClInclude Include="monster\m_tank.h" />
+    <ClInclude Include="q_shared.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="settings.h" />
+    <ClInclude Include="spike.h" />
+    <ClInclude Include="sql\gds.h" />
+    <ClInclude Include="sql\sqlite3.h" />
+    <ClInclude Include="teamplay.h" />
+    <ClInclude Include="v_cmd.h" />
+    <ClInclude Include="v_items.h" />
+    <ClInclude Include="v_maplist.h" />
+    <ClInclude Include="v_shared.h" />
+    <ClInclude Include="v_utils.h" />
+    <ClInclude Include="weapon_def.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
