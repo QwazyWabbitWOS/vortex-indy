@@ -37,13 +37,13 @@ void gladiator_cleaver_swing (edict_t *self)
 
 mframe_t gladiator_frames_stand [] =
 {
-	drone_ai_stand, 0, NULL,
-	drone_ai_stand, 0, NULL,
-	drone_ai_stand, 0, NULL,
-	drone_ai_stand, 0, NULL,
-	drone_ai_stand, 0, NULL,
-	drone_ai_stand, 0, NULL,
-	drone_ai_stand, 0, NULL
+	{drone_ai_stand, 0, NULL},
+	{drone_ai_stand, 0, NULL},
+	{drone_ai_stand, 0, NULL},
+	{drone_ai_stand, 0, NULL},
+	{drone_ai_stand, 0, NULL},
+	{drone_ai_stand, 0, NULL},
+	{drone_ai_stand, 0, NULL}
 };
 mmove_t gladiator_move_stand = {FRAME_stand1, FRAME_stand7, gladiator_frames_stand, NULL};
 
@@ -54,22 +54,22 @@ void gladiator_stand (edict_t *self)
 
 mframe_t gladiator_frames_walk [] =
 {
-	drone_ai_walk, 15, NULL,
-	drone_ai_walk, 7,  NULL,
-	drone_ai_walk, 6,  NULL,
-	drone_ai_walk, 5,  NULL,
-	drone_ai_walk, 2,  NULL,
-	drone_ai_walk, 0,  NULL,
-	drone_ai_walk, 2,  NULL,
-	drone_ai_walk, 8,  NULL,
-	drone_ai_walk, 12, NULL,
-	drone_ai_walk, 8,  NULL,
-	drone_ai_walk, 5,  NULL,
-	drone_ai_walk, 5,  NULL,
-	drone_ai_walk, 2,  NULL,
-	drone_ai_walk, 2,  NULL,
-	drone_ai_walk, 1,  NULL,
-	drone_ai_walk, 8,  NULL
+	{drone_ai_walk, 15, NULL},
+	{drone_ai_walk, 7,  NULL},
+	{drone_ai_walk, 6,  NULL},
+	{drone_ai_walk, 5,  NULL},
+	{drone_ai_walk, 2,  NULL},
+	{drone_ai_walk, 0,  NULL},
+	{drone_ai_walk, 2,  NULL},
+	{drone_ai_walk, 8,  NULL},
+	{drone_ai_walk, 12, NULL},
+	{drone_ai_walk, 8,  NULL},
+	{drone_ai_walk, 5,  NULL},
+	{drone_ai_walk, 5,  NULL},
+	{drone_ai_walk, 2,  NULL},
+	{drone_ai_walk, 2,  NULL},
+	{drone_ai_walk, 1,  NULL},
+	{drone_ai_walk, 8,  NULL}
 };
 mmove_t gladiator_move_walk = {FRAME_walk1, FRAME_walk16, gladiator_frames_walk, NULL};
 
@@ -82,12 +82,12 @@ void gladiator_walk (edict_t *self)
 
 mframe_t gladiator_frames_run [] =
 {
-	drone_ai_run, 25,	NULL,
-	drone_ai_run, 25,	NULL,
-	drone_ai_run, 25,	NULL,
-	drone_ai_run, 25,	NULL,
-	drone_ai_run, 25,	NULL,
-	drone_ai_run, 25,	NULL
+	{drone_ai_run, 25,	NULL},
+	{drone_ai_run, 25,	NULL},
+	{drone_ai_run, 25,	NULL},
+	{drone_ai_run, 25,	NULL},
+	{drone_ai_run, 25,	NULL},
+	{drone_ai_run, 25,	NULL}
 };
 mmove_t gladiator_move_run = {FRAME_run1, FRAME_run6, gladiator_frames_run, NULL};
 
@@ -167,11 +167,11 @@ void gladiator_cleaver_refire (edict_t *self)
 
 mframe_t gladiator_frames_attack_melee [] =
 {
-	ai_charge, 0, gladiator_cleaver_swing,	//41
-	ai_charge, 0, NULL,
-	ai_charge, 0, GaldiatorMelee,			//43
-	ai_charge, 0, NULL,
-	ai_charge, 0, gladiator_cleaver_refire	//45
+	{ai_charge, 0, gladiator_cleaver_swing},	//41
+	{ai_charge, 0, NULL},
+	{ai_charge, 0, GaldiatorMelee},			//43
+	{ai_charge, 0, NULL},
+	{ai_charge, 0, gladiator_cleaver_refire}	//45
 };
 mmove_t gladiator_move_attack_melee = {FRAME_melee13, FRAME_melee17, gladiator_frames_attack_melee, gladiator_run};
 
@@ -238,11 +238,11 @@ void gladiator_refire (edict_t *self)
 
 mframe_t gladiator_frames_attack_gun [] =
 {
-	ai_charge, 0, GladiatorGun,		//49
-	ai_charge, 0, NULL,
-	ai_charge, 0, NULL,
-	ai_charge, 0, NULL,
-	ai_charge, 0, gladiator_refire,	//53
+	{ai_charge, 0, GladiatorGun},		//49
+	{ai_charge, 0, NULL},
+	{ai_charge, 0, NULL},
+	{ai_charge, 0, NULL},
+	{ai_charge, 0, gladiator_refire}	//53
 };
 mmove_t gladiator_move_attack_gun = {FRAME_attack4, FRAME_attack8, gladiator_frames_attack_gun, gladiator_run};
 
@@ -310,28 +310,28 @@ void gladiator_dead (edict_t *self)
 
 mframe_t gladiator_frames_death [] =
 {
-	ai_move, 0, NULL,
-	ai_move, 0, NULL,
-	ai_move, 0, NULL,
-	ai_move, 0, NULL,
-	ai_move, 0, NULL,
-	ai_move, 0, NULL,
-	ai_move, 0, NULL,
-	ai_move, 0, NULL,
-	ai_move, 0, NULL,
-	ai_move, 0, NULL,
-	ai_move, 0, NULL,
-	ai_move, 0, NULL,
-	ai_move, 0, NULL,
-	ai_move, 0, NULL,
-	ai_move, 0, NULL,
-	ai_move, 0, NULL,
-	ai_move, 0, NULL,
-	ai_move, 0, NULL,
-	ai_move, 0, NULL,
-	ai_move, 0, NULL,
-	ai_move, 0, NULL,
-	ai_move, 0, NULL
+	{ai_move, 0, NULL},
+	{ai_move, 0, NULL},
+	{ai_move, 0, NULL},
+	{ai_move, 0, NULL},
+	{ai_move, 0, NULL},
+	{ai_move, 0, NULL},
+	{ai_move, 0, NULL},
+	{ai_move, 0, NULL},
+	{ai_move, 0, NULL},
+	{ai_move, 0, NULL},
+	{ai_move, 0, NULL},
+	{ai_move, 0, NULL},
+	{ai_move, 0, NULL},
+	{ai_move, 0, NULL},
+	{ai_move, 0, NULL},
+	{ai_move, 0, NULL},
+	{ai_move, 0, NULL},
+	{ai_move, 0, NULL},
+	{ai_move, 0, NULL},
+	{ai_move, 0, NULL},
+	{ai_move, 0, NULL},
+	{ai_move, 0, NULL}
 };
 mmove_t gladiator_move_death = {FRAME_death1, FRAME_death22, gladiator_frames_death, gladiator_dead};
 

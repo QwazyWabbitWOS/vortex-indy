@@ -599,10 +599,10 @@ qboolean SV_StepDirection (edict_t *ent, float yaw, float dist, qboolean try_sma
 {
 	vec3_t		move, oldorigin;
 	//float		delta;
-	float		old_dist;
+	//float		old_dist;
 	
 	//gi.dprintf("SV_StepDirection\n");
-	old_dist = dist;
+	//old_dist = dist;
 	ent->ideal_yaw = yaw;
 	M_ChangeYaw (ent);
 
@@ -715,7 +715,7 @@ void SV_NewChaseDir (edict_t *actor, edict_t *enemy, float dist)
 	}
 
 // try other directions
-	if ( ((rand()&3) & 1) ||  abs(deltay)>abs(deltax))
+	if ( ((rand()&3) & 1) || (fabsf(deltay) > fabsf(deltax)))
 	{
 		tdir=d[1];
 		d[1]=d[2];
@@ -805,7 +805,7 @@ qboolean CheckYawStep (edict_t *self, float minyaw, float maxyaw, float dist)
 	for (i = 0; i < max; i += 30) 
 	{
 		// if we changed course a while ago, then try a partial step 50% of the time
-		if (level.time - self->monsterinfo.bump_delay > 1.0 || random() < 0.5)
+		if (level.time - self->monsterinfo.bump_delay > 1.0f || random() < 0.5f)
 		{
 			yaw += i;
 			AngleCheck(&yaw);

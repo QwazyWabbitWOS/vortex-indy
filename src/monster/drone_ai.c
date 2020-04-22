@@ -433,7 +433,7 @@ edict_t *drone_get_target (edict_t *self,
 		return target;
 
 	// find navi
-	if (get_navi && ((target = drone_get_navi(self)) != NULL))
+	if (get_navi && (target = drone_get_navi(self)) != NULL)
 		return target;
 
 	return NULL;
@@ -1528,7 +1528,9 @@ void drone_ai_run1 (edict_t *self, float dist)
 {
 	edict_t		*goal;
 	vec3_t		v, dest;
-	qboolean	goalVisible=false, posChanged=false, goalChanged=false;
+	qboolean	goalVisible = false;
+	qboolean	posChanged = false;
+	qboolean	goalChanged = false;
 
 	// if we're dead, we shouldn't be here
 	if (self->deadflag == DEAD_DEAD)
@@ -1719,7 +1721,7 @@ void drone_ai_run1 (edict_t *self, float dist)
 		else
 		{
 			// we couldn't determine a valid path
-			drone_ai_lost(self, goal, dist);			
+			drone_ai_lost(self, goal, dist);
 		}
 	}
 	else
@@ -1738,16 +1740,16 @@ Called when the monster is chasing an enemy or goal
 */
 void drone_ai_run (edict_t *self, float dist)
 {
-	/*float		time;
-	vec3_t		start, end, v;
-	trace_t		tr;
-	edict_t		*tempgoal=NULL;
-	qboolean	enemy_vis=false;*/
+	//float		time;
+	//vec3_t		start, end, v;
+	//trace_t		tr;
+	//edict_t		*tempgoal=NULL;
+	//qboolean	enemy_vis=false;
 
 	drone_ai_run1(self, dist);
 	return;
-
-/*	// if we're dead, we shouldn't be here
+/*
+	// if we're dead, we shouldn't be here
 	if (self->deadflag == DEAD_DEAD)
 		return;
 
@@ -1783,7 +1785,7 @@ void drone_ai_run (edict_t *self, float dist)
 					if (self->enemy->target && self->enemy->targetname &&
 						((e = G_Find(NULL, FOFS(targetname), self->enemy->target)) != NULL))
 					{
-						gi.dprintf("following next navi in chain\n");
+						//gi.dprintf("following next navi in chain\n");
 						self->enemy = e;
 					}
 					else
@@ -1792,7 +1794,7 @@ void drone_ai_run (edict_t *self, float dist)
 						// we've reached our final destination
 						drone_cleargoal(self);
 						self->monsterinfo.aiflags &= ~AI_FIND_NAVI;
-						gi.dprintf("reached final destination\n");
+						//gi.dprintf("reached final destination\n");
 						return;
 					}
 				}
@@ -1892,7 +1894,7 @@ void drone_ai_run (edict_t *self, float dist)
 		{
 		//	gi.dprintf("standing on plat!\n");
 			// divide by speed to get time to reach destination
-			time = 0.1 * (abs(self->groundentity->s.origin[2]) / self->groundentity->moveinfo.speed);
+			time = 0.1f * (fabsf(self->groundentity->s.origin[2]) / self->groundentity->moveinfo.speed);
 			self->monsterinfo.pausetime = level.time + time;
 			self->monsterinfo.stand(self);
 			self->monsterinfo.aiflags &= ~AI_PURSUE_PLAT_GOAL;

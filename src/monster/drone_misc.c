@@ -26,7 +26,7 @@ void init_drone_berserk (edict_t *self);
 void init_drone_infantry (edict_t *self);
 int crand (void);
 
-qboolean drone_ValidChaseTarget (edict_t *self, edict_t *target)
+qboolean drone_ValidChaseTarget (edict_t *self, edict_t *target) 
 {
 	//if (target && target->inuse && target->classname)
 	//	gi.dprintf("drone_ValidChaseTarget() is checking %s\n", target->classname);
@@ -37,14 +37,14 @@ qboolean drone_ValidChaseTarget (edict_t *self, edict_t *target)
 		return false;
 
 	// chasing a combat point/goal
-	if ((self->monsterinfo.aiflags & AI_COMBAT_POINT) && target->inuse
-		&& ((target->mtype == INVASION_NAVI) || (target->mtype == PLAYER_NAVI)
+	if ((self->monsterinfo.aiflags & AI_COMBAT_POINT) && target->inuse 
+		&& ((target->mtype == INVASION_NAVI) || (target->mtype == PLAYER_NAVI) 
 		|| (target->mtype == M_COMBAT_POINT) || target->mtype == INVASION_PLAYERSPAWN))
 		return true;
 
 	//FIXME: we should clean this up
 	// chasing invasion monster spawn
-	if (invasion->value && target->mtype == INVASION_MONSTERSPAWN
+	if (invasion->value && target->mtype == INVASION_MONSTERSPAWN 
 		&& !OnSameTeam(self, target))
 		return true;
 
@@ -56,7 +56,7 @@ qboolean drone_ValidChaseTarget (edict_t *self, edict_t *target)
 
 	// if we're standing ground and have a limited sight range
 	// ignore enemies that move outside of this range (since we can't attack them)
-	if ((self->monsterinfo.aiflags & AI_STAND_GROUND)
+	if ((self->monsterinfo.aiflags & AI_STAND_GROUND) 
 		&& (entdist(self, target) > self->monsterinfo.sight_range))
 		return false;
 
@@ -83,7 +83,7 @@ qboolean drone_ValidChaseTarget (edict_t *self, edict_t *target)
 
 	if (que_typeexists(target->curses, CURSE_FROZEN))
 		return false;
-
+	
 	//FIXME: we should do a better check than this
 	if (self->enemy && OnSameTeam(self, target))
 		return false;
@@ -123,7 +123,7 @@ qboolean CanStep (edict_t *self, float yaw, float dist)
 	move[1] = sin(yaw)*dist;
 	move[2] = 0;
 
-	// try the move
+	// try the move	
 	VectorAdd (self->s.origin, move, start);
 
 	// push down from a step height above the wished position
@@ -154,7 +154,7 @@ qboolean CanStep (edict_t *self, float yaw, float dist)
 	{
 		test[0] = trace.endpos[0];
 		test[1] = trace.endpos[1];
-		test[2] = trace.endpos[2] + self->mins[2] + 1;
+		test[2] = trace.endpos[2] + self->mins[2] + 1;	
 
 		if (gi.pointcontents(test) & MASK_WATER)
 			return false;
@@ -746,7 +746,7 @@ edict_t *SpawnDrone (edict_t *ent, int drone_type, qboolean worldspawn)
 		if (tr.fraction < 1)
 		{
 			if (tr.endpos[2] <= ent->s.origin[2])
-				tr.endpos[2] += abs(drone->mins[2]); // spawned below us
+				tr.endpos[2] += fabsf(drone->mins[2]); // spawned below us
 			else
 				tr.endpos[2] -= drone->maxs[2];	// spawned above
 		}
@@ -2157,7 +2157,6 @@ void MonsterFollowMe (edict_t *ent)
 	}
 }
 
-edict_t *CTF_GetFlagBaseEnt (int teamnum);
 void MonsterAttack (edict_t *ent)
 {
 	int		i;
@@ -2180,7 +2179,11 @@ void MonsterAttack (edict_t *ent)
 
 	if (goal)
 		goal = DroneTempEnt(ent, goal->s.origin, 0);
-
+	else
+	{
+		gi.error("DroneTempEnt returned NULL goal in %s\n", __func__);
+		return;	/* passify compiler */
+	}
 	// search queue for drones
 	for (i=0; i<3; i++)
 	{

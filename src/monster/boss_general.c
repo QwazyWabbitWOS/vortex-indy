@@ -77,7 +77,6 @@ void boss_update (edict_t *ent, usercmd_t *ucmd)
 		sidespeed *= 3;
 		maxspeed = 3*BOSS_MAXVELOCITY;
 	}
-
 	else if (boss->monsterinfo.air_frames)// used for boost
 		maxspeed = 9999;
 	else
@@ -335,12 +334,12 @@ void AddDmgList (edict_t *self, edict_t *other, int damage)
 	dmgListCleanup(self, false);
 
 	// already in the queue?
-	if (slot=findDmgSlot(self, cl_ent))
+	if ((slot = findDmgSlot(self, cl_ent)) != NULL)
 	{
 		slot->damage += damage;
 	}
 	// add attacker to the queue
-	else if (slot=findEmptyDmgSlot(self))
+	else if ((slot = findEmptyDmgSlot(self)) != NULL)
 	{
 		slot->player = cl_ent;
 		slot->damage += damage;
