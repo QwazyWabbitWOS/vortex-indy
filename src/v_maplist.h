@@ -47,6 +47,7 @@ typedef struct votes_s
 	int			mapindex;
 	char		name[24];
 	char		ip[16];
+	int			numVotes;
 } votes_t;
 
 //***************************************************************************************

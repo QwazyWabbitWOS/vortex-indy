@@ -392,7 +392,7 @@ typedef struct
 	char		spawnpoint[512];	// needed for coop respawns
 
 	// store latched cvars here that we want to get at often
-	int			maxclients;
+	int			maxclients;	// number of allowed clients
 	int			maxentities;
 
 	// cross level triggers

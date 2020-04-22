@@ -9,8 +9,8 @@ void ShowVoteMapMenu(edict_t *ent, int pagenum, int mapmode);
 #ifdef OLD_VOTE_SYSTEM // Paril
 static votes_t votes[MAX_VOTERS];
 #else
-votes_t currentVote = {false, 0, 0, "", ""};
-int numVotes = 0;
+votes_t currentVote = {false, 0, 0, "", "", 0};
+//int numVotes = 0;
 float voteTimeLeft = 0;
 edict_t *voter;
 #endif
@@ -199,7 +199,7 @@ void V_ChangeMap(v_maplist_t *maplist, int mapindex, int gamemode)
 #ifdef OLD_VOTE_SYSTEM // Paril
 	memset(votes, 0, sizeof(votes_t) * MAX_VOTERS);
 #else
-	numVotes = 0;
+	currentVote.numVotes = 0;
 	voteTimeLeft = 0;
 	memset (&currentVote, 0, sizeof(currentVote));
 #endif
@@ -373,7 +373,7 @@ void AddVote(edict_t *ent, int mode, int mapnum)
 		char tempBuffer[1024];
 		//Add the vote
 		voter = ent;
-		numVotes = 1;
+		currentVote.numVotes = 1;
 		ent->client->resp.HasVoted = true;
 		strcpy(currentVote.ip, ent->client->pers.current_ip);
 		strcpy(currentVote.name, ent->myskills.player_name);
@@ -451,10 +451,10 @@ int V_VoteDone ()
 	if (players < 1)
 		return 0;
 
-	if (numVotes >= 0.75*players)
+	if (currentVote.numVotes >= 0.75*players)
 		return CHANGE_NOW;
 
-	if (numVotes > 0.5*players)
+	if (currentVote.numVotes > 0.5*players)
 		return CHANGE_LATER;
 
 	return 0;
@@ -611,7 +611,7 @@ void RunVotes ()
 			int i;
 
 			gi.bprintf (PRINT_CHAT, "Vote failed.\n");
-			numVotes = 0;
+			currentVote.numVotes = 0;
 			voteTimeLeft = 0;
 			memset (&currentVote, 0, sizeof(currentVote));
 			
@@ -790,7 +790,7 @@ void KillMyVote (edict_t *ent)
 	if (ent->client->resp.HasVoted)
 	{
 		ent->client->resp.HasVoted = false;
-		numVotes--;
+		currentVote.numVotes--;
 	}
 }
 
@@ -906,7 +906,7 @@ void ShowVoteModeMenu(edict_t *ent)
 				return; // GTFO PLZ
 			}
 			ent->client->resp.HasVoted = true;
-			numVotes++;
+			currentVote.numVotes++;
 
 			gi.bprintf (PRINT_CHAT, "%s voted Yes.\n", ent->client->pers.netname);
 		}
