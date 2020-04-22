@@ -228,7 +228,9 @@ void AddBossExp (edict_t *attacker, edict_t *target)
 
 void AwardBossKill (edict_t *boss)
 {
-	int			i, damage, exp_points, credits;
+	int			i, damage;
+	int			exp_points = 1;
+	int			credits;
 	float		levelmod, dmgmod;
 	char		*message;
 	edict_t		*player;
