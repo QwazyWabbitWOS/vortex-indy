@@ -498,6 +498,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="g_abilities.h" />
     <ClInclude Include="g_ctf.h" />
     <ClInclude Include="g_local.h" />
+    <ClInclude Include="menu\menu.h" />
     <ClInclude Include="misc\fnv.h" />
     <ClInclude Include="monster\boss.h" />
     <ClInclude Include="monster\m_actor.h" />

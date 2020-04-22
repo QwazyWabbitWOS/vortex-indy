@@ -136,19 +136,19 @@ int config_map_list()
 {
 	int  numberOfMapsInFile = 0;
 	char sMapName[80];
-	char *s, *t, *f;
+	char *s, *t;
 	static const char *seps = " ,\n\r";
 
 	// see if it's in the map list
 	if (*sv_maplist->string) {
-		s = strdup(sv_maplist->string);
-		f = NULL;
+		s = gi.TagMalloc(strlen(sv_maplist->string) + 1, TAG_GAME);
+		Q_strncpy(s, sv_maplist->string, sizeof s);
 		t = strtok(s, seps);
 		while (t != NULL) {
 				if (t != NULL)
 				{
-					sprintf(sMapName, "%s", t);
-					strncpy(maplist.mapnames[numberOfMapsInFile], sMapName, MAX_MAPNAME_LEN);
+					Com_sprintf(sMapName, sizeof sMapName, "%s", t);
+					Q_strncpy(maplist.mapnames[numberOfMapsInFile], sMapName, MAX_MAPNAME_LEN);
 					maplist.voteonly[numberOfMapsInFile] = false;
 					numberOfMapsInFile++;
 				}
@@ -156,7 +156,7 @@ int config_map_list()
 					break;
 			t = strtok(NULL, seps);
 		}
-		free(s);
+		gi.TagFree(s);
 	}
 
 	if (numberOfMapsInFile == 0)
@@ -192,6 +192,11 @@ void InitHash ();
 
 void InitGame (void)
 {
+
+#ifdef	_WIN32
+	_CrtMemCheckpoint(&startup1);
+#endif
+
 	gi.dprintf ("==== InitGame ====\n");
 #ifndef LOCK_DEFAULTS
 	gi.dprintf("INFO: Vortex v%s loaded.\n", VRX_VERSION);

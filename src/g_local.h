@@ -8,14 +8,14 @@
 //#define PRINT_DEBUGINFO 1
 
 #ifdef _WIN32
-  #define WIN32_LEAN_AND_MEAN	//non-MFC
-  #include <windows.h>
-  #define _CRTDBG_MAP_ALLOC
-  #include <stdlib.h>
-  #include <crtdbg.h>
-  #ifndef __func__
-    #define __func__ __FUNCTION__
-  #endif
+#define WIN32_LEAN_AND_MEAN	//non-MFC
+#include <windows.h>
+#define _CRTDBG_MAP_ALLOC
+#include <stdlib.h>
+#include <crtdbg.h>
+_CrtMemState startup1;	// memory diagnostics
+#else
+#define OutputDebugString	//not doing Windows
 #endif
 
 #include "q_shared.h"
@@ -86,8 +86,8 @@ extern long FLAG_FRAMES;
 //==================================================================
 
 // view pitching times
-#define DAMAGE_TIME		0.5
-#define	FALL_TIME		0.3
+#define DAMAGE_TIME		0.5f
+#define	FALL_TIME		0.3f
 
 
 // edict->spawnflags
@@ -798,7 +798,7 @@ extern	edict_t* g_edicts;
 #define	CLOFS(x) (size_t)&(((gclient_t *)0)->x)
 
 #define random()	((rand () & 0x7fff) / ((float)0x7fff))
-#define crandom()	(2.0 * (random() - 0.5))
+#define crandom()	(2.0f * (random() - 0.5f))
 
 extern	cvar_t	*maxentities;
 extern	cvar_t	*deathmatch;
@@ -2094,7 +2094,8 @@ void Pick_respawnweapon(edict_t *ent);
 #define for_each_player(JOE_BLOGGS,INDEX)				\
 for(INDEX=1;INDEX<=maxclients->value;INDEX++)			\
 	if ((JOE_BLOGGS=&g_edicts[i]) && JOE_BLOGGS->inuse && JOE_BLOGGS->client)
-int total_players();
+
+int total_players(void);
 void Cmd_CreateBreather_f(edict_t *ent);
 void Cmd_CreateEnviro_f(edict_t *ent);
 void Cmd_CreateInvin_f(edict_t *ent);

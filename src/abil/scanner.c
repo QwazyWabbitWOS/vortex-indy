@@ -33,29 +33,27 @@ void Toggle_Scanner (edict_t *ent)
 void ShowAllyInfo (edict_t *ent)
 {
 	int		i, hp, armor;
-	int		x=0, y=40;
-	char	string[1400];
-	char	stats[64], *tag;
-	edict_t *e;
+	int		x = 0, y = 40;
+	char	string[LAYOUT_MAX_LENGTH] = { 0 };
+	char	stats[64] = { 0 };
+	char* tag;
+	edict_t* e;
 
-//	gi.dprintf("ShowAllyInfo()\n");
+	//	gi.dprintf("ShowAllyInfo()\n");
 
-	memset(string, 0, sizeof(string));
-	memset(stats, 0, sizeof(stats));
-
-	for (i = 0; i < game.maxclients ; i++)
+	for (i = 0; i < game.maxclients; i++)
 	{
 		e = g_edicts + 1 + i;
 
 		if (!e->inuse || !IsAlly(ent, e) || ent == e)
 			continue;
-	//	if (e != ent)
-	//		continue;
-		
-		// set output
-		Com_sprintf (stats, sizeof(stats),"xl %i yv %i string \"%s\" ", x, y, e->client->pers.netname);
+		//	if (e != ent)
+		//		continue;
+
+			// set output
+		Com_sprintf(stats, sizeof(stats), "xl %i yv %i string \"%s\" ", x, y, e->client->pers.netname);
 		// don't overflow the buffer
-		SAFE_STRCAT(string, stats, 1400);
+		SAFE_STRCAT(string, stats, LAYOUT_MAX_LENGTH);
 
 		y += 8;
 		
@@ -70,7 +68,7 @@ void ShowAllyInfo (edict_t *ent)
 		Com_sprintf (stats, sizeof(stats),"xl %i yv %i picn %s ", x, y, tag);
 
 		// don't overflow the buffer
-		SAFE_STRCAT(string, stats, 1400);
+		SAFE_STRCAT(string, stats, LAYOUT_MAX_LENGTH);
 
 		y += 5;
 
@@ -82,10 +80,10 @@ void ShowAllyInfo (edict_t *ent)
 		tag = va("status/ba%d", armor);
 
 		// set output
-		Com_sprintf (stats, sizeof(stats),"xl %i yv %i picn %s ", x, y, tag);
+		Com_sprintf(stats, sizeof(stats), "xl %i yv %i picn %s ", x, y, tag);
 
 		// don't overflow the buffer
-		SAFE_STRCAT(string, stats, 1400);
+		SAFE_STRCAT(string, stats, LAYOUT_MAX_LENGTH);
 
 		y += 8;
 	}
@@ -94,20 +92,21 @@ void ShowAllyInfo (edict_t *ent)
 	gi.WriteString(string);
 	gi.unicast(ent, true);
 
-//	gi.dprintf("%s:%s\n", ent->client->pers.netname, string);
+	//	gi.dprintf("%s:%s\n", ent->client->pers.netname, string);
 }
 
-void ShowScanner (edict_t *ent, char *layout)
+void ShowScanner(edict_t* ent, char* layout)
 {
-	edict_t	*e = NULL;
-	char	stats[64], *tag;
+	edict_t* e = NULL;
+	char	stats[64] = { 0 };
+	char* tag;
 
 	// update complete
 	ent->client->pers.scanner_active &= ~2;
 
 	// Main scanner graphic draw
-	Com_sprintf (stats, sizeof(stats),"xl 0 yv 40 picn %s ", PIC_SCANNER_TAG);
-	SAFE_STRCAT(layout,stats,LAYOUT_MAX_LENGTH);
+	Com_sprintf(stats, sizeof(stats), "xl 0 yv 40 picn %s ", PIC_SCANNER_TAG);
+	SAFE_STRCAT(layout, stats, LAYOUT_MAX_LENGTH);
 
 	while ((e = findradius(e, ent->s.origin, SCANNER_RANGE)) != NULL)
 	{

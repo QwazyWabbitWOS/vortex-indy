@@ -235,6 +235,14 @@ void ShutdownGame (void)
 
 	gi.FreeTags (TAG_LEVEL);
 	gi.FreeTags (TAG_GAME);
+
+#ifdef _WIN32
+	OutputDebugString("ShutdownGame() was called.\n");
+	OutputDebugString("Memory stats since startup.\n");
+	_CrtMemDumpStatistics(&startup1);
+	_CrtDumpMemoryLeaks();
+#endif
+
 }
 
 #ifndef _WIN32
@@ -361,7 +369,7 @@ void EndDMLevel (void)
 	int		i;
 	edict_t	*tempent;
 
-	clearallmenus();
+	ClearAllMenus();
 	InitJoinedQueue();
 
 	if (SPREE_WAR) // terminate any spree wars
@@ -442,7 +450,7 @@ void VortexEndLevel (void)
 	gi.dprintf("Vortex is shutting down...\n");
 	
 	CTF_ShutDown(); // 3.7 shut down CTF, remove flags and bases
-	clearallmenus();
+	ClearAllMenus();
 	InitJoinedQueue();
 	InitializeTeamNumbers(); // for allies
 
