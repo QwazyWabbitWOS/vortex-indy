@@ -948,7 +948,7 @@ void SV_Physics_Step (edict_t *ent)
 	if ((ent->flags & FL_FLY) && (ent->velocity[2] != 0))
 	{
 //gi.bprintf(PRINT_HIGH,"FLY!\n");
-		speed = fabs(ent->velocity[2]);
+		speed = fabsf(ent->velocity[2]);
 		control = speed < sv_stopspeed ? sv_stopspeed : speed;
 		friction = sv_friction/3;
 		newspeed = speed - (FRAMETIME * control * friction);

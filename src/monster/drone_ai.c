@@ -1211,7 +1211,7 @@ void drone_ai_run_slide (edict_t *self, float dist)
 
 	//4.4 try to maintain ideal range/distance to target
 	range = VectorLength(v) - 196;
-	if (fabs(range) >= dist)
+	if (fabsf(range) >= dist)
 	{
 		if (range > dist)
 			range = dist;

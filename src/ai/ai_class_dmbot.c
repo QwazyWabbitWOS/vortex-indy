@@ -570,7 +570,7 @@ void BOT_DMclass_FireWeapon (edict_t *self, usercmd_t *ucmd)
 	if( AIWeapons[weapon].aimType == AI_AIMSTYLE_PREDICTION_EXPLOSIVE )
 	{
 		//aim to the feets when enemy isn't higher
-		if( self->s.origin[2] + self->viewheight > target[2] + (self->enemy->mins[2] * 0.8) )
+		if( self->s.origin[2] + self->viewheight > target[2] + (self->enemy->mins[2] * 0.8f) )
 			target[2] += self->enemy->mins[2];
 	}
 	else if ( AIWeapons[weapon].aimType == AI_AIMSTYLE_PREDICTION )
@@ -942,7 +942,7 @@ void BOT_DMclass_RunFrame( edict_t *self )
 	ucmd.angles[ROLL] = ANGLE2SHORT(self->s.angles[ROLL]);
 
 	// set approximate ping and show values
-	ucmd.msec = 75 + floor (random () * 25) + 1;
+	ucmd.msec = 75 + floorf (random () * 25) + 1;
 	self->client->ping = ucmd.msec;
 
 	// send command through id's code

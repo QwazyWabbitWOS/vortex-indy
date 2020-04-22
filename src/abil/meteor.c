@@ -85,7 +85,7 @@ void fire_meteor (edict_t *self, vec3_t end, int damage, int radius, int speed)
 	tr = gi.trace (end, NULL, NULL, start, NULL, MASK_SOLID);
 
 	// abort if we get stuck or we don't have enough room
-	if (tr.startsolid || fabs(start[2]-end[2]) < 64)
+	if (tr.startsolid || fabsf(start[2]-end[2]) < 64)
 		return;
 
 	// create meteor entity
@@ -183,7 +183,7 @@ void MeteorAttack (edict_t *ent, int damage, int radius, int speed, float skill_
 		return;
 	}
 
-	if (fabs(start[2]-end[2]) < 64)
+	if (fabsf(start[2]-end[2]) < 64)
 	{
 		safe_cprintf(ent, PRINT_HIGH, "Not enough room to spawn meteor.\n");
 		G_FreeEdict(meteor);

@@ -280,7 +280,7 @@ void GetSuccessorNodes(node_t* StartNode, int NodeNumS, int NodeNumD) {
 	// to the destination node is given by the difference between the 2
 	// vectors.  You can come up with your own estimate..
 
-	Successor->h = h = distance(pathnode[NodeNumS], pathnode[NodeNumD]);//fabs(vDiff(node[NodeNumS].origin,node[NodeNumD].origin));//GHz - changed to fabs()
+	Successor->h = h = distance(pathnode[NodeNumS], pathnode[NodeNumD]);//fabsf(vDiff(node[NodeNumS].origin,node[NodeNumD].origin));//GHz - changed to fabsf()
 	Successor->f = g + h;
 	Successor->PrevNode = StartNode; // reverse link to StartNode
 	Successor->NextNode = NULL;
@@ -880,7 +880,7 @@ int FindPath(vec3_t start, vec3_t destination) {
 	//StartNode=(node_t *)malloc(sizeof(node_t));
 	StartNode->nodenum = NodeNumS; // starting position nodenum
 	StartNode->g = g = 0; // we haven't gone anywhere yet
-	StartNode->h = h = distance(start, destination);//fabs(vDiff(start,destination)); // calculate remaining distance (heuristic estimate) GHz - changed to fabs()
+	StartNode->h = h = distance(start, destination);//fabsf(vDiff(start,destination)); // calculate remaining distance (heuristic estimate) GHz - changed to fabsf()
 	StartNode->f = g + h; // total cost from start to finish
 	for (c = 0; c < NUMCHILDS; c++)
 		StartNode->Child[c] = NULL; // no children for search pattern yet
@@ -1149,7 +1149,7 @@ void DrawNearbyGrid(edict_t* ent) {
 			VectorCopy(pathnode[i], v);
 			v[2] -= 4; // node height
 		   // NearestNodeLocation(ent->s.origin, start);
-		   // gi.dprintf("%f\n", fabs(pathnode[i][2]-start[2]));
+		   // gi.dprintf("%f\n", fabsf(pathnode[i][2]-start[2]));
 			G_Spawn_Trails(TE_BFG_LASER, pathnode[i], v);
 		}
 	}

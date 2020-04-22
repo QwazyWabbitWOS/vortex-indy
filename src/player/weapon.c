@@ -888,7 +888,7 @@ GRENADE
 ======================================================================
 */
 
-#define GRENADE_TIMER			3.0
+#define GRENADE_TIMER			3
 #define GRENADE_MINSPEED		400
 #define GRENADE_MAXSPEED		800
 #define GRENADE_INITIAL_SPEED	800
@@ -1563,7 +1563,7 @@ void Weapon_HyperBlaster_Fire (edict_t *ent)
 			{
 				//gi.dprintf("Fired HB for %d damage at %.1f\n", damage, level.time);
 
-				rotation = (ent->client->ps.gunframe + i - 5) * 2*M_PI/6;
+				rotation = (ent->client->ps.gunframe - 5.0) * 2.0 * M_PI / 6.0;
 				offset[0] = -4 * sin(rotation);
 				offset[1] = 0;
 				offset[2] = 4 * cos(rotation);

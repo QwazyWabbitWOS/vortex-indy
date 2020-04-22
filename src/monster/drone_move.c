@@ -133,7 +133,7 @@ qboolean CanJumpDown (edict_t *self, vec3_t neworg)
 	tr = gi.trace(neworg, self->mins, self->maxs, start, self, MASK_MONSTERSOLID);
 
 	// the landing position is less than 1 unit down, so it's not worth it
-	//if (fabs(tr.endpos[2] - self->s.origin[2]) < STEPSIZE)
+	//if (fabsf(tr.endpos[2] - self->s.origin[2]) < STEPSIZE)
 	//{
 	//	gi.dprintf("can't jump down, not worth it\n");
 	//	return false;
@@ -606,7 +606,7 @@ qboolean SV_StepDirection (edict_t *ent, float yaw, float dist, qboolean try_sma
 	ent->ideal_yaw = yaw;
 	M_ChangeYaw (ent);
 
-	if (!dist || fabs(dist) < 1)
+	if (!dist || fabsf(dist) < 1)
 		return true;
 
 	yaw = yaw*M_PI*2 / 360;
@@ -797,7 +797,7 @@ qboolean CheckYawStep (edict_t *self, float minyaw, float maxyaw, float dist)
 	AngleCheck(&maxyaw);
 
 	// calculate the maximum yaw variance
-	max = 360 - fabs(minyaw - maxyaw);
+	max = 360 - fabsf(minyaw - maxyaw);
 
 	// we will start at the minimum yaw angle and move towards maxyaw
 	yaw = minyaw;
@@ -1131,18 +1131,18 @@ qboolean M_walkmove (edict_t *ent, float yaw, float dist)
 
 			// delta between monster yaw and wall yaw should be no more than 90 degrees
 			// else, turn wall angles around 180 degrees
-			if (fabs(cl_yaw-angles[YAW]) > 90)
+			if (fabsf(cl_yaw-angles[YAW]) > 90)
 				angles[YAW]+=180;
 			ValidateAngles(angles);
 
 			// possible escape angle 1
 			angle1 = angles[YAW]+90;
 			AngleCheck(&angle1);
-			delta1 = fabs(angle1-cl_yaw);
+			delta1 = fabsf(angle1-cl_yaw);
 			// possible escape angle 2
 			angle2 = angles[YAW]-90;
 			AngleCheck(&angle2);
-			delta2 = fabs(angle2-cl_yaw);
+			delta2 = fabsf(angle2-cl_yaw);
 
 			// take the shorter route
 			if (delta1 > delta2)

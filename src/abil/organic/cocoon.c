@@ -199,7 +199,7 @@ void cocoon_attack (edict_t *self)
 	
 	// move position
 	VectorCopy(self->s.origin, start);
-	start[2] += fabs(self->enemy->mins[2]) + 1;
+	start[2] += fabsf(self->enemy->mins[2]) + 1;
 	VectorCopy(start, self->enemy->s.origin);
 	gi.linkentity(self->enemy);
 	
