@@ -9,10 +9,6 @@ INFANTRY
 #include "g_local.h"
 #include "m_infantry.h"
 
-void drone_ai_stand (edict_t *self, float dist);
-void drone_ai_run1 (edict_t *self, float dist);
-void drone_ai_walk (edict_t *self, float dist);
-
 void InfantryMachineGun (edict_t *self);
 
 
