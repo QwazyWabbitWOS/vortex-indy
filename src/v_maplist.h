@@ -3,7 +3,7 @@
 
 #define MAX_VOTERS			(MAX_CLIENTS * 2)
 #define MAX_MAPS			64
-#define MAX_MAPNAME_LEN		16
+#define MAX_MAPNAME_LEN		24
 
 #define MAPMODE_PVP			1
 #define MAPMODE_PVM			2
