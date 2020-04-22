@@ -81,7 +81,7 @@ qboolean HitTheWeapon (edict_t *targ, edict_t *attacker, vec3_t point, int take,
 	if (targ->mtype || (targ->myskills.class_num == CLASS_POLTERGEIST))
 		return false;
 
-	if ((targ->health-take) > (0.5*targ->max_health))
+	if ((targ->health - take) > (0.5f * targ->max_health))
 		return false;
 	
 	targ->knockweapon_debounce_time = level.time + 1.0;
@@ -296,7 +296,7 @@ static int CheckShield (edict_t *ent, vec3_t point, vec3_t normal, int damage, i
 		AngleVectors(ent->s.angles, forward, NULL, NULL);
 		VectorSubtract(point, ent->s.origin, v);
 		VectorNormalize(v);
-		if (DotProduct (v, forward) <= 0.3)
+		if (DotProduct (v, forward) <= 0.3f)
 			return 0;
 
 		pa_te_type = TE_SCREEN_SPARKS;
@@ -659,7 +659,7 @@ int T_Damage (edict_t *targ, edict_t *inflictor, edict_t *attacker,
 		edict_t *totem;
 
 		//Calculate the damage bonus the player has already received.
-		double x = (double)(damage - startDamage) / startDamage;
+		double x = (double)((double)damage - (double)startDamage) / startDamage;
 
         //4.1 earth totem strength bonus.
 		totem = NextNearestTotem(player, TOTEM_EARTH, NULL, true);
@@ -679,7 +679,7 @@ int T_Damage (edict_t *targ, edict_t *inflictor, edict_t *attacker,
 		int resistLevel = 0;
 
 		//Calculate the amount of resist the player has already received.
-		double x = (double)(startDamage - damage) / startDamage;
+		double x = (double)((double)startDamage - damage) / startDamage;
 		
 		//Talent: Stone.
 		totem = NextNearestTotem(G_GetClient(targ), TOTEM_EARTH, NULL, true);
@@ -807,7 +807,7 @@ int T_Damage (edict_t *targ, edict_t *inflictor, edict_t *attacker,
 		{
 			// keep a counter for rapid-fire weapons so we have a more
 			// accurate reading of their damage over time
-			if (level.time-player->lastdmg <= 0.2 && player->dmg_counter <= 32767)				
+			if (level.time-player->lastdmg <= 0.2f && player->dmg_counter <= 32767)				
 				player->dmg_counter += damage;
 			else
 				player->dmg_counter = damage;
@@ -986,7 +986,7 @@ int T_Damage (edict_t *targ, edict_t *inflictor, edict_t *attacker,
 		//3.0 try to auto-tball away when hit
 		if ((targ->client)															//target must be a player
 			&& G_EntIsAlive(targ)													//target must be alive
-			&& (targ->health - take < (0.25 * MAX_HEALTH(targ)))					//target must end up with < 25% hp
+			&& (targ->health - take < (0.25f * MAX_HEALTH(targ)))					//target must end up with < 25% hp
 			&& !(targ->v_flags & SFLG_AUTO_TBALLED)									//target must not have auto-tballed this spawn
 			&& !HasFlag(targ))	//target must not have the flag
 		{
@@ -1046,7 +1046,7 @@ int T_Damage (edict_t *targ, edict_t *inflictor, edict_t *attacker,
 
 				if(player->health < maxHP)
 				{
-					player->health += totem->monsterinfo.level * take * DARKNESSTOTEM_VAMP_MULT;
+					player->health += (long)(totem->monsterinfo.level * take * DARKNESSTOTEM_VAMP_MULT);
 
 					if (player->health > maxHP)
 						player->health = maxHP;
@@ -1096,7 +1096,7 @@ int T_Damage (edict_t *targ, edict_t *inflictor, edict_t *attacker,
 			if (attacker->mtype)
 				temp = 0.25;
 
-			steal = (int) floor(0.5+take*temp); // steal health
+			steal = (int)floorf(0.5f + take * temp); // steal health
 			armorVampBase = steal; // save this value for armor vamp
 
 			delta = max_health - attacker->health;

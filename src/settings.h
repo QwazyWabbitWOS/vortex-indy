@@ -374,7 +374,7 @@ const char* Time();
 #define NATURETOTEM_REFIRE_BASE		5.0
 #define NATURETOTEM_REFIRE_MULT		-0.25		//make this negative to reduce the "cooldown".
 //Darkness totem
-#define DARKNESSTOTEM_VAMP_MULT		0.033
+#define DARKNESSTOTEM_VAMP_MULT		0.033f
 #define DARKNESSTOTEM_MAX_MULT		0.1
 
 //Talent: Precision Tuning
