@@ -131,51 +131,6 @@ field_t		clientfields[] =
 	{NULL, 0, F_INT}
 };
 
-//K03 Begin
-int config_map_list()
-{
-	int  numberOfMapsInFile = 0;
-	char sMapName[80];
-	char *s, *t;
-	static const char *seps = " ,\n\r";
-
-	// see if it's in the map list
-	if (*sv_maplist->string) {
-		s = gi.TagMalloc(strlen(sv_maplist->string) + 1, TAG_GAME);
-		Q_strncpy(s, sv_maplist->string, sizeof s);
-		t = strtok(s, seps);
-		while (t != NULL) {
-				if (t != NULL)
-				{
-					Com_sprintf(sMapName, sizeof sMapName, "%s", t);
-					Q_strncpy(maplist.mapnames[numberOfMapsInFile], sMapName, MAX_MAPNAME_LEN);
-					maplist.voteonly[numberOfMapsInFile] = false;
-					numberOfMapsInFile++;
-				}
-				else
-					break;
-			t = strtok(NULL, seps);
-		}
-		gi.TagFree(s);
-	}
-
-	if (numberOfMapsInFile == 0)
-	{
-		gi.dprintf ("Config: sv_maplist not defined.\n");
-		return 0;  // abnormal exit -- no maps in file
-	}
-
-	maplist.nummaps = numberOfMapsInFile;
-	if (maplist.nummaps) 
-		maplist.active = 1;
-
-	//maplist.rotationflag = 0;
-	maplist.currentmap = -1;
-//	FillMapNames(); //prepare menu
-	return 1;     // normal exit
-}
-//K03 End
-
 /*
 ============
 InitGame
@@ -185,10 +140,6 @@ only happens when a new game is started or a save game
 is loaded.
 ============
 */
-
-// az begin
-void InitHash ();
-// az end
 
 void InitGame (void)
 {
@@ -318,7 +269,6 @@ void InitGame (void)
 	flood_persecond = gi.cvar ("flood_persecond", "4", 0);
 	flood_waitdelay = gi.cvar ("flood_waitdelay", "10", 0);
 	//maplist value
-	sv_maplist = gi.cvar ("sv_maplist", "", CVAR_LATCH);
 	min_level = gi.cvar("min_level", "0", 0);
 	max_level = gi.cvar("max_level", "1000", 0);
 	check_dupeip = gi.cvar("check_dupeip", "0", 0);
@@ -484,9 +434,6 @@ void InitGame (void)
 
 	//3.0 Load the armory
 	LoadArmory();
-
-	//K03 Begin
-	config_map_list();
 
 	MonstersInUse=false; // Set this value here..
 	InitializeTeamNumbers(); // for allies

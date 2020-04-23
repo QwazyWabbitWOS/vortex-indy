@@ -868,7 +868,6 @@ extern cvar_t *vrx_over10mult;
 extern cvar_t *vrx_pvpcreditmult;
 extern cvar_t *vrx_pvmcreditmult;
 
-extern cvar_t *sv_maplist;
 extern cvar_t *flood_msgs;
 extern cvar_t *flood_persecond;
 extern cvar_t *flood_waitdelay;

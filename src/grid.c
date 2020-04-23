@@ -1316,9 +1316,10 @@ qboolean NearbyGridNode(vec3_t start, int nodes)
 	return false;
 }
 
-int c_yes, c_no;
 qboolean CheckBottom(vec3_t pos, vec3_t boxmin, vec3_t boxmax)
 {
+	int c_yes = 0;
+	int c_no = 0;
 	vec3_t	mins, maxs, start, stop;
 	trace_t	trace;
 	int		x, y;
@@ -1411,6 +1412,8 @@ void CreateGrid(qboolean force)
 
 	if (!force && LoadGrid())
 		return;
+
+	gi.dprintf("Creating grid file. Please stand by.\n");
 
 	for (x = 0; x < maxx; x++)
 	{

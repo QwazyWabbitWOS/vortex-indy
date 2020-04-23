@@ -52,7 +52,6 @@ cvar_t	*sv_cheats;
 //ponpoko
 cvar_t	*gamepath;
 cvar_t	*vwep;
-cvar_t	*sv_maplist;
 cvar_t	*autospawn;
 float	spawncycle;
 //ponpoko
@@ -350,95 +349,6 @@ edict_t *CreateTargetChangeLevel(char *map)
 	return ent;
 }
 //K03 End
-
-
-/*
-=================
-EndDMLevel
-
-The timelimit or fraglimit has been exceeded
-=================
-*/
-/*
-void EndDMLevel (void)
-{
-	edict_t		*ent;
-	char *s, *t, *f;
-	static const char *seps = " ,\n\r";
-// GHz START
-	int		i;
-	edict_t	*tempent;
-
-	ClearAllMenus();
-	InitJoinedQueue();
-
-	if (SPREE_WAR) // terminate any spree wars
-	{
-		SPREE_WAR = false;
-		SPREE_DUDE = NULL;
-	}
-
-	// save all characters and append to log
-	for_each_player(tempent, i)
-	{
-		VortexRemovePlayerSummonables(tempent);
-		tempent->myskills.streak = 0;
-		WriteMyCharacter(tempent);
-		if (G_EntExists(tempent))
-			WriteToLogfile(tempent, "Logged out.\n");
-		else
-			WriteToLogfile(tempent, "Disconnected from server.\n");
-	}
-	gi.dprintf("Ready to end level.\n");
-//GHz END
-
-	// stay on same level flag
-	if ((int)dmflags->value & DF_SAME_LEVEL)
-	{
-		BeginIntermission (CreateTargetChangeLevel (level.mapname) );
-		return;
-	}
-
-	// see if it's in the map list
-	if (*sv_maplist->string) {
-		s = strdup(sv_maplist->string);
-		f = NULL;
-		t = strtok(s, seps);
-		while (t != NULL) {
-			if (Q_stricmp(t, level.mapname) == 0) {
-				// it's in the list, go to the next one
-				t = strtok(NULL, seps);
-				if (t == NULL) { // end of list, go to first one
-					if (f == NULL) // there isn't a first one, same level
-						BeginIntermission (CreateTargetChangeLevel (level.mapname) );
-					else
-						BeginIntermission (CreateTargetChangeLevel (f) );
-				} else
-					BeginIntermission (CreateTargetChangeLevel (t) );
-				free(s);
-				return;
-			}
-			if (!f)
-				f = t;
-			t = strtok(NULL, seps);
-		}
-		free(s);
-	}
-
-	if (level.nextmap[0]) // go to a specific map
-		BeginIntermission (CreateTargetChangeLevel (level.nextmap) );
-	else {	// search for a changelevel
-		ent = G_Find (NULL, FOFS(classname), "target_changelevel");
-		if (!ent)
-		{	// the map designer didn't include a changelevel,
-			// so create a fake ent that goes back to the same level
-			BeginIntermission (CreateTargetChangeLevel (level.mapname) );
-			return;
-		}
-		BeginIntermission (ent);
-	}
-}
-*/
 
 void VortexEndLevel (void)
 {

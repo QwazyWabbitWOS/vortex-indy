@@ -2451,7 +2451,7 @@ void AdminModeChange(edict_t* ent, char* mode)
 	// Point to the correct map list
 	v_maplist_t* maplist = GetMapList(newmode);
 
-	// Set up the mode cvars 
+	// Set up the mode cvars by using the voting function.
 	V_ChangeMap(maplist, 0, newmode); // default to first map in the new mode.
 	ExitLevel();
 }

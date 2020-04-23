@@ -12,3 +12,7 @@ typedef struct
 // extern gameCommand_s* commandListHashed;
 
 qboolean VortexCommand(char* command, edict_t* ent);
+// az begin
+void InitHash(void);
+// az end
+

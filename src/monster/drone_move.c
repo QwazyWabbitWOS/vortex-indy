@@ -13,10 +13,10 @@ is not a staircase.
 
 =============
 */
-int c_yes, c_no;
-
 qboolean M_CheckBottom (edict_t *ent)
 {
+	int c_yes = 0;
+	int c_no = 0;
 	vec3_t	mins, maxs, start, stop;
 	trace_t	trace;
 	int		x, y;
