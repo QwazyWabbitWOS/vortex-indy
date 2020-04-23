@@ -302,8 +302,6 @@ void InitGame (void)
 	killboxspawn = gi.cvar("killboxatspawn", "1", 0);
 	save_path = gi.cvar("save_path", va("%s\\characters", gamedir->string), CVAR_LATCH);
 	particles = gi.cvar ("particles", "0", 0);
-	// az 3.0
-	hw = gi.cvar("hw", "0", CVAR_LATCH);
 
 	sentry_lev1_model = gi.cvar ("sentry_lev1_model", "models/sentry/turret1/tris.md2", CVAR_LATCH);
 	sentry_lev2_model = gi.cvar ("sentry_lev2_model", "models/sentry/turret2/tris.md2", CVAR_LATCH);
@@ -327,19 +325,25 @@ void InitGame (void)
 	check_dupename = gi.cvar("check_dupename", "1", 0);
 	newbie_protection = gi.cvar("newbie_protection","1.8",CVAR_ARCHIVE);
 	debuginfo = gi.cvar("debuginfo", "0", CVAR_ARCHIVE);
-	pvm = gi.cvar ("pvm", "0", CVAR_LATCH);
-	ffa = gi.cvar ("ffa", "1", CVAR_LATCH);
-	ptr = gi.cvar ("ptr", "0", CVAR_LATCH);
-	domination = gi.cvar ("domination", "0", CVAR_LATCH);
-	ctf = gi.cvar ("ctf", "0", CVAR_LATCH);
-	invasion = gi.cvar ("invasion", "0", CVAR_LATCH);
-	nolag = gi.cvar ("nolag", "1", 0);
+	nolag = gi.cvar("nolag", "1", 0);
+
+	// all the cvars controlling game mode
+	// NOTE: These are all supposed to be mutally exclusive.
+	ctf = gi.cvar("ctf", "0", CVAR_LATCH);	//CTF
+	ffa = gi.cvar("ffa", "1", CVAR_LATCH);	//FFA
+	pvm = gi.cvar("pvm", "0", CVAR_LATCH);	//PVM
+	ptr = gi.cvar("ptr", "0", CVAR_LATCH);	//PTR
+	invasion = gi.cvar("invasion", "0", CVAR_LATCH);	// 1 is INV & 2 is INH
+	domination = gi.cvar("domination", "0", CVAR_LATCH);	//DOM
+	// az 3.0
+	hw = gi.cvar("hw", "0", CVAR_LATCH);	//VHW holy wars
 
 	// az v2.5 vrxchile trading mode
-	trading = gi.cvar("trading", "0", 0);
+	trading = gi.cvar("trading", "0", 0);	//TRA
 	tradingmode_enabled = gi.cvar("tradingmode_enabled", "0", CVAR_LATCH);
-	tbi = gi.cvar ("tbi", "0", CVAR_LATCH); // enable tbi mode
+	tbi = gi.cvar("tbi", "0", CVAR_LATCH); // TBI
 	// az end
+	
 	pvm_respawntime = gi.cvar ("pvm_respawntime", "10", 0);
 	pvm_monstermult = gi.cvar ("pvm_monstermult", "1.0", 0);
 	ffa_respawntime = gi.cvar ("ffa_respawntime", "20", 0);

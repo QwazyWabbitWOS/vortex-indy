@@ -1,7 +1,7 @@
 #include "g_local.h"
 
 // if this is a flag ent, re-spawn it
-void CTF_RecoverFlag (edict_t *ent)
+void CTF_RecoverFlag(edict_t* ent)
 {
 	if (!ctf->value)
 		return;
@@ -24,17 +24,17 @@ void CTF_RecoverFlag (edict_t *ent)
 }
 
 // returns the number of entities with matching classname that are owned by teamnum
-int CTF_GetNumSummonable (char *classname, int teamnum)
+int CTF_GetNumSummonable(char* classname, int teamnum)
 {
-	int		i, numPlayers=0;
-	edict_t *cl_ent;
+	int		i, numPlayers = 0;
+	edict_t* cl_ent;
 
 	if (!teamnum)
 		return 0;
 
-	for (i=0 ; i<game.maxclients ; i++)
+	for (i = 0; i < game.maxclients; i++)
 	{
-		cl_ent = g_edicts+1+i;
+		cl_ent = g_edicts + 1 + i;
 
 		if (!cl_ent->inuse)
 			continue;
@@ -43,23 +43,23 @@ int CTF_GetNumSummonable (char *classname, int teamnum)
 		//gi.dprintf("adding %s's monsters\n", cl_ent->client->pers.netname);
 		numPlayers += G_GetNumSummonable(cl_ent, classname);
 		//gi.dprintf("done\n");
-		
+
 	}
 
 	return numPlayers;
 }
-	
-int CTF_GetNumClassPlayers (int classnum, int teamnum)
+
+int CTF_GetNumClassPlayers(int classnum, int teamnum)
 {
-	int		i, numPlayers=0;
-	edict_t *cl_ent;
+	int		i, numPlayers = 0;
+	edict_t* cl_ent;
 
 	if (!teamnum)
 		return 0;
 
-	for (i=0 ; i<game.maxclients ; i++)
+	for (i = 0; i < game.maxclients; i++)
 	{
-		cl_ent = g_edicts+1+i;
+		cl_ent = g_edicts + 1 + i;
 
 		if (!cl_ent->inuse)
 			continue;
@@ -73,7 +73,7 @@ int CTF_GetNumClassPlayers (int classnum, int teamnum)
 	return numPlayers;
 }
 
-char *CTF_GetTeamString (int teamnum)
+char* CTF_GetTeamString(int teamnum)
 {
 	switch (teamnum)
 	{
@@ -83,7 +83,7 @@ char *CTF_GetTeamString (int teamnum)
 	}
 }
 
-int CTF_GetTeamByFlagIndex (int	flag_index)
+int CTF_GetTeamByFlagIndex(int	flag_index)
 {
 	if (flag_index == red_flag_index)
 		return RED_TEAM;
@@ -92,7 +92,7 @@ int CTF_GetTeamByFlagIndex (int	flag_index)
 	return 0;
 }
 
-int CTF_GetEnemyTeam (int teamnum)
+int CTF_GetEnemyTeam(int teamnum)
 {
 	if (teamnum == RED_TEAM)
 		return BLUE_TEAM;
@@ -101,29 +101,29 @@ int CTF_GetEnemyTeam (int teamnum)
 	return 0;
 }
 
-edict_t *CTF_GetFlagBaseEnt (int teamnum)
+edict_t* CTF_GetFlagBaseEnt(int teamnum)
 {
-	edict_t *e=NULL;
+	edict_t* e = NULL;
 
 	if (!teamnum)
 		return NULL;
 
 	// if we already have a valid pointer to the base we want, use it
-	if ((teamnum == RED_TEAM) && red_base && red_base->inuse 
+	if ((teamnum == RED_TEAM) && red_base && red_base->inuse
 		&& (red_base->style == teamnum))
 		return red_base;
-	else if ((teamnum == BLUE_TEAM) && blue_base 
+	else if ((teamnum == BLUE_TEAM) && blue_base
 		&& blue_base->inuse && (blue_base->style == teamnum))
 		return blue_base;
 
 	// otherwise, do a search
-	while((e = G_Find(e, FOFS(classname), "flag_base")) != NULL)
+	while ((e = G_Find(e, FOFS(classname), "flag_base")) != NULL)
 	{
 		if (!e->inuse)
 			continue;
 		if (e->style != teamnum)
 			continue;
-		
+
 		// save the result to avoid CPU-costly searches!
 		if (teamnum == RED_TEAM)
 			red_base = e;
@@ -136,16 +136,16 @@ edict_t *CTF_GetFlagBaseEnt (int teamnum)
 	return NULL;
 }
 
-edict_t *CTF_GetFlagEnt (int teamnum)
+edict_t* CTF_GetFlagEnt(int teamnum)
 {
-	edict_t *e=NULL;
+	edict_t* e = NULL;
 
 	if (!teamnum)
 		return NULL;
 
 	if (teamnum == RED_TEAM)
 	{
-		while((e = G_Find(e, FOFS(classname), "item_redflag")) != NULL)
+		while ((e = G_Find(e, FOFS(classname), "item_redflag")) != NULL)
 		{
 			if (!e->inuse)
 				continue;
@@ -155,7 +155,7 @@ edict_t *CTF_GetFlagEnt (int teamnum)
 	}
 	else if (teamnum == BLUE_TEAM)
 	{
-		while((e = G_Find(e, FOFS(classname), "item_blueflag")) != NULL)
+		while ((e = G_Find(e, FOFS(classname), "item_blueflag")) != NULL)
 		{
 			if (!e->inuse)
 				continue;
@@ -167,9 +167,9 @@ edict_t *CTF_GetFlagEnt (int teamnum)
 	return NULL;
 }
 
-void CTF_SummonableCheck (edict_t *self)
+void CTF_SummonableCheck(edict_t* self)
 {
-	edict_t *base, *cl_ent;
+	edict_t* base, * cl_ent;
 
 	if (!ctf->value)
 		return;
@@ -195,7 +195,7 @@ void CTF_SummonableCheck (edict_t *self)
 	// if the base is secure, allow offensive summonable usage
 	if (base->count == BASE_FLAG_SECURE)
 		return;
-	
+
 	// is the summonable in the enemy's base?
 	if (entdist(self, base) > CTF_BASE_DEFEND_RANGE)
 		return;
@@ -204,9 +204,9 @@ void CTF_SummonableCheck (edict_t *self)
 	self->removetime = level.time + CTF_SUMMONABLE_AUTOREMOVE;
 }
 
-void CTF_SpawnFlagAtBase (edict_t *base, int teamnum)
+void CTF_SpawnFlagAtBase(edict_t* base, int teamnum)
 {
-	edict_t *e;
+	edict_t* e;
 	vec3_t	start;
 
 	if (!teamnum)
@@ -223,7 +223,7 @@ void CTF_SpawnFlagAtBase (edict_t *base, int teamnum)
 
 		// position flag above base
 		VectorCopy(e->s.origin, start);
-		start[2] = e->absmax[2]+8;
+		start[2] = e->absmax[2] + 8;
 		CTF_SpawnFlag(teamnum, start);
 	}
 	else
@@ -232,21 +232,21 @@ void CTF_SpawnFlagAtBase (edict_t *base, int teamnum)
 	}
 }
 
-int CTF_ReturnFlag (edict_t *ent, edict_t *flag)
+int CTF_ReturnFlag(edict_t* ent, edict_t* flag)
 {
-	edict_t *base;
+	edict_t* base;
 
 	// this is not our flag
 	if (ent->teamnum != flag->style)
 		return 0;
 
 	if ((base = CTF_GetFlagBaseEnt(ent->teamnum)) != NULL)
-	{	
+	{
 		// the flag is already secure so there's nothing to return
 		if (base->count == BASE_FLAG_SECURE)
 			return 1;
 
-		gi.bprintf(PRINT_HIGH, "%s returned the %s flag.\n", 
+		gi.bprintf(PRINT_HIGH, "%s returned the %s flag.\n",
 			ent->client->pers.netname, CTF_GetTeamString(ent->teamnum));
 
 		//Set them up for an assist.
@@ -259,7 +259,7 @@ int CTF_ReturnFlag (edict_t *ent, edict_t *flag)
 
 		// respawn the flag
 		CTF_SpawnFlagAtBase(base, ent->teamnum);
-		
+
 		// award points and credits to the player returning the flag
 		CTF_AwardPlayer(ent, CTF_FLAG_RETURN_EXP, CTF_FLAG_RETURN_CREDITS);
 
@@ -273,9 +273,9 @@ int CTF_ReturnFlag (edict_t *ent, edict_t *flag)
 #define INITIAL_HEALTH_FC	200
 #define ADDON_HEALTH_FC		20
 
-int CTF_GetSpecialFcHealth (edict_t *ent, qboolean max)
+int CTF_GetSpecialFcHealth(edict_t* ent, qboolean max)
 {
-	int health = INITIAL_HEALTH_FC+ADDON_HEALTH_FC*ent->myskills.level;
+	int health = INITIAL_HEALTH_FC + ADDON_HEALTH_FC * ent->myskills.level;
 
 	if (max)
 		return health;
@@ -284,12 +284,12 @@ int CTF_GetSpecialFcHealth (edict_t *ent, qboolean max)
 	if (ent->health > ent->max_health)
 		ent->health = ent->max_health;
 
-	health *= ent->health/(float)ent->max_health;
+	health *= ent->health / (float)ent->max_health;
 
 	return health;
 }
 
-qboolean CTF_ApplySpecialFcRules (edict_t *ent)
+qboolean CTF_ApplySpecialFcRules(edict_t* ent)
 {
 	if (!ctf_enable_balanced_fc->value)
 		return false;
@@ -303,7 +303,7 @@ qboolean CTF_ApplySpecialFcRules (edict_t *ent)
 	{
 		ent->mtype = 0;
 		ent->s.modelindex = 255;
-		ent->s.skinnum = ent-g_edicts-1;
+		ent->s.skinnum = ent - g_edicts - 1;
 		ShowGun(ent);
 	}
 
@@ -316,20 +316,20 @@ qboolean CTF_ApplySpecialFcRules (edict_t *ent)
 	return true;
 }
 
-void CTF_RemoveSpecialFcRules (edict_t *ent)
+void CTF_RemoveSpecialFcRules(edict_t* ent)
 {
 	if (!ctf_enable_balanced_fc->value)
 		return;
 
 	// restore normal health
-	ent->health = ent->health/(float)ent->max_health*MAX_HEALTH(ent);
+	ent->health = ent->health / (float)ent->max_health * MAX_HEALTH(ent);
 	ent->max_health = MAX_HEALTH(ent);
 }
 
-qboolean CTF_PickupFlag (edict_t *ent, edict_t *other)
+qboolean CTF_PickupFlag(edict_t* ent, edict_t* other)
 {
 	int		index, teamnum, value;
-	edict_t *base;
+	edict_t* base;
 
 	//gi.dprintf("pick-up flag %s\n", other->classname);
 
@@ -388,7 +388,7 @@ qboolean CTF_PickupFlag (edict_t *ent, edict_t *other)
 			other->client->pers.scanner_active = 0;
 
 		// alert everyone
-		gi.bprintf(PRINT_HIGH, "%s got the %s flag!\n", other->client->pers.netname, 
+		gi.bprintf(PRINT_HIGH, "%s got the %s flag!\n", other->client->pers.netname,
 			CTF_GetTeamString(ent->style));
 
 		gi.sound(other, CHAN_ITEM, gi.soundindex("ctf/flagtk.wav"), 1, ATTN_NORM, 0);
@@ -414,7 +414,7 @@ qboolean CTF_PickupFlag (edict_t *ent, edict_t *other)
 	return false;
 }
 
-void CTF_laserthink (edict_t *self)
+void CTF_laserthink(edict_t* self)
 {
 	// must have an owner
 	if (!self->owner || !self->owner->inuse)
@@ -422,7 +422,7 @@ void CTF_laserthink (edict_t *self)
 		G_FreeEdict(self);
 		return;
 	}
-	
+
 	if (self->owner->style == RED_TEAM)
 		self->s.skinnum = 0xf2f2f0f0;
 	else if (self->owner->style == BLUE_TEAM)
@@ -435,19 +435,19 @@ void CTF_laserthink (edict_t *self)
 	self->nextthink = level.time + FRAMETIME;
 }
 
-edict_t *CTF_spawnlaser (edict_t *ent, vec3_t v1, vec3_t v2)
+edict_t* CTF_spawnlaser(edict_t* ent, vec3_t v1, vec3_t v2)
 {
-	edict_t *laser;
+	edict_t* laser;
 
 	laser = G_Spawn();
-	laser->movetype	= MOVETYPE_NONE;
+	laser->movetype = MOVETYPE_NONE;
 	laser->solid = SOLID_NOT;
-	laser->s.renderfx = RF_BEAM|RF_TRANSLUCENT;
+	laser->s.renderfx = RF_BEAM | RF_TRANSLUCENT;
 	laser->s.modelindex = 1; // must be non-zero
 	//laser->s.sound = gi.soundindex ("world/laser.wav");
 	laser->classname = "laser";
 	laser->s.frame = 8; // beam diameter
-    laser->owner = ent;
+	laser->owner = ent;
 
 	// set laser color
 	if (ent->style == RED_TEAM)
@@ -455,7 +455,7 @@ edict_t *CTF_spawnlaser (edict_t *ent, vec3_t v1, vec3_t v2)
 	else if (ent->style == BLUE_TEAM)
 		laser->s.skinnum = 0xf3f3f1f1; // blue
 
-    laser->think = CTF_laserthink;
+	laser->think = CTF_laserthink;
 	VectorCopy(v2, laser->s.origin);
 	VectorCopy(v1, laser->s.old_origin);
 	VectorCopy(v2, laser->pos2);
@@ -465,7 +465,7 @@ edict_t *CTF_spawnlaser (edict_t *ent, vec3_t v1, vec3_t v2)
 	return laser;
 }
 
-void CTF_flagthink (edict_t *self)
+void CTF_flagthink(edict_t* self)
 {
 	vec3_t	end;
 	trace_t	tr;
@@ -477,12 +477,12 @@ void CTF_flagthink (edict_t *self)
 	{
 		VectorCopy(self->s.origin, end);
 		end[2] += 8192;
-		tr = gi.trace (self->s.origin, NULL, NULL, end, self, MASK_SOLID);
+		tr = gi.trace(self->s.origin, NULL, NULL, end, self, MASK_SOLID);
 		VectorCopy(tr.endpos, end);
 		self->other = CTF_spawnlaser(self, self->s.origin, end);
 	}
 	self->s.effects = 0;
-	self->s.effects |= (EF_ROTATE|EF_COLOR_SHELL);
+	self->s.effects |= (EF_ROTATE | EF_COLOR_SHELL);
 	if (self->style == RED_TEAM)
 		self->s.renderfx = RF_SHELL_RED;
 	else if (self->style == BLUE_TEAM)
@@ -490,10 +490,10 @@ void CTF_flagthink (edict_t *self)
 	self->nextthink = level.time + 0.5;
 }
 
-void CTF_DropFlag (edict_t *ent, gitem_t *item)
+void CTF_DropFlag(edict_t* ent, gitem_t* item)
 {
 	int		flagindex, enemy_team;
-	edict_t *flag;
+	edict_t* flag;
 
 	if (!ctf->value)
 		return;
@@ -506,10 +506,10 @@ void CTF_DropFlag (edict_t *ent, gitem_t *item)
 
 	enemy_team = CTF_GetTeamByFlagIndex(flagindex);
 
-	gi.bprintf(PRINT_HIGH, "%s dropped the %s flag.\n", 
+	gi.bprintf(PRINT_HIGH, "%s dropped the %s flag.\n",
 		ent->client->pers.netname, CTF_GetTeamString(enemy_team));
 
-	flag = Drop_Item (ent, item);
+	flag = Drop_Item(ent, item);
 	flag->think = CTF_flagthink;
 	flag->style = enemy_team;
 	flag->count = 0;
@@ -517,14 +517,14 @@ void CTF_DropFlag (edict_t *ent, gitem_t *item)
 	flag->nextthink = level.time + 1.0;
 	ent->client->pers.inventory[ITEM_INDEX(item)] = 0;
 
-	ValidateSelectedItem (ent);
+	ValidateSelectedItem(ent);
 
 	CTF_RemoveSpecialFcRules(ent);
 }
 
-void CTF_SpawnFlag (int teamnum, vec3_t point)
+void CTF_SpawnFlag(int teamnum, vec3_t point)
 {
-	edict_t *flag;
+	edict_t* flag;
 
 	if (teamnum == RED_TEAM)
 		flag = Spawn_Item(FindItemByClassname("item_redflag"));
@@ -532,7 +532,7 @@ void CTF_SpawnFlag (int teamnum, vec3_t point)
 		flag = Spawn_Item(FindItemByClassname("item_blueflag"));
 	else
 		return;
-		
+
 	flag->think = CTF_flagthink;
 	flag->style = teamnum; // so think function knows which flag this is
 	flag->nextthink = level.time + FRAMETIME;
@@ -545,14 +545,14 @@ void CTF_SpawnFlag (int teamnum, vec3_t point)
 	gi.linkentity(flag);
 }
 
-edict_t *CTF_GetFlagCarrier (int teamnum)
+edict_t* CTF_GetFlagCarrier(int teamnum)
 {
 	int		i;
-	edict_t *cl_ent;
+	edict_t* cl_ent;
 
-	for (i=0 ; i<game.maxclients ; i++)
+	for (i = 0; i < game.maxclients; i++)
 	{
-		cl_ent = g_edicts+1+i;
+		cl_ent = g_edicts + 1 + i;
 
 		if (!cl_ent->inuse)
 			continue;
@@ -567,7 +567,7 @@ edict_t *CTF_GetFlagCarrier (int teamnum)
 	return NULL;
 }
 
-void CTF_AwardPlayer (edict_t *ent, int points, int credits)
+void CTF_AwardPlayer(edict_t* ent, int points, int credits)
 {
 	// basic sanity checks
 	if (!ent || !ent->inuse || !ent->client)
@@ -589,7 +589,7 @@ void CTF_AwardPlayer (edict_t *ent, int points, int credits)
 
 }
 
-int CTF_GetGroupNum (edict_t *ent, edict_t *base)
+int CTF_GetGroupNum(edict_t* ent, edict_t* base)
 {
 	float dist;
 
@@ -610,7 +610,7 @@ int CTF_GetGroupNum (edict_t *ent, edict_t *base)
 	}
 
 	dist = entdist(ent, base);
-			
+
 	// calculate the player's relative distance to their home base
 	// if they are inside it, they are defenders, else they are attackers
 	if (dist <= CTF_BASE_DEFEND_RANGE)
@@ -619,11 +619,11 @@ int CTF_GetGroupNum (edict_t *ent, edict_t *base)
 		return GROUP_ATTACKERS;
 }
 
-void CTF_AwardTeam (edict_t *ent, int teamnum, int points, int credits)
+void CTF_AwardTeam(edict_t* ent, int teamnum, int points, int credits)
 {
-	int		i, groupnum=0;
+	int		i, groupnum = 0;
 	float	dist;
-	edict_t	*cl_ent, *base;
+	edict_t* cl_ent, * base;
 
 	// determine whether or not points should be divided between
 	// defenders or attackers, or--if ent isn't specified--everyone
@@ -632,7 +632,7 @@ void CTF_AwardTeam (edict_t *ent, int teamnum, int points, int credits)
 		if ((base = CTF_GetFlagBaseEnt(teamnum)) != NULL)
 		{
 			dist = entdist(ent, base);
-			
+
 			// calculate the player's relative distance to their home base
 			// if they are inside it, they are defenders, else they are attackers
 			if (dist <= CTF_BASE_DEFEND_RANGE)
@@ -642,10 +642,10 @@ void CTF_AwardTeam (edict_t *ent, int teamnum, int points, int credits)
 		}
 	}
 
-	for (i=0 ; i<game.maxclients ; i++)
+	for (i = 0; i < game.maxclients; i++)
 	{
-		cl_ent = g_edicts+1+i;
-		
+		cl_ent = g_edicts + 1 + i;
+
 		if (!cl_ent->inuse)
 			continue;
 		if (ent && ent == cl_ent)
@@ -673,10 +673,10 @@ void CTF_AwardTeam (edict_t *ent, int teamnum, int points, int credits)
 	}
 }
 
-qboolean CTF_AllPlayerSpawnsCaptured (int type)
+qboolean CTF_AllPlayerSpawnsCaptured(int type)
 {
 	char	classStr[50];
-	edict_t *e=NULL;
+	edict_t* e = NULL;
 
 	if (type == RED_TEAM)
 		strcpy(classStr, "info_player_team1");
@@ -685,7 +685,7 @@ qboolean CTF_AllPlayerSpawnsCaptured (int type)
 	else
 		strcpy(classStr, "info_player_deathmatch");
 
-	while((e = G_Find(e, FOFS(classname), classStr)) != NULL)
+	while ((e = G_Find(e, FOFS(classname), classStr)) != NULL)
 	{
 		if (!e->inuse)
 			continue;
@@ -696,11 +696,11 @@ qboolean CTF_AllPlayerSpawnsCaptured (int type)
 	return true;
 }
 
-int CTF_NumPlayerSpawns (int type, int teamnum)
+int CTF_NumPlayerSpawns(int type, int teamnum)
 {
-	int		spawns=0;
+	int		spawns = 0;
 	char	classStr[50];
-	edict_t *e=NULL;
+	edict_t* e = NULL;
 
 	if (type == RED_TEAM)
 		strcpy(classStr, "info_player_team1");
@@ -709,7 +709,7 @@ int CTF_NumPlayerSpawns (int type, int teamnum)
 	else
 		strcpy(classStr, "info_player_deathmatch");
 
-	while((e = G_Find(e, FOFS(classname), classStr)) != NULL)
+	while ((e = G_Find(e, FOFS(classname), classStr)) != NULL)
 	{
 		if (e->inuse && (!teamnum || e->teamnum == teamnum))
 			spawns++;
@@ -718,13 +718,13 @@ int CTF_NumPlayerSpawns (int type, int teamnum)
 	return spawns;
 }
 
-void CTF_PlayerRespawnTime (edict_t *ent)
+void CTF_PlayerRespawnTime(edict_t* ent)
 {
 	int team_spawns = CTF_NumPlayerSpawns(0, ent->teamnum) + 1;
 	int total_spawns = CTF_NumPlayerSpawns(0, 0) + 1;
 	float ratio = team_spawns / total_spawns;
 	float time = CTF_PLAYERSPAWN_TIME;
-	
+
 	// don't apply ratio unless all spawns have been captured
 	if (!CTF_AllPlayerSpawnsCaptured(0))
 	{
@@ -741,11 +741,11 @@ void CTF_PlayerRespawnTime (edict_t *ent)
 	ent->client->respawn_time = level.time + time;
 }
 
-edict_t *CTF_NearestPlayerSpawn (edict_t *ent, int teamnum, float range, qboolean vis)
+edict_t* CTF_NearestPlayerSpawn(edict_t* ent, int teamnum, float range, qboolean vis)
 {
-	edict_t *e=NULL;
+	edict_t* e = NULL;
 
-	while((e = findclosestradius(e, ent->s.origin, range)) != NULL)
+	while ((e = findclosestradius(e, ent->s.origin, range)) != NULL)
 	{
 		// sanity check
 		if (!e || !e->inuse)
@@ -761,19 +761,19 @@ edict_t *CTF_NearestPlayerSpawn (edict_t *ent, int teamnum, float range, qboolea
 	return NULL;
 }
 
-void ctf_playerspawn_die (edict_t *self, edict_t *inflictor, edict_t *attacker, int damage, vec3_t point)
+void ctf_playerspawn_die(edict_t* self, edict_t* inflictor, edict_t* attacker, int damage, vec3_t point)
 {
 	int		points = CTF_PLAYERSPAWN_CAPTURE_EXPERIENCE;
 	int		credits = CTF_PLAYERSPAWN_CAPTURE_CREDITS;
-	edict_t *cl;
+	edict_t* cl;
 
 	if (attacker && attacker->inuse && ((cl = G_GetClient(attacker)) != NULL))
 	{
 		//FIXME: award attacker bonus points for capturing a spawn point
 		gi.bprintf(PRINT_HIGH, "%s captured a %s spawn point!\n", cl->client->pers.netname, CTF_GetTeamString(self->teamnum));
 
-		CTF_AwardTeam(cl, cl->teamnum, (int)(GROUP_SHARE_MULT*points), (int)(GROUP_SHARE_MULT*credits));
-		CTF_AwardPlayer(cl, (int)((1.0-GROUP_SHARE_MULT)*points), (int)((1.0-GROUP_SHARE_MULT)*credits));
+		CTF_AwardTeam(cl, cl->teamnum, (int)(GROUP_SHARE_MULT * points), (int)(GROUP_SHARE_MULT * credits));
+		CTF_AwardPlayer(cl, (int)((1.0 - GROUP_SHARE_MULT) * points), (int)((1.0 - GROUP_SHARE_MULT) * credits));
 	}
 
 	// swap teams
@@ -791,15 +791,15 @@ void ctf_playerspawn_die (edict_t *self, edict_t *inflictor, edict_t *attacker, 
 	self->health = self->max_health;
 }
 
-void ctf_playerspawn_touch (edict_t *self, edict_t *other, cplane_t *plane, csurface_t *surf)
+void ctf_playerspawn_touch(edict_t* self, edict_t* other, cplane_t* plane, csurface_t* surf)
 {
-//	gi.dprintf("ctf_playerspawn_touch()\n");
+	//	gi.dprintf("ctf_playerspawn_touch()\n");
 
 	if (!self->teamnum && other && other->inuse && other->client && other->teamnum)
 	{
-	//	gi.dprintf("%d team\n", other->teamnum);
+		//	gi.dprintf("%d team\n", other->teamnum);
 
-		// claim this spawn for our team
+			// claim this spawn for our team
 		self->teamnum = other->teamnum;
 		//self->touch = NULL;
 		self->takedamage = DAMAGE_YES;
@@ -809,20 +809,20 @@ void ctf_playerspawn_touch (edict_t *self, edict_t *other, cplane_t *plane, csur
 		else
 			self->s.renderfx = RF_SHELL_BLUE;
 
-	//	gi.bprintf(PRINT_HIGH, "%s claimed a spawn for the %s team!\n", other->client->pers.netname, CTF_GetTeamString(self->teamnum));
+		//	gi.bprintf(PRINT_HIGH, "%s claimed a spawn for the %s team!\n", other->client->pers.netname, CTF_GetTeamString(self->teamnum));
 	}
 }
 
-void ctf_playerspawn_think (edict_t *self)
+void ctf_playerspawn_think(edict_t* self)
 {
 
 }
 
-void CTF_InitSpawnPoints (int teamnum)
+void CTF_InitSpawnPoints(int teamnum)
 {
-	int		effects=0;
+	int		effects = 0;
 	char	classStr[50];
-	edict_t	*e=NULL;
+	edict_t* e = NULL;
 
 	if (teamnum == RED_TEAM)
 	{
@@ -839,11 +839,11 @@ void CTF_InitSpawnPoints (int teamnum)
 		strcpy(classStr, "info_player_deathmatch");
 	}
 
-	while((e = G_Find(e, FOFS(classname), classStr)) != NULL)
+	while ((e = G_Find(e, FOFS(classname), classStr)) != NULL)
 	{
 		if (!e->inuse)
 			continue;
-		
+
 		e->touch = ctf_playerspawn_touch;
 		e->health = CTF_PLAYERSPAWN_HEALTH;
 		e->max_health = e->health;
@@ -864,12 +864,12 @@ void CTF_InitSpawnPoints (int teamnum)
 	}
 }
 
-void CTF_AwardFrag (edict_t *attacker, edict_t *target)
+void CTF_AwardFrag(edict_t* attacker, edict_t* target)
 {
-	int		points=0, credits=0;
+	int		points = 0, credits = 0;
 	int		enemy_teamnum = 0;
-	float	mult=1.0;
-	edict_t	*team_fc, *enemy_fc, *team_base, *enemy_base, *team_spawn, *enemy_spawn;
+	float	mult = 1.0;
+	edict_t* team_fc, * enemy_fc, * team_base, * enemy_base, * team_spawn, * enemy_spawn;
 
 	if (total_players() < CTF_MINIMUM_PLAYERS)
 		return;
@@ -878,7 +878,7 @@ void CTF_AwardFrag (edict_t *attacker, edict_t *target)
 	target = G_GetClient(target);
 
 	//4.04 give tank morph frag exp
-	if (!attacker || !target || !attacker->inuse || !target->inuse 
+	if (!attacker || !target || !attacker->inuse || !target->inuse
 		|| G_IsSpectator(attacker) || G_IsSpectator(target))
 		return;
 
@@ -903,7 +903,7 @@ void CTF_AwardFrag (edict_t *attacker, edict_t *target)
 	// are we defending our base?
 	if (team_base && (entdist(attacker, team_base) <= CTF_BASE_DEFEND_RANGE))
 	{
-		gi.bprintf(PRINT_HIGH, "%s defends the %s base!\n", 
+		gi.bprintf(PRINT_HIGH, "%s defends the %s base!\n",
 			attacker->client->pers.netname, CTF_GetTeamString(attacker->teamnum));
 
 		//Give them credit
@@ -913,10 +913,10 @@ void CTF_AwardFrag (edict_t *attacker, edict_t *target)
 		credits = CTF_BASE_DEFEND_CREDITS;
 	}
 	// are we assisting a flag carrier?
-	else if (team_fc && (attacker != team_fc) 
+	else if (team_fc && (attacker != team_fc)
 		&& (entdist(attacker, team_fc) <= CTF_FLAG_DEFEND_RANGE))
 	{
-		gi.bprintf(PRINT_HIGH, "%s assists the %s flag carrier!\n", 
+		gi.bprintf(PRINT_HIGH, "%s assists the %s flag carrier!\n",
 			attacker->client->pers.netname, CTF_GetTeamString(attacker->teamnum));
 
 		points = CTF_FLAG_DEFEND_EXP;
@@ -925,7 +925,7 @@ void CTF_AwardFrag (edict_t *attacker, edict_t *target)
 	// did we kill the enemy flag carrier?
 	else if (enemy_fc && (target == enemy_fc))
 	{
-		gi.bprintf(PRINT_HIGH, "%s kills the %s flag carrier!\n", 
+		gi.bprintf(PRINT_HIGH, "%s kills the %s flag carrier!\n",
 			attacker->client->pers.netname, CTF_GetTeamString(enemy_teamnum));
 
 		//Give them credit
@@ -939,10 +939,10 @@ void CTF_AwardFrag (edict_t *attacker, edict_t *target)
 	}
 	// award points for killing enemy base defenders IF their flag is secure
 	// no points are awarded for enemy base campers!
-	else if (enemy_base && (enemy_base->count == BASE_FLAG_SECURE) 
+	else if (enemy_base && (enemy_base->count == BASE_FLAG_SECURE)
 		&& (entdist(attacker, enemy_base) <= CTF_BASE_DEFEND_RANGE))
 	{
-		gi.bprintf(PRINT_HIGH, "%s kills a %s defender!\n", 
+		gi.bprintf(PRINT_HIGH, "%s kills a %s defender!\n",
 			attacker->client->pers.netname, CTF_GetTeamString(enemy_teamnum));
 
 		//Give them credit
@@ -973,14 +973,14 @@ void CTF_AwardFrag (edict_t *attacker, edict_t *target)
 	// this share is subtracted from the amount awarded to the player
 	mult -= GROUP_SHARE_MULT;
 
-	CTF_AwardTeam(attacker, attacker->teamnum, 
-		(int)(points*GROUP_SHARE_MULT), (int)(credits*GROUP_SHARE_MULT));
-	
+	CTF_AwardTeam(attacker, attacker->teamnum,
+		(int)(points * GROUP_SHARE_MULT), (int)(credits * GROUP_SHARE_MULT));
+
 	// the player is awarded the remaining share
-	CTF_AwardPlayer(attacker, points*mult, credits*mult);
+	CTF_AwardPlayer(attacker, points * mult, credits * mult);
 }
 
-int CTF_GetTeamCaps (int teamnum)
+int CTF_GetTeamCaps(int teamnum)
 {
 	if (teamnum == RED_TEAM)
 		return red_flag_caps;
@@ -989,13 +989,13 @@ int CTF_GetTeamCaps (int teamnum)
 	return 0;
 }
 
-void CTF_AwardFlagCapture (edict_t *carrier, int teamnum)
+void CTF_AwardFlagCapture(edict_t* carrier, int teamnum)
 {
-	int		enemy_teamnum=0, delta;
+	int		enemy_teamnum = 0, delta;
 	int		i, exp, credits;//, caps;
-	float	mod=1.0;
-	edict_t	*cl_ent;
-	qboolean uneventeams=false;
+	float	mod = 1.0;
+	edict_t* cl_ent;
+	qboolean uneventeams = false;
 
 	if (total_players() < CTF_MINIMUM_PLAYERS)
 		return;
@@ -1006,21 +1006,21 @@ void CTF_AwardFlagCapture (edict_t *carrier, int teamnum)
 		enemy_teamnum = RED_TEAM;
 
 	// calculate delta between our team caps and enemy team caps
-	delta = CTF_GetTeamCaps(teamnum)-CTF_GetTeamCaps(enemy_teamnum);
+	delta = CTF_GetTeamCaps(teamnum) - CTF_GetTeamCaps(enemy_teamnum);
 	// if it's greater than 1, then the teams may be uneven
 	if (delta > 1)
 	{
 		uneventeams = true;
 		mod = 0.5; // mod will reduce exp and credits of unfair team
 	}
-	
-	exp = CTF_FLAG_CAPTURE_EXP*mod;
-	credits = CTF_FLAG_CAPTURE_CREDITS*mod;
+
+	exp = CTF_FLAG_CAPTURE_EXP * mod;
+	credits = CTF_FLAG_CAPTURE_CREDITS * mod;
 
 	// award points to winning team
-	for (i=0 ; i<game.maxclients ; i++)
+	for (i = 0; i < game.maxclients; i++)
 	{
-		cl_ent = g_edicts+1+i;
+		cl_ent = g_edicts + 1 + i;
 		if (!cl_ent->inuse)
 			continue;
 		if (G_IsSpectator(cl_ent))
@@ -1031,16 +1031,16 @@ void CTF_AwardFlagCapture (edict_t *carrier, int teamnum)
 		cl_ent->myskills.inuse++;
 
 		// cap level modifier
-		if (cl_ent->myskills.inuse > 0.5*cl_ent->myskills.level)
-			cl_ent->myskills.inuse = 0.5*cl_ent->myskills.level;
+		if (cl_ent->myskills.inuse > 0.5 * cl_ent->myskills.level)
+			cl_ent->myskills.inuse = 0.5 * cl_ent->myskills.level;
 
 		CTF_AwardPlayer(cl_ent, exp, credits);
 	}
 
 	// reduce level modifier for losing team
-	for (i=0 ; i<game.maxclients ; i++)
+	for (i = 0; i < game.maxclients; i++)
 	{
-		cl_ent = g_edicts+1+i;
+		cl_ent = g_edicts + 1 + i;
 		if (!cl_ent->inuse)
 			continue;
 		if (G_IsSpectator(cl_ent))
@@ -1051,8 +1051,8 @@ void CTF_AwardFlagCapture (edict_t *carrier, int teamnum)
 		cl_ent->myskills.inuse--;
 
 		// cap level modifier
-		if (cl_ent->myskills.inuse < -(0.5*cl_ent->myskills.level))
-			cl_ent->myskills.inuse = -(0.5*cl_ent->myskills.level);
+		if (cl_ent->myskills.inuse < -(0.5 * cl_ent->myskills.level))
+			cl_ent->myskills.inuse = -(0.5 * cl_ent->myskills.level);
 	}
 
 	// let players in the game that have been waiting
@@ -1064,7 +1064,7 @@ void CTF_AwardFlagCapture (edict_t *carrier, int teamnum)
 
 }
 
-void flagbase_touch (edict_t *self, edict_t *other, cplane_t *plane, csurface_t *surf)
+void flagbase_touch(edict_t* self, edict_t* other, cplane_t* plane, csurface_t* surf)
 {
 	int	enemy_flag_index = 0, enemy_teamnum = 0;
 
@@ -1095,7 +1095,7 @@ void flagbase_touch (edict_t *self, edict_t *other, cplane_t *plane, csurface_t 
 	// if we have the enemy flag, cap it!
 	if (other->client->pers.inventory[enemy_flag_index] > 0)
 	{
-		edict_t *p;
+		edict_t* p;
 		int i;
 
 		if (other->teamnum == RED_TEAM)
@@ -1104,7 +1104,7 @@ void flagbase_touch (edict_t *self, edict_t *other, cplane_t *plane, csurface_t 
 			blue_flag_caps++;
 
 		//Notify everyone
-		G_PrintGreenText(va("%s captured the %s flag!", 
+		G_PrintGreenText(va("%s captured the %s flag!",
 			other->client->pers.netname, CTF_GetTeamString(enemy_teamnum)));
 		gi.sound(other, CHAN_ITEM, gi.soundindex("ctf/flagcap.wav"), 1, ATTN_NORM, 0);
 
@@ -1117,39 +1117,39 @@ void flagbase_touch (edict_t *self, edict_t *other, cplane_t *plane, csurface_t 
 			qboolean assist;
 			assist = false;
 
-			if(G_IsSpectator(p))
+			if (G_IsSpectator(p))
 				continue;
-			if(p->client->pers.ctf_assist_frag > level.time)
+			if (p->client->pers.ctf_assist_frag > level.time)
 			{
 				//Notify everyone
-				G_PrintGreenText(va("%s gains an assist for killing the flag carrier!", 
+				G_PrintGreenText(va("%s gains an assist for killing the flag carrier!",
 					p->myskills.player_name));
 
-                //Give them an assist credit
+				//Give them an assist credit
 				assist = true;
 				p->client->pers.ctf_assist_frag = 0.0;
 
 				//Give them some bonus points
 				CTF_AwardPlayer(p, CTF_FLAG_ASSIST_EXP, 0);
 			}
-			if(p->client->pers.ctf_assist_return > level.time)
+			if (p->client->pers.ctf_assist_return > level.time)
 			{
 				//Notify everyone
-				G_PrintGreenText(va("%s gains an assist for returning the flag!", 
+				G_PrintGreenText(va("%s gains an assist for returning the flag!",
 					p->myskills.player_name));
 
-                //Give them an assist credit
+				//Give them an assist credit
 				assist = true;
 				p->client->pers.ctf_assist_return = 0.0;
 
 				//Give them some bonus points
 				CTF_AwardPlayer(p, CTF_FLAG_ASSIST_EXP, 0);
 			}
-			if(assist)	p->myskills.assists++;
-		}		
+			if (assist)	p->myskills.assists++;
+		}
 
 		other->client->pers.inventory[enemy_flag_index] = 0;
-		
+
 		// Paril
 		CTF_AwardFlagCapture(other, other->teamnum);
 
@@ -1167,9 +1167,9 @@ void flagbase_touch (edict_t *self, edict_t *other, cplane_t *plane, csurface_t 
 	}
 }
 
-void flagbase_think (edict_t *self)
+void flagbase_think(edict_t* self)
 {
-	edict_t		*e=NULL, *cl;
+	edict_t* e = NULL, * cl;
 
 	// search for nearby targets
 	while ((e = findclosestradius(e, self->s.origin, 64)) != NULL)
@@ -1214,15 +1214,15 @@ void flagbase_think (edict_t *self)
 	self->nextthink = level.time + 1.0;
 }
 
-void CTF_SpawnFlagBase (int teamnum, vec3_t point)
+void CTF_SpawnFlagBase(int teamnum, vec3_t point)
 {
-	edict_t *base;
+	edict_t* base;
 
 	base = G_Spawn();
 	base->think = flagbase_think;
 	base->touch = flagbase_touch;
 	base->nextthink = level.time + FRAMETIME;
-	base->s.modelindex = gi.modelindex ("models/objects/dmspot/tris.md2");
+	base->s.modelindex = gi.modelindex("models/objects/dmspot/tris.md2");
 	base->solid = SOLID_TRIGGER;
 	base->movetype = MOVETYPE_NONE;
 	base->clipmask = MASK_MONSTERSOLID;
@@ -1286,14 +1286,15 @@ qboolean CTF_GetFlagPosition(int teamnum, vec3_t pos)
 		return true;
 	}
 
+	gi.dprintf("WARNING: Vortex failed to load %s\n", path);
 	return false;
 }
 
-void CTF_WriteFlagPosition (edict_t *ent)  
+void CTF_WriteFlagPosition(edict_t* ent)
 {
 	int		teamnum;
 	char	path[512];
-	FILE	*fptr;
+	FILE* fptr;
 
 	if (!ent->myskills.administrator)
 		return;
@@ -1305,26 +1306,26 @@ void CTF_WriteFlagPosition (edict_t *ent)
 
 	sprintf(path, "%s/settings/%s_%s.loc", game_path->string, level.mapname, s1);
 
-     if ((fptr = fopen(path, "w")) != NULL) // write text to file
-     {  
-		 // write origin along with flag team
-		 fprintf(fptr, "%f,%f,%f\n", ent->s.origin[0],ent->s.origin[1], ent->s.origin[2]); 
-         fclose(fptr); 
+	if ((fptr = fopen(path, "w")) != NULL) // write text to file
+	{
+		// write origin along with flag team
+		fprintf(fptr, "%f,%f,%f\n", ent->s.origin[0], ent->s.origin[1], ent->s.origin[2]);
+		fclose(fptr);
 
-		 safe_cprintf(ent, PRINT_HIGH, "Set flag location for %s team on %s\n", 
-			 CTF_GetTeamString(teamnum), level.mapname);
-         return;  
-     }  
-     gi.dprintf("ERROR: Failed to write to server log.\n"); 
+		safe_cprintf(ent, PRINT_HIGH, "Set flag location for %s team on %s\n",
+			CTF_GetTeamString(teamnum), level.mapname);
+		return;
+	}
+	gi.dprintf("ERROR: Vortex failed to write %s.\n", path);
 }
 
-void CTF_RemovePlayerFlags (void)
+void CTF_RemovePlayerFlags(void)
 {
 	int		i;
-	edict_t *cl_ent;
+	edict_t* cl_ent;
 
-	for (i=0 ; i<game.maxclients ; i++) {
-		cl_ent = g_edicts+1+i;
+	for (i = 0; i < game.maxclients; i++) {
+		cl_ent = g_edicts + 1 + i;
 		if (cl_ent && cl_ent->inuse)
 		{
 			cl_ent->client->pers.inventory[red_flag_index] = 0;
@@ -1333,10 +1334,10 @@ void CTF_RemovePlayerFlags (void)
 	}
 }
 
-void CTF_CheckFlag (edict_t *ent)
+void CTF_CheckFlag(edict_t* ent)
 {
 	int		index, teamnum;
-	edict_t	*base;
+	edict_t* base;
 
 	if (!ctf->value)
 		return;
@@ -1367,9 +1368,9 @@ void CTF_CheckFlag (edict_t *ent)
 	WriteServerMsg("CTF was unable to re-spawn the flag.", "WARNING", true, false);
 }
 
-void CTF_ShutDown (void)
+void CTF_ShutDown(void)
 {
-	edict_t *e;
+	edict_t* e;
 
 	// we don't want flags carried over to the next map
 	CTF_RemovePlayerFlags();
@@ -1403,7 +1404,7 @@ void CTF_ShutDown (void)
 	WriteServerMsg("CTF shutdown complete.", "Info", true, false);
 }
 
-void CTF_Init (void)
+void CTF_Init(void)
 {
 	vec3_t	start;
 
@@ -1416,7 +1417,7 @@ void CTF_Init (void)
 		CTF_SpawnFlagBase(RED_TEAM, start);
 	else
 		CTF_SpawnFlagBase(RED_TEAM, NULL);
-	
+
 	// spawn blue base
 	if (CTF_GetFlagPosition(BLUE_TEAM, start))
 		CTF_SpawnFlagBase(BLUE_TEAM, start);
@@ -1441,10 +1442,10 @@ void CTF_Init (void)
 	WriteServerMsg("CTF initialization is complete.", "Info", true, false);
 }
 
-edict_t *CTF_SelectTeamSpawnPoint (edict_t *ent)
+edict_t* CTF_SelectTeamSpawnPoint(edict_t* ent)
 {
 	char	classStr[100];
-	edict_t	*e=NULL;
+	edict_t* e = NULL;
 	vec3_t	start;
 	trace_t	tr;
 
@@ -1459,7 +1460,7 @@ edict_t *CTF_SelectTeamSpawnPoint (edict_t *ent)
 	else
 		return NULL;
 
-	while((e = G_Find(e, FOFS(classname), classStr)) != NULL)
+	while ((e = G_Find(e, FOFS(classname), classStr)) != NULL)
 	{
 		if (!e->inuse)
 			continue;
@@ -1480,9 +1481,9 @@ edict_t *CTF_SelectTeamSpawnPoint (edict_t *ent)
 	return NULL;
 }
 
-int CTF_GetBaseStatus (int teamnum)
+int CTF_GetBaseStatus(int teamnum)
 {
-	edict_t *base;
+	edict_t* base;
 
 	if (!teamnum)
 		return 0;
@@ -1495,9 +1496,9 @@ int CTF_GetBaseStatus (int teamnum)
 	return base->count;
 }
 
-edict_t *CTF_SelectSpawnPoint (edict_t *ent)
+edict_t* CTF_SelectSpawnPoint(edict_t* ent)
 {
-	edict_t *base, *spawn;
+	edict_t* base, * spawn;
 
 	base = CTF_GetFlagBaseEnt(ent->teamnum);
 
@@ -1511,34 +1512,34 @@ edict_t *CTF_SelectSpawnPoint (edict_t *ent)
 		// try to spawn at a deathmatch spawn point
 		if ((spawn = SelectDeathmatchSpawnPoint(ent)) != NULL)
 		{
-		//	gi.dprintf("deathmatch spawn\n");
+			//	gi.dprintf("deathmatch spawn\n");
 			return spawn;
 		}
 		// try to spawn inside base
 		{
-		//	gi.dprintf("ctf spawn\n");
+			//	gi.dprintf("ctf spawn\n");
 			return CTF_SelectTeamSpawnPoint(ent);
 		}
-		
+
 	}
 
 	// FIXME: add a search for closest DM spawn to the flag's base
 	if ((spawn = CTF_SelectTeamSpawnPoint(ent)) != NULL)
 		return spawn;
 	else
-	// we couldn't find a team spawn, so use a DM spawn instead
+		// we couldn't find a team spawn, so use a DM spawn instead
 		return SelectDeathmatchSpawnPoint(ent);
 }
 
-void CTF_SpawnPlayersInBase (int teamnum)
+void CTF_SpawnPlayersInBase(int teamnum)
 {
 	int		i;
-	edict_t *cl_ent, *spot;
+	edict_t* cl_ent, * spot;
 	vec3_t	start;
 
-	for (i=0 ; i<game.maxclients ; i++)
+	for (i = 0; i < game.maxclients; i++)
 	{
-		cl_ent = g_edicts+1+i;
+		cl_ent = g_edicts + 1 + i;
 
 		if (!cl_ent->inuse)
 			continue;
@@ -1571,7 +1572,7 @@ void CTF_SpawnPlayersInBase (int teamnum)
 			// kill any enemy base campers
 			cl_ent->client->invincible_framenum = level.framenum + 50;
 		}
-		
+
 		// remove all summonables
 		//VortexRemovePlayerSummonables(cl_ent);
 
@@ -1587,9 +1588,9 @@ void CTF_SpawnPlayersInBase (int teamnum)
 }
 
 //float CTF_DistanceFromEnemyBase (edict_t *ent)
-float CTF_DistanceFromBase(edict_t *ent, vec3_t start, int base_teamnum)
+float CTF_DistanceFromBase(edict_t* ent, vec3_t start, int base_teamnum)
 {
-	edict_t *base;
+	edict_t* base;
 	vec3_t	org;
 
 	if (!ctf->value || !base_teamnum)
@@ -1605,16 +1606,16 @@ float CTF_DistanceFromBase(edict_t *ent, vec3_t start, int base_teamnum)
 	// return distance to flag base
 	if ((base = CTF_GetFlagBaseEnt(base_teamnum)) != NULL)
 		return entdist(ent, base);
-	
+
 	// can't find base
 	return 8192;
 
 }
 
-void CTF_JoinMenuHandler (edict_t *ent, int option)
+void CTF_JoinMenuHandler(edict_t* ent, int option)
 {
-	int			num=0;
-	joined_t	*slot=NULL;
+	int			num = 0;
+	joined_t* slot = NULL;
 
 	// exit menu
 	if (option == 3)
@@ -1644,13 +1645,13 @@ void CTF_JoinMenuHandler (edict_t *ent, int option)
 	}
 }
 
-void CTF_OpenJoinMenu (edict_t *ent)
+void CTF_OpenJoinMenu(edict_t* ent)
 {
 	if (debuginfo->value)
 		gi.dprintf("DEBUG: CTF_OpenJoinMenu()\n");
 
 	if (!ShowMenu(ent))
-        return;
+		return;
 
 	// new character
 	if (!ent->myskills.class_num)
@@ -1663,7 +1664,7 @@ void CTF_OpenJoinMenu (edict_t *ent)
 
 	if (!ent->myskills.administrator && !InJoinedQueue(ent) && (level.time > pregame_time->value))
 	{
-//							xxxxxxxxxxxxxxxxxxxxxxxxxxx (max length 27 chars)
+		//							xxxxxxxxxxxxxxxxxxxxxxxxxxx (max length 27 chars)
 		addlinetomenu(ent, "Vortex CTF", MENU_GREEN_CENTERED);
 		addlinetomenu(ent, " ", 0);
 		addlinetomenu(ent, "The match has already", 0);
