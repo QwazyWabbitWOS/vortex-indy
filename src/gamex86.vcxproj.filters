@@ -539,6 +539,7 @@
     <None Include="game.def">
       <Filter>Resources</Filter>
     </None>
+    <None Include="GNUmakefile" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ally.h">

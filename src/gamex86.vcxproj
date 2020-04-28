@@ -484,6 +484,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <None Include="game.def" />
+    <None Include="GNUmakefile" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="abil\ability_def.h" />
