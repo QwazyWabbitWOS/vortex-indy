@@ -1,3 +1,6 @@
+
+#define _POSIX_C_SOURCE 200809L	// because this code uses strdup
+
 #include "g_local.h"
 #include <sys/stat.h>
 #include "sql/sqlite3.h"
