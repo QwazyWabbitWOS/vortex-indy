@@ -3544,7 +3544,7 @@ void ClientThink (edict_t *ent, usercmd_t *ucmd)
 
 		if (/*ent->groundentity && !pm.groundentity &&*/ (pm.cmd.upmove >= 10) /*&& (pm.waterlevel == 0)*/)
 		{
-			if (((ent->mtype == MORPH_BRAIN || ent->mtype == MORPH_MUTANT) && pm.waterlevel > 0) || ent->groundentity && !pm.groundentity)
+			if (((ent->mtype == MORPH_BRAIN || ent->mtype == MORPH_MUTANT) && pm.waterlevel > 0) || (ent->groundentity && !pm.groundentity))
 			{
 				V_PlayerJump(ent);
 				ent->client->jump = true;
