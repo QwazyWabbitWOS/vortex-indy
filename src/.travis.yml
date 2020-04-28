@@ -8,5 +8,5 @@ compiler:
   - gcc
 
 script:
-  - make all -C src/
+  - make all -C src/ -f GNUmakefile
 
