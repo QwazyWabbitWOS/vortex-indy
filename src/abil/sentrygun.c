@@ -831,7 +831,7 @@ void sentrygun_think (edict_t *self)
 
 	if (!self->enemy) //If we do not have a target yet
 	{
-		if ( target = sentry_findtarget(self) )
+		if ( (target = sentry_findtarget(self)) )
 			attack(self);
 	}
 	else if ( CanTarget(self) )

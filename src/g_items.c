@@ -535,7 +535,7 @@ qboolean Pickup_Ammo (edict_t *ent, edict_t *other)
 	 if ((other->client || other->mtype) &&  // knights and polts can't get ammo in pvm modes
 		 (pvm->value || invasion->value) &&
 		 // polts only if the ammo is not cells
-		 (other->myskills.class_num == CLASS_POLTERGEIST && strcmp(ent->classname,"ammo_cells") ||
+		 ((other->myskills.class_num == CLASS_POLTERGEIST && strcmp(ent->classname,"ammo_cells")) ||
 		 other->myskills.class_num == CLASS_KNIGHT)) // and knights, never.
 		 return false;
 
