@@ -475,7 +475,7 @@ void INV_SpawnMonsters (edict_t *self)
 		int randomval = GetRandom(1, 9);
 
 		if (invasion_difficulty_level % 5 && invasion->value == 1) // nonboss stage? easy mode?
-			while ( (randomval == 5) ) // disallow medics
+			while ( randomval == 5 ) // disallow medics
 			{
 				randomval = GetRandom(1, 8);
 			}

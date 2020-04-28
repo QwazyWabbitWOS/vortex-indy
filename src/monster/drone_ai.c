@@ -753,7 +753,7 @@ qboolean FindPlat (edict_t *self, vec3_t plat_pos)
 			continue;
 
 		VectorCopy(start, end);
-		end[2] += abs(e->s.origin[2]);
+		end[2] += fabsf(e->s.origin[2]);
 		if (distance(end, self->enemy->s.origin)
 			> distance(self->s.origin, self->enemy->s.origin))
 			continue; // plat must bring us closer to our goal
