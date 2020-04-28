@@ -242,7 +242,8 @@ qboolean VortexCommand(char* command, edict_t* ent)
 	}
 	
 	return false;
-};
+}
+
 #else
 
 qboolean VortexCommand(char* command, edict_t* ent)
@@ -262,7 +263,7 @@ qboolean VortexCommand(char* command, edict_t* ent)
 	}
 	
 	return false;
-};
+}
 
 #endif
 
