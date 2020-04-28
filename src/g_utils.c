@@ -1480,7 +1480,7 @@ qboolean nearfov (edict_t *ent, edict_t *other, int vertical_degrees, int horizo
 
 	if (horizontal_degrees)
 	{
-		delta = abs(old_angles[YAW]-new_angles[YAW]);
+		delta = fabsf(old_angles[YAW]-new_angles[YAW]);
 		if (delta > 180)
 			delta = 360-delta;
 		//gi.dprintf("delta %d horizontal\n", delta);
@@ -1491,9 +1491,9 @@ qboolean nearfov (edict_t *ent, edict_t *other, int vertical_degrees, int horizo
 	if (vertical_degrees)
 	{
 		if (ent->client)
-			delta = abs(old_angles[PITCH]-new_angles[PITCH]);
+			delta = fabsf(old_angles[PITCH]-new_angles[PITCH]);
 		else
-			delta = abs(ent->s.angles[PITCH]-forward[PITCH]);
+			delta = fabsf(ent->s.angles[PITCH]-forward[PITCH]);
 		if (delta > 180)
 			delta = 360-delta;
 		//gi.dprintf("delta %d vertical\n", delta);

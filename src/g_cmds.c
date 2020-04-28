@@ -2889,42 +2889,42 @@ void Cmd_Overload_f (edict_t *ent)
 	}
 	else if (Q_stricmp(cmd, "fireball") == 0)
 	{
-		if (GetOverloadValues(ent, talentLevel, cubes, FIREBALL_COST, &cost_mult, &skill_mult));
+		if (GetOverloadValues(ent, talentLevel, cubes, FIREBALL_COST, &cost_mult, &skill_mult))
 			Cmd_Fireball_f(ent, skill_mult, cost_mult);
 	}
 	else if (Q_stricmp(cmd, "icebolt") == 0)
 	{
-		if (GetOverloadValues(ent, talentLevel, cubes, ICEBOLT_COST, &cost_mult, &skill_mult));
+		if (GetOverloadValues(ent, talentLevel, cubes, ICEBOLT_COST, &cost_mult, &skill_mult))
 			Cmd_IceBolt_f(ent, skill_mult, cost_mult);
 	}
 	else if (Q_stricmp(cmd, "meteor") == 0)
 	{
-		if (GetOverloadValues(ent, talentLevel, cubes, METEOR_COST, &cost_mult, &skill_mult));
+		if (GetOverloadValues(ent, talentLevel, cubes, METEOR_COST, &cost_mult, &skill_mult))
 			Cmd_Meteor_f(ent, skill_mult, cost_mult);
 	}
 	else if (Q_stricmp(cmd, "nova") == 0)
 	{
-		if (GetOverloadValues(ent, talentLevel, cubes, NOVA_COST, &cost_mult, &skill_mult));
+		if (GetOverloadValues(ent, talentLevel, cubes, NOVA_COST, &cost_mult, &skill_mult))
 			Cmd_Nova_f(ent, 0, skill_mult, cost_mult);
 	}
 	else if (Q_stricmp(cmd, "frostnova") == 0)
 	{
-		if (GetOverloadValues(ent, talentLevel, cubes, NOVA_COST, &cost_mult, &skill_mult));
+		if (GetOverloadValues(ent, talentLevel, cubes, NOVA_COST, &cost_mult, &skill_mult))
 			Cmd_FrostNova_f(ent, skill_mult, cost_mult);
 	}
 	else if (Q_stricmp(cmd, "chainlightning") == 0)
 	{
-		if (GetOverloadValues(ent, talentLevel, cubes, CLIGHTNING_COST, &cost_mult, &skill_mult));
+		if (GetOverloadValues(ent, talentLevel, cubes, CLIGHTNING_COST, &cost_mult, &skill_mult))
 			Cmd_ChainLightning_f(ent, skill_mult, cost_mult);
 	}
 	else if (Q_stricmp(cmd, "lightningstorm") == 0)
 	{
-		if (GetOverloadValues(ent, talentLevel, cubes, LIGHTNING_COST, &cost_mult, &skill_mult));
+		if (GetOverloadValues(ent, talentLevel, cubes, LIGHTNING_COST, &cost_mult, &skill_mult))
 			Cmd_LightningStorm_f(ent, skill_mult, cost_mult);
 	}
 	else if (Q_stricmp(cmd, "spell_bomb") == 0 || Q_stricmp(cmd, "bombspell") == 0)
 	{
-		if (GetOverloadValues(ent, talentLevel, cubes, COST_FOR_BOMB, &cost_mult, &skill_mult));
+		if (GetOverloadValues(ent, talentLevel, cubes, COST_FOR_BOMB, &cost_mult, &skill_mult))
 			Cmd_BombPlayer(ent, skill_mult, cost_mult);
 	}
 	else

@@ -230,7 +230,7 @@ edict_t* INV_SpawnDrone(edict_t* self, edict_t *e, int index)
 	
 	// calculate starting position
 	VectorCopy(e->s.origin, start);
-	start[2] = e->absmax[2] + 1 + abs(monster->mins[2]);
+	start[2] = e->absmax[2] + 1 + fabsf(monster->mins[2]);
 
 	tr = gi.trace(start, monster->mins, monster->maxs, start, NULL, MASK_SHOT);
 
@@ -521,7 +521,7 @@ void INV_SpawnPlayers (void)
 		{
 			// get player starting position
 			VectorCopy(e->s.origin, start);
-			start[2] = e->absmax[2] + 1 + abs(cl_ent->mins[2]);
+			start[2] = e->absmax[2] + 1 + fabsf(cl_ent->mins[2]);
 
 			tr = gi.trace(start, cl_ent->mins, cl_ent->maxs, start, NULL, MASK_SHOT);
 
@@ -722,7 +722,7 @@ void inv_defenderspawn_think (edict_t *self)
 			//gi.dprintf("%d: attempting to spawn a monster\n", num);
 			// get starting position
 			VectorCopy(self->s.origin, start);
-			start[2] = self->absmax[2] + 1 + abs(monster->mins[2]);
+			start[2] = self->absmax[2] + 1 + fabsf(monster->mins[2]);
 
 			tr = gi.trace(start, monster->mins, monster->maxs, start, NULL, MASK_SHOT);
 			

@@ -345,7 +345,7 @@ qboolean FindValidSpawnPoint (edict_t *ent, qboolean air)
 				continue;
 			// add the ent's height
 			VectorCopy(tr.endpos, start);
-			start[2] += abs(ent->mins[2]) + 1;
+			start[2] += fabsf(ent->mins[2]) + 1;
 			// is the point good?
 			if (gi.pointcontents(start) != 0)
 				continue;
@@ -422,7 +422,7 @@ qboolean TeleportNearArea (edict_t *ent, vec3_t point, int area_size, qboolean a
 					continue;
 				// add the ent's height
 				VectorCopy(tr.endpos, start);
-				start[2] += abs(ent->mins[2]) + 1;
+				start[2] += fabsf(ent->mins[2]) + 1;
 				// is the point good?
 				if (gi.pointcontents(start) != 0)
 					continue;
@@ -771,14 +771,14 @@ qboolean TeleportNearTarget (edict_t *self, edict_t *target, float dist)
 		// trace to floor
 		VectorCopy(tr.endpos, start);
 		VectorCopy(tr.endpos, end);
-		end[2] -= abs(self->mins[2]) + 32;
+		end[2] -= fabsf(self->mins[2]) + 32;
 		tr = gi.trace(start, NULL, NULL, end, NULL, MASK_MONSTERSOLID);
 		// we dont want to teleport off a ledge
 		if (tr.fraction == 1.0 && !(self->flags & FL_FLY))
 			continue;
 		// check for valid position
 		VectorCopy(tr.endpos, start);
-		start[2] += abs(self->mins[2]) + 1;
+		start[2] += fabsf(self->mins[2]) + 1;
 		tr = gi.trace(start, self->mins, self->maxs, start, NULL, MASK_MONSTERSOLID);
 		if (!(tr.contents & MASK_MONSTERSOLID))
 		{
@@ -817,19 +817,19 @@ qboolean TeleportNearPoint (edict_t *self, vec3_t point)
 			forward[1] = sin(DEG2RAD(yaw));
 			forward[2] = 0;
 			// trace from point
-			VectorMA(point, (self->maxs[0]+abs(self->mins[0])+dist), forward, end);
+			VectorMA(point, (self->maxs[0]+ fabsf(self->mins[0])+dist), forward, end);
 			tr = gi.trace(point, NULL, NULL, end, NULL, MASK_SOLID);
 			// trace to floor
 			VectorCopy(tr.endpos, start);
 			VectorCopy(tr.endpos, end);
-			end[2] -= abs(self->mins[2]) + 128;
+			end[2] -= fabsf(self->mins[2]) + 128;
 			tr = gi.trace(start, NULL, NULL, end, NULL, MASK_SOLID);
 			// we dont want to teleport off a ledge
 			if (tr.fraction == 1.0 && !(self->flags & FL_FLY))
 				continue;
 			// check for valid position
 			VectorCopy(tr.endpos, start);
-			start[2] += abs(self->mins[2]) + 1;
+			start[2] += fabsf(self->mins[2]) + 1;
 			tr = gi.trace(start, self->mins, self->maxs, start, NULL, (MASK_PLAYERSOLID|MASK_MONSTERSOLID));
 			if (!(tr.contents & (MASK_PLAYERSOLID|MASK_MONSTERSOLID)))
 			{
@@ -839,7 +839,7 @@ qboolean TeleportNearPoint (edict_t *self, vec3_t point)
 				gi.linkentity(self);
 				return true;
 			}
-			dist += self->maxs[0]+abs(self->mins[0])+1;
+			dist += self->maxs[0]+ fabsf(self->mins[0])+1;
 		}
 	}
 	return false;

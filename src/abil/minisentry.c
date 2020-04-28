@@ -87,7 +87,7 @@ qboolean minisentry_checkposition (edict_t *self)
 	if (self->style == SENTRY_UPRIGHT)
 	{
 		VectorCopy(self->s.origin, end);
-		end[2]--;// -= abs(self->mins[2])+1;
+		end[2]--;// -= fabsf(self->mins[2])+1;
 		tr = gi.trace(self->s.origin, self->mins, self->maxs, end, self, MASK_SHOT);//MASK_SOLID);
 		if (tr.fraction == 1.0 || (tr.ent != world && tr.ent->mtype != M_LASERPLATFORM))
 		{

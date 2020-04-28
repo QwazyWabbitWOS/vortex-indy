@@ -88,7 +88,7 @@ qboolean HitTheWeapon (edict_t *targ, edict_t *attacker, vec3_t point, int take,
 	// check for impact location
 	// if it's at about the right height, and in front, then
 	// we're probably on-target
-	height = abs(targ->mins[2])+targ->maxs[2];
+	height = fabsf(targ->mins[2])+targ->maxs[2];
 	z_rel = point[2]-targ->s.origin[2];
 
 	//gi.dprintf("z_rel: %.1f point: %.1f origin: %.1f, chest: %.1f stomach: %.1f", 
