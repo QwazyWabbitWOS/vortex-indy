@@ -22,16 +22,6 @@
 #endif
 #endif
 
-//#ifdef _WIN32
-//// unknown pragmas are SUPPOSED to be ignored, but....
-//#pragma warning(disable : 4244)     // MIPS
-//#pragma warning(disable : 4136)     // X86
-//#pragma warning(disable : 4051)     // ALPHA
-//
-//#pragma warning(disable : 4018)     // signed/unsigned mismatch
-//
-//#endif
-
 //K03 Begin
 #ifndef __cplusplus
 #include <assert.h>
@@ -234,7 +224,7 @@ void Com_PageInMemory (byte *buffer, int size);
 //=============================================
 
 // portable case insensitive compare
-int Q_stricmp (char *s1, char *s2);
+int Q_stricmp(const char* s1, const char* s2);
 int Q_strcasecmp (const char *s1, const char *s2);
 int Q_strncasecmp (const char *s1, const char *s2, int n);
 
