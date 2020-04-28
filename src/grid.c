@@ -30,7 +30,7 @@ vec3_t pathnode[MAX_GRID_SIZE];
 #define NUMCHILDS 12
 
 typedef struct node_s node_t;
-typedef struct stack_s stack_t;
+typedef struct gstack_s gstack_t;
 
 struct node_s {
 	int   g; // how far we've already gone from start to here
@@ -45,20 +45,20 @@ struct node_s {
 
 node_t* node;
 
-struct stack_s {
+struct gstack_s {
   node_t  *NodePtr;
-  stack_t *StackPtr;
+  gstack_t *StackPtr;
 };
 
-stack_t *Stack=NULL;
+gstack_t *Stack=NULL;
 
 //=========================================
 // Push Node to front of the linked list
 //=========================================
 void Push(node_t *Node) {
-stack_t *STK;
+gstack_t *STK;
 
-  STK=(stack_t *)V_Malloc(sizeof(stack_t), TAG_LEVEL);
+  STK=(gstack_t *)V_Malloc(sizeof(gstack_t), TAG_LEVEL);
   STK->StackPtr=Stack; // NULL at start
   STK->NodePtr=Node;   // Tie the Node
   Stack=STK;           // Set to start of Stack
@@ -69,7 +69,7 @@ stack_t *STK;
 //=========================================
 node_t* Pop(void) {
 	node_t* tNode;
-	stack_t* STK;
+	gstack_t* STK;
 
 	STK = Stack;             // Start of Stack
 	tNode = Stack->NodePtr;  // Grab this Node.
@@ -129,7 +129,7 @@ void PrintNodes(node_t* Node, qboolean reverse)
 void FreeStack(node_t* PathNode) {
 	unsigned long NumFreed = 0;//GHz - for debugging
 	node_t* tNode;
-	stack_t *STK;
+	gstack_t *STK;
 
 	//GHz NOTE: numfreed is not consistent with numcount
 	// it looks like the OPEN list has a broken forward link
