@@ -186,7 +186,7 @@ void ClientDisconnect (edict_t *ent);
 void ClientBegin (edict_t *ent, qboolean loadgame);
 void ClientCommand (edict_t *ent);
 void RunEntity (edict_t *ent);
-void WriteGame (char *filename);
+void WriteGame (char *filename, qboolean autosave);
 void ReadGame (char *filename);
 void WriteLevel (char *filename);
 void ReadLevel (char *filename);
