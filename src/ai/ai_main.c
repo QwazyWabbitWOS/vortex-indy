@@ -406,7 +406,7 @@ void AI_CategorizePosition (edict_t *ent)
 	ent->ai.is_ladder = AI_IsLadder( ent->s.origin, ent->s.angles, ent->mins, ent->maxs, ent );
 
 	M_CatagorizePosition(ent);
-	if (ent->waterlevel > 2 || ent->waterlevel && !stepping) {
+	if (ent->waterlevel > 2 || (ent->waterlevel && !stepping)) {
 		ent->ai.is_swim = true;
 		ent->ai.is_step = false;
 		return;

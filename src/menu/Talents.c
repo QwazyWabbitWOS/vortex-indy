@@ -159,29 +159,31 @@ int getTalentSlot(edict_t *ent, int talentID)
 
 //Returns the talent upgrade level matching talentID.
 //Returns -1 if there is no matching talent.
-int getTalentLevel(edict_t *ent, int talentID)
+int getTalentLevel(edict_t* ent, int talentID)
 {
 	int slot = getTalentSlot(ent, talentID);
-	
-	if(slot < 0)
-	{ 
+
+	if (slot < 0)
+	{
 		if (!ent->client) // so it's a morphed player?
+		{
 			if (ent->owner && ent->owner->inuse && ent->owner->client)
 			{
 				slot = getTalentSlot(ent->owner, talentID);
 				ent = ent->owner;
-			}else if (ent->activator && ent->activator->inuse && ent->activator->client)
+			}
+			else if (ent->activator && ent->activator->inuse && ent->activator->client)
 			{
 				slot = getTalentSlot(ent->activator, talentID);
 				ent = ent->activator;
 			}
-
-			if(slot < 0) // still doesn't exist? k
-				return 0; 
+		}
+		if (slot < 0) // still doesn't exist? k
+			return 0;
 	} //;//-1;
-	
 
-	return ent->myskills.talents.talent[slot].upgradeLevel;	
+
+	return ent->myskills.talents.talent[slot].upgradeLevel;
 }
 
 //Upgrades the talent with a matching talentID

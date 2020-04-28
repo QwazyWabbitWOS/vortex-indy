@@ -983,7 +983,7 @@ void V_PrintItemProperties(edict_t *player, item_t *item)
 		char temp[32];
 
 		//skip bad mod types
-		if ((item->modifiers[i].type != TYPE_ABILITY) && (item->modifiers[i].type != TYPE_WEAPON) || item->modifiers[i].value < 1)
+		if (((item->modifiers[i].type != TYPE_ABILITY) && (item->modifiers[i].type != TYPE_WEAPON)) || item->modifiers[i].value < 1)
 			continue;
 
 		switch(item->modifiers[i].type)
