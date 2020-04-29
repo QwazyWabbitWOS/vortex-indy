@@ -779,7 +779,7 @@ void ExitLevel (void)
 //GHz END
 	if(level.changemap)
 		Com_sprintf (command, sizeof(command), "map \"%s\"\n", level.changemap);
-	else if (level.nextmap)
+	else if (level.nextmap[0])
 	{
 #ifdef Q2PRO_COMPATIBILITY
 		if (!level.modechange)
