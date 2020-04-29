@@ -144,7 +144,7 @@ qboolean IsMorphedPlayer (edict_t *ent)
 float getPackModifier (edict_t *ent)
 {
 	//Talent: Pack Animal
-	int		talentLevel;
+	int		talentLevel = 0;
 	edict_t *e = NULL;
 
 	if (ent->client)
@@ -423,7 +423,6 @@ float G_AddDamage (edict_t *targ, edict_t *inflictor, edict_t *attacker,
 			// strength effect
 			if (!attacker->myskills.abilities[STRENGTH].disable)
 			{
-				int		talentLevel;
 
 				temp = 1 + 0.1 * attacker->myskills.abilities[STRENGTH].current_level;
 			
@@ -452,7 +451,6 @@ float G_AddDamage (edict_t *targ, edict_t *inflictor, edict_t *attacker,
 			if (getTalentSlot(attacker, TALENT_BLOOD_OF_ARES) != -1)
 			{
 				int level = getTalentLevel(attacker, TALENT_BLOOD_OF_ARES);
-				float temp;
 				
 				// BoA is less effective in PvM
 				if (pvm->value)
@@ -486,7 +484,7 @@ float G_SubDamage (edict_t *targ, edict_t *inflictor, edict_t *attacker,
 				   vec3_t point, float damage, int dflags, int mod)
 {
 	int		dtype;
-	float	temp;
+	float	temp = 1.0f;
 	que_t	*aura=NULL;
 	int talentLevel;
 	edict_t *dclient;
@@ -625,7 +623,7 @@ float G_SubDamage (edict_t *targ, edict_t *inflictor, edict_t *attacker,
 	// player tank
 	if (targ->mtype == P_TANK)
 	{
-		temp = 1.0;
+		temp = 1.0f;
 
 		// Talent: Superiority
 		// increases damage/resistance of morphed players against monsters
@@ -778,7 +776,6 @@ float G_SubDamage (edict_t *targ, edict_t *inflictor, edict_t *attacker,
 		if (getTalentSlot(targ, TALENT_BLOOD_OF_ARES) != -1)
 		{
 			int level = getTalentLevel(targ, TALENT_BLOOD_OF_ARES);
-			float temp;
 			
 			// BoA is less effective in PvM
 			if (pvm->value)
@@ -951,7 +948,8 @@ float G_SubDamage (edict_t *targ, edict_t *inflictor, edict_t *attacker,
 float G_ModifyDamage (edict_t *targ, edict_t *inflictor, edict_t *attacker, 
 				   vec3_t point, float damage, int dflags, int mod)
 {
-	int		pierceLevel=0, pierceFactor;
+	float	pierceLevel = 0;
+	float	pierceFactor = 0;
 	float	temp;
 
 	if (damage > 0)
@@ -963,13 +961,13 @@ float G_ModifyDamage (edict_t *targ, edict_t *inflictor, edict_t *attacker,
 			{
 				// 25% chance at level 10 for AP round
 				pierceLevel = attacker->myskills.weapons[WEAPON_MACHINEGUN].mods[1].current_level;
-				pierceFactor = 0.0333;
+				pierceFactor = 0.0333f;
 			}
 			else if (mod == MOD_RAILGUN)
 			{
 				// 10% chance at level 10 for AP round
 				pierceLevel = attacker->myskills.weapons[WEAPON_RAILGUN].mods[1].current_level;
-				pierceFactor = 0.0111;
+				pierceFactor = 0.0111f;
 			}
 
 			if (pierceLevel > 0)
