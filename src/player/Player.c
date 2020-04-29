@@ -5,8 +5,11 @@
 
 qboolean playingtoomuch(edict_t *ent)
 {
+	size_t len;
+	
+	len = strlen(CURRENT_DATE);
 	//Char played today?
-	if( Q_strncasecmp(ent->myskills.last_played, CURRENT_DATE, strlen(CURRENT_DATE)) == 0)
+	if( Q_strncasecmp(ent->myskills.last_played, CURRENT_DATE, (int)len) == 0)
 	{
 		//Has char been playing too long?
 		if(ent->myskills.playingtime > (MAX_HOURS * 3600) )	//Playing time in seconds?
