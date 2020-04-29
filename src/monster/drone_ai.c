@@ -395,26 +395,26 @@ edict_t *drone_findnavi (edict_t *self);
 // lolwut
 edict_t *drone_get_navi (edict_t *self)
 {
-	/*edict_t *target = NULL;
+	//edict_t *target = NULL;
 
-	// find a navigational entity
-	// monster must be owned by world and not instructed to ignore navi
-	if (self->monsterinfo.aiflags & AI_FIND_NAVI)
-	{
-		while ((target = findclosestradius1 (target, self->s.origin, 
-			8192/*self->monsterinfo.sight_range*//*)) != NULL)*/
-	/*	{
-			if (!drone_validnavi(self, target, false))
-				continue;
-			return target;
-		}
-	}*/
+	//// find a navigational entity
+	//// monster must be owned by world and not instructed to ignore navi
+	//if (self->monsterinfo.aiflags & AI_FIND_NAVI)
+	//{
+	//	while ((target = findclosestradius1 (target, self->s.origin, 
+	//		8192/*self->monsterinfo.sight_range*//*)) != NULL)*/
+	//	{
+	//		if (!drone_validnavi(self, target, false))
+	//			continue;
+	//		return target;
+	//	}
+	//}
 
 	return drone_findnavi(self);
- /*
-	// can't find a valid navigational entity
-	return NULL;
-	*/
+ 
+	//// can't find a valid navigational entity
+	//return NULL;
+
 }
 
 edict_t *drone_findpspawn(edict_t *self);

@@ -57,7 +57,7 @@ void setHardMax(edict_t *ent, int index)
 		case STRENGTH:
 		case RESISTANCE:
 			if (ent->myskills.abilities[index].general_skill && 
-				!ent->myskills.class_num == CLASS_SOLDIER)
+				!(ent->myskills.class_num == CLASS_SOLDIER))
 			{					
 				ent->myskills.abilities[index].hard_max = 15;
 				

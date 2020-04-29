@@ -1,11 +1,12 @@
 #include "g_local.h"
 
 #define JETPACK_DRAIN	1 //every x frames drain JETPACK_AMMO
-#define JETPACK_AMMO	2.5 // Less cube cost.
+#define JETPACK_AMMO	2 // Less cube cost.
 
 void ApplyThrust (edict_t *ent)
 {
-	int talentLevel, cost = JETPACK_AMMO;
+	int talentLevel;
+	int	cost = JETPACK_AMMO;
     vec3_t forward, right;
     vec3_t pack_pos, jet_vector;
 
