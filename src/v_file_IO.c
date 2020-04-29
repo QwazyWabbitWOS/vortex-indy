@@ -1142,23 +1142,19 @@ qboolean SavePlayer(edict_t* ent)
 
 	//Open file for saving
 	if (savemethod->value == 1)
+	{
 		if ((fwrite = fopen(path, "wb")) == NULL)
 		{
 			gi.dprintf("ERROR: %s can't open %s.\n", __func__, path);
 			return false;
 		}
-		else
-		{
-			// save the player
-			if (savemethod->value == 1)
-				WritePlayer_v1(fwrite, ent->client->pers.netname, ent);
-			else
-				VSF_SavePlayer(ent, path, file_exists, ent->client->pers.netname);
-
-			//done
-			if (savemethod->value == 1)
-				fclose(fwrite);
-		}
+		WritePlayer_v1(fwrite, ent->client->pers.netname, ent);
+		fclose(fwrite);
+	}
+	else
+	{
+		VSF_SavePlayer(ent, path, file_exists, ent->client->pers.netname);
+	}
 	return true;
 }
 
