@@ -1103,17 +1103,17 @@ qboolean VSF_SavePlayer(edict_t *player, char *path, qboolean fileexists, char* 
 //		That should be plenty for vrx	-doomie
 //***********************************************************************
 
-qboolean SavePlayer(edict_t *ent)
+qboolean SavePlayer(edict_t* ent)
 {
 	char	path[100];
-	FILE	*fwrite;
+	FILE* fwrite;
 	struct stat exist;
 	int file_exists = 0;
 
 	//Make sure this is a client
 	if (!ent->client)
 	{
-		gi.dprintf("ERROR: entity not a client!! (%s)\n",ent->classname);
+		gi.dprintf("ERROR: entity not a client!! (%s)\n", ent->classname);
 		return false;
 	}
 
@@ -1123,7 +1123,7 @@ qboolean SavePlayer(edict_t *ent)
 		return false;
 	}
 
-	if(debuginfo->value)
+	if (debuginfo->value)
 		gi.dprintf("savePlayer called to save: %s\n", ent->client->pers.netname);
 
 #ifndef NO_GDS
@@ -1137,27 +1137,28 @@ qboolean SavePlayer(edict_t *ent)
 	//determine path
 	VRXGetPath(path, ent);
 
-	if (stat (path, &exist) == 0)
+	if (stat(path, &exist) == 0)
 		file_exists = 1;
 
 	//Open file for saving
 	if (savemethod->value == 1)
 		if ((fwrite = fopen(path, "wb")) == NULL)
 		{
-			gi.dprintf("ERROR: savePlayer() can't open %s.\n", path);
-			return false;		
+			gi.dprintf("ERROR: %s can't open %s.\n", __func__, path);
+			return false;
 		}
-	
-	// save the player
-	if (savemethod->value == 1)
-		WritePlayer_v1(fwrite, ent->client->pers.netname, ent);	
-	else
-		VSF_SavePlayer(ent, path, file_exists, ent->client->pers.netname);
-	
+		else
+		{
+			// save the player
+			if (savemethod->value == 1)
+				WritePlayer_v1(fwrite, ent->client->pers.netname, ent);
+			else
+				VSF_SavePlayer(ent, path, file_exists, ent->client->pers.netname);
 
-	//done
-	if (savemethod->value == 1)
-		fclose(fwrite);
+			//done
+			if (savemethod->value == 1)
+				fclose(fwrite);
+		}
 	return true;
 }
 
@@ -1180,14 +1181,14 @@ qboolean VSF_LoadPlayer(edict_t *player, char* path)
 	r = sqlite3_prepare_v2(db, format, strlen(format), &stmt, NULL);
 	r = sqlite3_step(stmt);
 
-    strcpy(player->myskills.title, sqlite3_column_text(stmt, 0));
-	strcpy(player->myskills.player_name, sqlite3_column_text(stmt, 1));
-	strcpy(player->myskills.password, sqlite3_column_text(stmt, 2));
-	strcpy(player->myskills.email, sqlite3_column_text(stmt, 3));
-	strcpy(player->myskills.owner, sqlite3_column_text(stmt, 4));
-	strcpy(player->myskills.member_since, sqlite3_column_text(stmt, 5));
-	strcpy(player->myskills.last_played, sqlite3_column_text(stmt, 6));
-	player->myskills.total_playtime =  sqlite3_column_int(stmt, 7);
+    strcpy(player->myskills.title, (const char *)sqlite3_column_text(stmt, 0));
+	strcpy(player->myskills.player_name, (const char*)sqlite3_column_text(stmt, 1));
+	strcpy(player->myskills.password, (const char*)sqlite3_column_text(stmt, 2));
+	strcpy(player->myskills.email, (const char*)sqlite3_column_text(stmt, 3));
+	strcpy(player->myskills.owner, (const char*)sqlite3_column_text(stmt, 4));
+	strcpy(player->myskills.member_since, (const char*)sqlite3_column_text(stmt, 5));
+	strcpy(player->myskills.last_played, (const char*)sqlite3_column_text(stmt, 6));
+	player->myskills.total_playtime = sqlite3_column_int(stmt, 7);
 
 	player->myskills.playingtime =  sqlite3_column_int(stmt, 8);
 
@@ -1355,8 +1356,8 @@ qboolean VSF_LoadPlayer(edict_t *player, char* path)
 			player->myskills.items[index].itemLevel = sqlite3_column_int(stmt, 2);
 			player->myskills.items[index].quantity = sqlite3_column_int(stmt, 3);
 			player->myskills.items[index].untradeable = sqlite3_column_int(stmt, 4);
-			strcpy(player->myskills.items[index].id, sqlite3_column_text(stmt, 5));
-			strcpy(player->myskills.items[index].name, sqlite3_column_text(stmt, 6));
+			strcpy(player->myskills.items[index].id, (const char*)sqlite3_column_text(stmt, 5));
+			strcpy(player->myskills.items[index].name, (const char*)sqlite3_column_text(stmt, 6));
 			player->myskills.items[index].numMods = sqlite3_column_int(stmt, 7);
 			player->myskills.items[index].setCode = sqlite3_column_int(stmt, 8);
 			player->myskills.items[index].classNum = sqlite3_column_int(stmt, 9);
@@ -1532,7 +1533,6 @@ qboolean openPlayer(edict_t *ent)
 	char	path[100];
 	FILE	*fread;
 	int		i;
-	int		loadmode = 0;
 	char	version[64];
 
 	//Make sure this is a client
