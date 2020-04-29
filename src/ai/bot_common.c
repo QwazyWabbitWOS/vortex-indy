@@ -61,7 +61,7 @@ qboolean BOT_ServerCommand (void)
 	if (!ctf->value)
 		name = gi.argv(2);
 
-	if (strlen(name) < 5)
+	if (name && strlen(name) < 5)
 	{
 		name = bot_names[GetRandom(0, sizeof bot_names - 1)];
 	}

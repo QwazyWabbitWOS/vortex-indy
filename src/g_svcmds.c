@@ -587,13 +587,14 @@ void SVCmd_MakeBoss_f (void)
 
 void SVCmd_ChangeClass_f (void)
 {
+	edict_t* p;
+
 	char	*playername = gi.argv(2);
 	int		newclass = getClassNum(gi.argv(3));
-	edict_t *p;
 
-	if ((newclass < 1) || (newclass > CLASS_MAX))
+	if ((newclass < CLASS_SOLDIER) || (newclass > CLASS_MAX))
 	{
-		safe_cprintf(NULL, PRINT_HIGH, "Invalid class number: %d\n", newclass);
+		safe_cprintf(NULL, PRINT_HIGH, "Invalid class name: %d\n", newclass);
 		return;
 	}
 
@@ -605,11 +606,12 @@ void SVCmd_ChangeClass_f (void)
 
 void SVCmd_ExpHole_f()
 {
+	edict_t* p;
+
 	char *pname = gi.argv(2);
-	edict_t *p;
 	int value = atoi(gi.argv(3));
 
-	if ((value < 0) || (value > 1000000) || (strlen(pname) < 1))
+	if ((value < 0) || (value > 1000000) || (strlen(pname) == 0))
 	{
 		safe_cprintf(NULL, PRINT_HIGH, "cmd: exphole <playername> <value>.\n", pname);
 		return;
@@ -626,15 +628,18 @@ void SVCmd_ExpHole_f()
 	safe_cprintf(NULL, PRINT_HIGH, "Can't find %s.\n", pname);
 }
 
+// setteam playername teamnumber
 void SVCmd_SetTeam_f()
 {
-	char *pname = gi.argv(2);
 	edict_t *p;
+
+	char* pname = gi.argv(2);
 	int value = atoi(gi.argv(3));
 
-	if ((value < 0) || (strlen(pname) < 0))
+	// team number range check and name must not be empty
+	if (value == 0 || value > 2 || strlen(pname) == 0)
 	{
-		safe_cprintf(NULL, PRINT_HIGH, "cmd: setteam <playername> <value>.\n", pname);
+		safe_cprintf(NULL, PRINT_HIGH, "cmd: setteam <playername> <value> 1|2.\n", pname);
 		return;
 	}
 	
@@ -655,7 +660,7 @@ void SVCmd_DeleteCharacter_f()
 	char		buf[100];
 	struct	stat file;
 
-	if (strlen(pname) < 1 || strlen(reason) < 1)
+	if (strlen(pname) == 0 || strlen(reason) == 0) // missing args
 	{
 		safe_cprintf(NULL, PRINT_HIGH, "cmd: delchar <playername> <reason>\n", pname);
 		return;

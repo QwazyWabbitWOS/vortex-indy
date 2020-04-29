@@ -2557,15 +2557,15 @@ void V_SetEffects (edict_t *ent)
 // returns true if the settings match the specified result, ignores a setting if -1 is specified
 qboolean V_MatchPlayerPrefs (edict_t *player, int monsters, int players)
 {
-	qboolean monster_result = false;
-	qboolean player_result = false;
+	int monster_result = false;
+	int player_result = false;
 
 	if (player->myskills.respawns & HOSTILE_MONSTERS)
 		monster_result = true;
 	if (player->myskills.respawns & HOSTILE_PLAYERS)
 		player_result = true;
 
-	return ((monsters == -1 || monster_result == monsters) && (player_result == -1 || player_result == players));
+	return ((monsters == -1 || monster_result == monsters) && (players == -1 || player_result == players));
 }
 
 //4.5 returns number of players with the specified combat preferences value
