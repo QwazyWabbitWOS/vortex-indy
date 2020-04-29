@@ -568,8 +568,7 @@ void EndDMLevel (void)
 	
 	//3.0 end voting (doomie)
 
-	//This should always be true now
-	if (level.nextmap)
+	if (level.nextmap[0])
 	{	// go to a specific map
 		//BeginIntermission (CreateTargetChangeLevel (level.nextmap) );
 		VortexBeginIntermission(level.nextmap);
@@ -581,7 +580,6 @@ void EndDMLevel (void)
 		if (!ent)
 		{	// the map designer didn't include a changelevel,
 			// so create a fake ent that goes back to the same level
-			//BeginIntermission (CreateTargetChangeLevel (level.mapname) );
 			VortexBeginIntermission(level.nextmap);
 			return;
 		}
