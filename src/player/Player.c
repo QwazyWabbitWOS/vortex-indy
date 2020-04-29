@@ -106,7 +106,7 @@ void fixInvalidPlayerData(edict_t *ent)
 
 	modify_max(ent);
 
-	if (ent->myskills.credits < 0)
+	if (ent->myskills.credits <= 0)
 		ent->myskills.credits = 0;
 }
 
