@@ -781,7 +781,7 @@ void BuyRuneConfirmMenu_handler (edict_t *ent, int option)
 			if (savemethod->value == 0)
 			{
 				char path[MAX_QPATH];
-				memset (path, 0, strlen(path));
+				memset (path, 0, sizeof path);
 				VRXGetPath(path, ent);
 				VSF_SaveRunes(ent, path);
 			}

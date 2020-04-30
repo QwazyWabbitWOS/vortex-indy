@@ -637,7 +637,7 @@ void SVCmd_SetTeam_f()
 	int value = atoi(gi.argv(3));
 
 	// team number range check and name must not be empty
-	if (value == 0 || value > 2 || strlen(pname) == 0)
+	if (value <= 0 || value > 2 || strlen(pname) == 0)
 	{
 		safe_cprintf(NULL, PRINT_HIGH, "cmd: setteam <playername> <value> 1|2.\n", pname);
 		return;
