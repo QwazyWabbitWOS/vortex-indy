@@ -117,11 +117,11 @@ void TradeItems(edict_t *player1, edict_t *player2)
 	{
 		char path[MAX_QPATH];
 
-		memset(path, 0, strlen(path));
+		memset(path, 0, sizeof path);
 		VRXGetPath(path, player1);
 		VSF_SaveRunes(player1, path);
 
-		memset(path, 0, strlen(path));
+		memset(path, 0, sizeof path);
 		VRXGetPath(path, player2);
 		VSF_SaveRunes(player2, path);
 
