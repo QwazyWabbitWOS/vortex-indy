@@ -118,7 +118,7 @@ GAME_OBJS = \
 
 
 game$(ARCH).real.$(SHLIBEXT) : $(GAME_OBJS)
-	$(CC) $(CFLAGS) $(INCLUDE) -shared -o $@ $(GAME_OBJS) -ldl -lm
+	$(CC) $(CFLAGS) $(INCLUDE) -shared -o $@ $(GAME_OBJS) -ldl -lm -lpthread
 	$(LIBTOOL) -r $@
 
 
