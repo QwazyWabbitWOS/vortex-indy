@@ -98,8 +98,8 @@ float		dist;
   VectorSet(pack->maxs, 16, 16, 16);
   AngleVectors(player->s.angles, forward, right, up);
   VectorScale(forward, 300, pack->velocity);
-  VectorMA(pack->velocity, 200+crandom()*10.0, up, pack->velocity);
-  VectorMA(pack->velocity, crandom()*10.0, right, pack->velocity);
+  VectorMA(pack->velocity, 200+crandom()*10.0f, up, pack->velocity);
+  VectorMA(pack->velocity, crandom()*10.0f, right, pack->velocity);
   VectorClear(pack->avelocity); // No angular rotation
   VectorClear(pack->s.angles);  // No tilt..
   pack->touch=Backpack_Touch;

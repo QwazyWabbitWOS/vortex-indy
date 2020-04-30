@@ -81,6 +81,8 @@ void TeleportForward (edict_t *ent)
 	vec3_t	angles, offset, forward, right, start, end;
 	trace_t	tr;
 
+	if (!ent->client)
+		return;
 	if (!G_EntIsAlive(ent))
 		return;
 	//4.07 can't teleport while being hurt

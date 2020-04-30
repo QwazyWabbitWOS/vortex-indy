@@ -200,7 +200,7 @@ void Weapon_Sword_Fire (edict_t *ent)
 	temp = 0.8 + 0.007 * ent->myskills.weapons[WEAPON_SWORD].mods[1].current_level;
 
 	 if ((temp < 1.0) && (ent->client->ps.gunframe - 5 > 0))
-		damage *= pow(temp, ent->client->ps.gunframe - 5);
+		damage *= powf(temp, ent->client->ps.gunframe - 5);
 	
 	 //gi.dprintf("damage=%d\n", damage);
 

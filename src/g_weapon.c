@@ -863,8 +863,8 @@ void fire_grenade (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int s
 	grenade = G_Spawn();
 	VectorCopy (start, grenade->s.origin);
 	VectorScale (aimdir, speed, grenade->velocity);
-	VectorMA (grenade->velocity, 200 + crandom() * 10.0, up, grenade->velocity);
-	VectorMA (grenade->velocity, crandom() * 10.0, right, grenade->velocity);
+	VectorMA (grenade->velocity, 200 + crandom() * 10.0f, up, grenade->velocity);
+	VectorMA (grenade->velocity, crandom() * 10.0f, right, grenade->velocity);
 	VectorSet (grenade->avelocity, 300, 300, 300);
 	grenade->movetype = MOVETYPE_BOUNCE;
 	grenade->clipmask = MASK_SHOT;
@@ -914,8 +914,8 @@ edict_t *fire_grenade2 (edict_t *self, vec3_t start, vec3_t aimdir, int damage, 
 	grenade = G_Spawn();
 	VectorCopy (start, grenade->s.origin);
 	VectorScale (aimdir, speed, grenade->velocity);
-	VectorMA (grenade->velocity, 200 + crandom() * 10.0, up, grenade->velocity);
-	VectorMA (grenade->velocity, crandom() * 10.0, right, grenade->velocity);
+	VectorMA (grenade->velocity, 200 + crandom() * 10.0f, up, grenade->velocity);
+	VectorMA (grenade->velocity, crandom() * 10.0f, right, grenade->velocity);
 	VectorSet (grenade->avelocity, 300, 300, 300);
 	grenade->movetype = MOVETYPE_BOUNCE;
 	grenade->clipmask = MASK_SHOT;
@@ -1305,7 +1305,7 @@ void fire_smartrocket (edict_t *self, edict_t *target, vec3_t start, vec3_t dir,
 
 		// adjust turn rate based on quality of lock
 		// 0.1 = 5-6 degrees/frame, 0.2 = 11-12, 0.3 = 17-18, 0.4 = 23-24
-		rocket->random = 0.1 * (turn_speed - (SMARTROCKET_LOCKFRAMES - 1));
+		rocket->random = 0.1f * (turn_speed - (SMARTROCKET_LOCKFRAMES - 1));
 		
 		// maximum turning rate
 		if (rocket->random > 1.0)
@@ -2313,34 +2313,34 @@ static void Trap_Think (edict_t *ent)
 		
 }
 
-void spawn_grenades(edict_t *ent, vec3_t origin, float time, int damage, int num) 
+void spawn_grenades(edict_t* ent, vec3_t origin, float time, int damage, int num)
 {
 	int		j;
-	edict_t *grenade;
+	edict_t* grenade;
 
-  for (j=1; j<=num; j++) {
-    grenade = G_Spawn();
-    grenade->owner = ent;
-    grenade->s.modelindex = gi.modelindex("models/objects/grenade/tris.md2");
-    VectorCopy(origin,grenade->s.origin);
-    VectorSet(grenade->velocity,0,0,-300);
-    VectorSet(grenade->avelocity,200+crandom()*10.0,200+crandom()*10.0,200+crandom()*10.0);
-    grenade->movetype = MOVETYPE_BOUNCE;
-    grenade->classname = "grenade";
-    grenade->spawnflags = 4;
-    grenade->clipmask = MASK_SHOT;
-    grenade->solid=SOLID_BBOX;
-    grenade->s.effects |= EF_GRENADE;
-	grenade->dmg = damage;
-    grenade->dmg_radius = 100;
-	grenade->radius_dmg = damage;
-    VectorSet(grenade->mins,-8,-8,-8);
-    VectorSet(grenade->maxs,8,8,8);
-    grenade->touch = Grenade_Touch;
-    grenade->think = Grenade_Explode;
-    grenade->nextthink = level.time + time;
-    gi.linkentity(grenade);
-  }
+	for (j = 1; j <= num; j++) {
+		grenade = G_Spawn();
+		grenade->owner = ent;
+		grenade->s.modelindex = gi.modelindex("models/objects/grenade/tris.md2");
+		VectorCopy(origin, grenade->s.origin);
+		VectorSet(grenade->velocity, 0, 0, -300);
+		VectorSet(grenade->avelocity, 200 + crandom() * 10.0f, 200 + crandom() * 10.0f, 200 + crandom() * 10.0f);
+		grenade->movetype = MOVETYPE_BOUNCE;
+		grenade->classname = "grenade";
+		grenade->spawnflags = 4;
+		grenade->clipmask = MASK_SHOT;
+		grenade->solid = SOLID_BBOX;
+		grenade->s.effects |= EF_GRENADE;
+		grenade->dmg = damage;
+		grenade->dmg_radius = 100;
+		grenade->radius_dmg = damage;
+		VectorSet(grenade->mins, -8, -8, -8);
+		VectorSet(grenade->maxs, 8, 8, 8);
+		grenade->touch = Grenade_Touch;
+		grenade->think = Grenade_Explode;
+		grenade->nextthink = level.time + time;
+		gi.linkentity(grenade);
+	}
 }
 
 #define EMP_BULLET_FACTOR				0.5
@@ -2654,8 +2654,8 @@ void fire_emp_grenade (edict_t *self, vec3_t start, vec3_t aimdir, int slevel, f
 
 	// adjust velocity
 	VectorScale (aimdir, speed, grenade->velocity);
-	VectorMA (grenade->velocity, 200 + crandom() * 10.0, up, grenade->velocity);
-	VectorMA (grenade->velocity, crandom() * 10.0, right, grenade->velocity);
+	VectorMA (grenade->velocity, 200 + crandom() * 10.0f, up, grenade->velocity);
+	VectorMA (grenade->velocity, crandom() * 10.0f, right, grenade->velocity);
 	VectorSet (grenade->avelocity, 300, 300, 300);
 }
 
@@ -2821,8 +2821,8 @@ void fire_mirv_grenade (edict_t *self, vec3_t start, vec3_t aimdir, int damage, 
 
 	// adjust velocity
 	VectorScale (aimdir, speed, grenade->velocity);
-	VectorMA (grenade->velocity, 200 + crandom() * 10.0, up, grenade->velocity);
-	VectorMA (grenade->velocity, crandom() * 10.0, right, grenade->velocity);
+	VectorMA (grenade->velocity, 200 + crandom() * 10.0f, up, grenade->velocity);
+	VectorMA (grenade->velocity, crandom() * 10.0f, right, grenade->velocity);
 	VectorSet (grenade->avelocity, 300, 300, 300);
 }
 
@@ -3166,8 +3166,8 @@ void fire_spikeball (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int
 
 	// adjust velocity
 	VectorScale (aimdir, throw_speed, grenade->velocity);
-	VectorMA (grenade->velocity, 200 + crandom() * 10.0, up, grenade->velocity);
-	VectorMA (grenade->velocity, crandom() * 10.0, right, grenade->velocity);
+	VectorMA (grenade->velocity, 200 + crandom() * 10.0f, up, grenade->velocity);
+	VectorMA (grenade->velocity, crandom() * 10.0f, right, grenade->velocity);
 	VectorSet (grenade->avelocity, 300, 300, 300);
 
 	self->num_spikeball++;
@@ -3390,8 +3390,8 @@ void fire_acid (edict_t *self, vec3_t start, vec3_t aimdir, int projectile_damag
 
 	// adjust velocity
 	VectorScale (aimdir, speed, grenade->velocity);
-	VectorMA (grenade->velocity, 200 + crandom() * 10.0, up, grenade->velocity);
-	VectorMA (grenade->velocity, crandom() * 10.0, right, grenade->velocity);
+	VectorMA (grenade->velocity, 200 + crandom() * 10.0f, up, grenade->velocity);
+	VectorMA (grenade->velocity, crandom() * 10.0f, right, grenade->velocity);
 	VectorSet (grenade->avelocity, 300, 300, 300);
 }
 

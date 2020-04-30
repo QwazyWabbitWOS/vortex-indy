@@ -381,7 +381,7 @@ qboolean CTF_PickupFlag(edict_t* ent, edict_t* other)
 		// reset their velocity
 		VectorClear(other->velocity);
 		// stun them briefly (to prevent mage lameness)
-		other->holdtime = level.time + 0.5;
+		other->holdtime = level.time + 0.2;
 
 		// disable scanner
 		if (other->client->pers.scanner_active & 1)
@@ -621,9 +621,10 @@ int CTF_GetGroupNum(edict_t* ent, edict_t* base)
 
 void CTF_AwardTeam(edict_t* ent, int teamnum, int points, int credits)
 {
-	int		i, groupnum = 0;
+	int		i;
+	int		groupnum = 0;
 	float	dist;
-	edict_t* cl_ent, * base;
+	edict_t* cl_ent, * base = NULL;
 
 	// determine whether or not points should be divided between
 	// defenders or attackers, or--if ent isn't specified--everyone
@@ -656,7 +657,7 @@ void CTF_AwardTeam(edict_t* ent, int teamnum, int points, int credits)
 			continue;
 
 		// award points to a specific group
-		if (groupnum)
+		if (base && groupnum)
 		{
 			// calculate player's distance from their flag base
 			dist = entdist(cl_ent, base);
@@ -1614,7 +1615,6 @@ float CTF_DistanceFromBase(edict_t* ent, vec3_t start, int base_teamnum)
 
 void CTF_JoinMenuHandler(edict_t* ent, int option)
 {
-	int			num = 0;
 	joined_t* slot = NULL;
 
 	// exit menu
