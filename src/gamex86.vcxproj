@@ -114,7 +114,7 @@
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ImportLibrary>C:/Quake2/vortex-indy/src/Debug/gamex86.lib</ImportLibrary>
       <ProgramDataBaseFile>C:/Quake2/vortex-indy/src/Debug/gamex86.pdb</ProgramDataBaseFile>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <Version>
       </Version>
       <ModuleDefinitionFile>game.def</ModuleDefinitionFile>
@@ -164,7 +164,7 @@
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ImportLibrary>C:/Quake2/vortex-indy/src/Release/gamex86.lib</ImportLibrary>
       <ProgramDataBaseFile>C:/Quake2/vortex-indy/src/Release/gamex86.pdb</ProgramDataBaseFile>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <Version>
       </Version>
       <ModuleDefinitionFile>game.def</ModuleDefinitionFile>
@@ -223,7 +223,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ImportLibrary>C:/Quake2/vortex-indy/src/MinSizeRel/gamex86.lib</ImportLibrary>
       <ProgramDataBaseFile>C:/Quake2/vortex-indy/src/MinSizeRel/gamex86.pdb</ProgramDataBaseFile>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <Version>
       </Version>
     </Link>
@@ -280,7 +280,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ImportLibrary>C:/Quake2/vortex-indy/src/RelWithDebInfo/gamex86.lib</ImportLibrary>
       <ProgramDataBaseFile>C:/Quake2/vortex-indy/src/RelWithDebInfo/gamex86.pdb</ProgramDataBaseFile>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <Version>
       </Version>
     </Link>

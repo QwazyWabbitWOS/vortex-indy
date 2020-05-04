@@ -65,7 +65,8 @@ field_t fields[] =
 	{"maxpitch", STOFS(maxpitch), F_FLOAT, FFL_SPAWNTEMP},
 	{"nextmap", STOFS(nextmap), F_LSTRING, FFL_SPAWNTEMP},
 	//{"weight", STOFS(weight), F_INT, FFL_SPAWNTEMP}//JABot
-	{NULL, 0, F_INT}
+
+	{NULL, 0, 0, 0}	// This terminates the list. ED_ParseField relies on it.
 };
 
 // -------- just for savegames ----------
