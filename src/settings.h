@@ -1,8 +1,8 @@
 #ifndef SETTINGS
 #define SETTINGS
 
-const char* s1;
-const char* s2;
+const char* s1;	// Global date string.
+const char* s2;	// Global time string.
 
 const char* Date();
 const char* Time();
