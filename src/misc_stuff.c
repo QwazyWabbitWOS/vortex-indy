@@ -316,20 +316,20 @@ qboolean findspawnpoint (edict_t *ent)
   return true;
 }
 
-qboolean FindValidSpawnPoint (edict_t *ent, qboolean air)
+qboolean FindValidSpawnPoint(edict_t* ent, qboolean air)
 {
-	int		i, j=0, mask;
+	int		i, j = 0, mask;
 	vec3_t	start, end, forward, right;
 	trace_t	tr;
 
 	//gi.dprintf("FindValidSpawnPoint()\n");
 
-	mask = (MASK_MONSTERSOLID|MASK_PLAYERSOLID|MASK_SOLID);
+	mask = (MASK_MONSTERSOLID | MASK_PLAYERSOLID | MASK_SOLID);
 
-	for (j=0;j<50000;j++)
+	for (j = 0; j < 50000; j++)
 	{
 		// get a random position within a map
-		for (i=0;i<3;i++)
+		for (i = 0; i < 3; i++)
 			start[i] = rand() % (8192 + 1) - 4096;
 		// is the point good?
 		if (gi.pointcontents(start) != 0)
@@ -356,7 +356,7 @@ qboolean FindValidSpawnPoint (edict_t *ent, qboolean air)
 		VectorCopy(start, end);
 		end[2] -= 8192;
 		tr = gi.trace(start, NULL, NULL, end, NULL, MASK_SOLID);
-		if (tr.surface->flags & (SURF_SKY|SURF_LIGHT)) //3.49 light flag indicates no-monster area
+		if (tr.surface->flags & (SURF_SKY | SURF_LIGHT)) //3.49 light flag indicates no-monster area
 			continue;
 		// check in front of us
 		AngleVectors(ent->s.angles, forward, right, NULL);
