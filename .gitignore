@@ -1,1 +1,6 @@
 *.sdf
+src/gamex86.dir/
+src/Debug/
+src/.vs/
+.vs/
+out/
