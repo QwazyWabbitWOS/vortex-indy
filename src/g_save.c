@@ -1,5 +1,12 @@
 #include "g_local.h"
 
+#ifdef _WIN32
+#include <direct.h> //QW// for _mkdir
+#else
+#include <sys/stat.h>	// for POSIX mkdir 
+#include <sys/types.h>
+#endif
+
 //K03 Begin
 void InitializeGDS(void);
 //#define LOCK_DEFAULTS 1
@@ -353,7 +360,7 @@ void InitGame (void)
 	adminctrl = gi.cvar ("admin_forcevote", "0", CVAR_LATCH);
 
 	voting = gi.cvar ("voting", "1", CVAR_SERVERINFO);
-	game_path = gi.cvar ("game_path", "0", CVAR_LATCH);
+	game_path = gi.cvar ("game_path", "vortex", CVAR_LATCH);
 	pregame_time = gi.cvar ("pregame_time", "60.0", 0);
 #ifndef LOCK_DEFAULTS
 	nextlevel_mult = gi.cvar("nextlevel_mult","1.5",CVAR_LATCH);
@@ -423,6 +430,30 @@ void InitGame (void)
 	game.maxclients = maxclients->value;
 	game.clients = V_Malloc (game.maxclients * sizeof(game.clients[0]), TAG_GAME);
 	globals.num_edicts = game.maxclients+1;
+
+	//QW// Directory creation if they don't exist.
+	char dir[MAX_QPATH] = { 0 };
+	Com_sprintf(dir, sizeof dir, "%s/settings/", game_path->string);
+
+	//QW// mkdir is POSIX so we have complexity here.
+#ifdef _WIN32
+	int stat = _mkdir(dir);
+#else
+	int stat = mkdir(dir, S_IFDIR);
+#endif
+	if (stat == 0) //QW// if we created settings/ then create settings/grd/ too.
+	{
+		gi.dprintf("WARNING: %s did not exist, it was created.\n", dir);
+		strcat(dir, "grd/");
+#ifdef _WIN32
+		stat = _mkdir(dir);
+		if (stat == 0)
+			gi.dprintf("WARNING: %s did not exist, it was created.\n", dir);
+#else
+		stat = mkdir(dir, S_IFDIR);
+#endif
+		gi.dprintf("WARNING: Server is misconfigured. Expect errors.\n");
+	}
 
 	//3.0 Load the custom map lists
 	if(v_LoadMapList(MAPMODE_PVP) && v_LoadMapList(MAPMODE_PVM) && v_LoadMapList(MAPMODE_INV)
