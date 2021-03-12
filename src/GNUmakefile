@@ -18,7 +18,7 @@ ARCH := $(shell uname -m | sed -e s/i.86/i386/ \
 # On 64-bit OS use the command: setarch i386 make all
 # to obtain the 32-bit binary DLL on 64-bit Linux.
 
-CC = gcc -std=c11 -Wparentheses
+CC = gcc -Wparentheses
 
 INCLUDE = -I../src
 INCLUDE += -I../src/*
